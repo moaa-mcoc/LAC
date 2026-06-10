@@ -58,15 +58,5 @@
     }
   ],
   "federal_bills": [],
-  "alerts": [
-    {
-      "tab": "state",
-      "headline": "HB 5280 scheduled for committee hearing",
-      "desc": "The House Committee on Government Operations has scheduled HB 5280 for a hearing. Now is the time to contact committee members.",
-      "bill_code": "HB 5280",
-      "info_url": "",
-      "info_label": "View hearing notice ↗",
-      "expires": "2099-12-31"
-    }
-  ]
+  "alerts": []
 }
