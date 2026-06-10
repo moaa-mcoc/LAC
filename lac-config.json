@@ -13,21 +13,7 @@
       "body": "Dear Representative [LAST_NAME],\n\nI am writing to respectfully request your support for HB 5280, which would extend Michigan retirement tax fairness to active duty, retired officers, and surviving spouses of the United States Public Health Service and National Oceanic and Atmospheric Administration Commissioned Corps.\n\nThese individuals are members of the uniformed services of the United States and are recognized as veterans by the Department of Veterans Affairs. HB 5280 is a narrow, fiscally responsible measure that simply ensures equal treatment among federally recognized uniformed services retirees.\n\nI respectfully ask that you support HB 5280 and assist in advancing the bill through the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
     }
   ],
-  "federal_bills": [
-    {
-      "id": 1,
-      "code": "S.3062",
-      "priority": true,
-      "target": "delegation",
-      "committee": [],
-      "relatedState": null,
-      "short": "GUARD VA Benefits Act",
-      "desc": "Strengthens enforcement against unaccredited paid VA claims assistance.",
-      "url": "https://www.congress.gov/",
-      "subject": "Please support the GUARD VA Benefits Act",
-      "body": "Dear [SALUTATION] [LAST_NAME],\n\nI am writing to urge your support for the GUARD VA Benefits Act. The bill would help protect veterans from unaccredited paid claims consultants and reinforce the VA accreditation system.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
-    }
-  ],
+  "federal_bills": [],
   "state_committee": [
     { "name": "Brian BeGole",      "title": "Chair · Republican · District 71",              "salutation": "Representative", "email": "bbeGole@house.mi.gov",           "phone": "(517) 373-0853", "contact_url": "https://www.house.mi.gov/" },
     { "name": "Mike Harris",       "title": "Majority Vice Chair · Republican · District 52", "salutation": "Representative", "email": "MikeHarris@house.mi.gov",         "phone": "(517) 373-0828", "contact_url": "https://www.house.mi.gov/" },
