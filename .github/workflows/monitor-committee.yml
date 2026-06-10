@@ -2,10 +2,8 @@ name: Monitor House Government Operations Committee
 
 on:
   schedule:
-    # Runs every day at 7:00 AM Eastern (11:00 UTC)
     - cron: '0 11 * * *'
   workflow_dispatch:
-    # Allow manual trigger from GitHub Actions tab for testing
 
 jobs:
   check-committee-agenda:
@@ -14,88 +12,12 @@ jobs:
       issues: write
 
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
       - name: Check RSS feed and agendas for MOAA bills
         id: monitor
-        run: |
-          python3 << 'PYEOF'
-          import urllib.request
-          import xml.etree.ElementTree as ET
-          import re
-          import json
-          import os
-          import sys
-
-          # ── Bills to watch ──────────────────────────────────────────────
-          WATCH_BILLS = ['HB 5262', 'HB 5278', 'HB 5279', 'HB 5280']
-          BILL_PATTERNS = [re.compile(r'\b' + b.replace(' ', r'\s*') + r'\b', re.IGNORECASE)
-                           for b in WATCH_BILLS]
-
-          RSS_URL = 'https://legislature.mi.gov/documents/publications/RssFeeds/comschedule.xml'
-
-          def fetch(url):
-              req = urllib.request.Request(url, headers={'User-Agent': 'MOAA-LAC-Monitor/1.0'})
-              with urllib.request.urlopen(req, timeout=15) as r:
-                  return r.read().decode('utf-8')
-
-          # ── Step 1: Parse RSS, find Government Operations meetings ───────
-          print("Fetching RSS feed...")
-          rss_text = fetch(RSS_URL)
-          root = ET.fromstring(rss_text)
-
-          gov_ops_meetings = []
-          for item in root.findall('.//item'):
-              title = item.findtext('title') or ''
-              link  = item.findtext('link')  or ''
-              guid  = item.findtext('guid')  or ''
-              if 'Government Operations' in title and 'House' in title:
-                  gov_ops_meetings.append({'title': title, 'link': link, 'guid': guid})
-                  print(f"  Found: {title}")
-
-          if not gov_ops_meetings:
-              print("No House Government Operations meetings in RSS feed. Done.")
-              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-                  f.write('bills_found=false\n')
-              sys.exit(0)
-
-          # ── Step 2: Check each meeting agenda for our bills ──────────────
-          matches = []
-          for meeting in gov_ops_meetings:
-              print(f"Checking agenda: {meeting['link']}")
-              try:
-                  agenda_html = fetch(meeting['link'])
-              except Exception as e:
-                  print(f"  Warning: could not fetch agenda — {e}")
-                  continue
-
-              found_bills = []
-              for i, pattern in enumerate(BILL_PATTERNS):
-                  if pattern.search(agenda_html):
-                      found_bills.append(WATCH_BILLS[i])
-
-              if found_bills:
-                  date_match = re.search(r'(\d{1,2}/\d{1,2}/\d{4}\s+\d{1,2}:\d{2}\s*[AP]M)', meeting['title'])
-                  meeting_date = date_match.group(1) if date_match else 'see agenda'
-                  matches.append({
-                      'bills': found_bills,
-                      'date': meeting_date,
-                      'url': meeting['link'],
-                  })
-                  print(f"  *** MATCH: {found_bills} on agenda for {meeting_date} ***")
-              else:
-                  print(f"  No MOAA bills on this agenda.")
-
-          # ── Step 3: Write results for next step ──────────────────────────
-          if matches:
-              with open('matches.json', 'w') as f:
-                  json.dump(matches, f)
-              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-                  f.write('bills_found=true\n')
-          else:
-              print("No MOAA bills scheduled in any upcoming Government Operations meeting.")
-              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-                  f.write('bills_found=false\n')
-
-          PYEOF
+        run: python3 .github/workflows/monitor-committee.py
 
       - name: Create GitHub Issue alert
         if: steps.monitor.outputs.bills_found == 'true'
@@ -104,73 +26,52 @@ jobs:
           script: |
             const fs = require('fs');
             const matches = JSON.parse(fs.readFileSync('matches.json', 'utf8'));
-
             for (const m of matches) {
               const billsList = m.bills.join(', ');
               const firstBill = m.bills[0];
-
-              // Check if an open issue already exists for this meeting URL
-              // to avoid duplicate alerts for the same hearing
               const existing = await github.rest.issues.listForRepo({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 state: 'open',
                 labels: 'committee-alert'
               });
-
               const duplicate = existing.data.find(i => i.body && i.body.includes(m.url));
               if (duplicate) {
-                console.log(`Issue already exists for ${m.url} — skipping.`);
+                console.log('Issue already exists for ' + m.url + ' — skipping.');
                 continue;
               }
-
               const alertJson = JSON.stringify({
                 tab: "state",
-                headline: `${billsList} scheduled for committee hearing`,
-                desc: `The House Committee on Government Operations has scheduled ${billsList} for a hearing on ${m.date}. Now is the time to contact committee members.`,
+                headline: billsList + " scheduled for committee hearing",
+                desc: "The House Committee on Government Operations has scheduled " + billsList + " for a hearing on " + m.date + ". Now is the time to contact committee members.",
                 bill_code: firstBill,
                 info_url: m.url,
-                info_label: "View hearing notice ↗",
+                info_label: "View hearing notice \u2197",
                 expires: "YYYY-MM-DD"
               }, null, 2);
-
-              const body = `## 🚨 MOAA Priority Bills Scheduled for Committee Hearing
-
-**Bills:** ${billsList}
-**Date:** ${m.date}
-**Agenda:** ${m.url}
-
----
-
-### Action required
-
-1. **Verify** the bills appear on the official agenda (link above)
-2. **Update \`lac-config.json\`** — add this entry to the \`alerts\` array:
-
-\`\`\`json
-${alertJson}
-\`\`\`
-
-3. **Set \`expires\`** to the day after the hearing date (format: \`YYYY-MM-DD\`)
-4. **Commit \`lac-config.json\`** — the alert goes live on the LAC immediately
-
----
-
-*Close this issue once the alert has been added and the hearing has passed.*
-
-[Open LAC](https://moaa-mcoc.github.io/LAC) | [View Repo](https://github.com/${context.repo.owner}/${context.repo.repo})`;
-
+              const body = "## MOAA Priority Bills Scheduled for Committee Hearing\n\n"
+                + "**Bills:** " + billsList + "\n"
+                + "**Date:** " + m.date + "\n"
+                + "**Agenda:** " + m.url + "\n\n---\n\n"
+                + "### Action required\n\n"
+                + "1. **Verify** the bills appear on the official agenda (link above)\n"
+                + "2. **Update `lac-config.json`** — add this entry to the `alerts` array:\n\n"
+                + "```json\n" + alertJson + "\n```\n\n"
+                + "3. **Set `expires`** to the day after the hearing date (format: `YYYY-MM-DD`)\n"
+                + "4. **Commit `lac-config.json`** — the alert goes live on the LAC immediately\n\n"
+                + "---\n\n"
+                + "*Close this issue once the alert has been added and the hearing has passed.*\n\n"
+                + "[Open LAC](https://moaa-mcoc.github.io/LAC)";
               await github.rest.issues.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                title: `[Committee Alert] ${billsList} — ${m.date}`,
+                title: "[Committee Alert] " + billsList + " — " + m.date,
                 body: body,
                 labels: ['committee-alert']
               });
-
-              console.log(`Issue created for ${billsList} on ${m.date}`);
+              console.log('Issue created for ' + billsList + ' on ' + m.date);
             }
 
       - name: Log result (no bills found)
         if: steps.monitor.outputs.bills_found == 'false'
-        run: echo "$(date -u): No MOAA bills on any upcoming Government Operations agenda." >> $GITHUB_STEP_SUMMARY
+        run: echo "$(date -u) — No MOAA bills on any upcoming Government Operations agenda." >> $GITHUB_STEP_SUMMARY
