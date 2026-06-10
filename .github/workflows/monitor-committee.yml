@@ -1,0 +1,107 @@
+name: Monitor House Government Operations Committee
+
+on:
+  schedule:
+    - cron: '0 11 * * *'
+  workflow_dispatch:
+
+jobs:
+  check-committee-agenda:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v5
+
+      - name: Check RSS feed and agendas for MOAA bills
+        id: monitor
+        run: python3 .github/workflows/monitor-committee.py
+
+      - name: Write monitor-status.json
+        run: |
+          python3 << 'PYEOF'
+          import json, os
+          from datetime import datetime, timezone
+
+          bills_found = os.environ.get('BILLS_FOUND', 'false')
+          bills_list  = os.environ.get('BILLS_LIST', '')
+
+          status = {
+            "checked_at": datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+            "bills_found": bills_list if bills_found == 'true' else None
+          }
+          with open('monitor-status.json', 'w') as f:
+              json.dump(status, f, indent=2)
+          print(f"Wrote monitor-status.json: {status}")
+          PYEOF
+        env:
+          BILLS_FOUND: ${{ steps.monitor.outputs.bills_found }}
+          BILLS_LIST: ${{ steps.monitor.outputs.bills_list }}
+
+      - name: Commit monitor-status.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add monitor-status.json
+          git diff --cached --quiet || git commit -m "chore: update committee monitor status [skip ci]"
+          git push
+
+      - name: Create GitHub Issue alert
+        if: steps.monitor.outputs.bills_found == 'true'
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs');
+            const matches = JSON.parse(fs.readFileSync('matches.json', 'utf8'));
+            for (const m of matches) {
+              const billsList = m.bills.join(', ');
+              const firstBill = m.bills[0];
+              const existing = await github.rest.issues.listForRepo({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open',
+                labels: 'committee-alert'
+              });
+              const duplicate = existing.data.find(i => i.body && i.body.includes(m.url));
+              if (duplicate) {
+                console.log('Issue already exists for ' + m.url + ' — skipping.');
+                continue;
+              }
+              const alertJson = JSON.stringify({
+                tab: "state",
+                headline: billsList + " scheduled for committee hearing",
+                desc: "The House Committee on Government Operations has scheduled " + billsList + " for a hearing on " + m.date + ". Now is the time to contact committee members.",
+                bill_code: firstBill,
+                info_url: m.url,
+                info_label: "View hearing notice \u2197",
+                expires: "YYYY-MM-DD"
+              }, null, 2);
+              const body = "## MOAA Priority Bills Scheduled for Committee Hearing\n\n"
+                + "**Bills:** " + billsList + "\n"
+                + "**Date:** " + m.date + "\n"
+                + "**Agenda:** " + m.url + "\n\n---\n\n"
+                + "### Action required\n\n"
+                + "1. **Verify** the bills appear on the official agenda (link above)\n"
+                + "2. **Update `lac-config.json`** — add this entry to the `alerts` array:\n\n"
+                + "```json\n" + alertJson + "\n```\n\n"
+                + "3. **Set `expires`** to the day after the hearing date (format: `YYYY-MM-DD`)\n"
+                + "4. **Commit `lac-config.json`** — the alert goes live on the LAC immediately\n\n"
+                + "---\n\n"
+                + "*Close this issue once the alert has been added and the hearing has passed.*\n\n"
+                + "[Open LAC](https://moaa-mcoc.github.io/LAC)";
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: "[Committee Alert] " + billsList + " — " + m.date,
+                body: body,
+                labels: ['committee-alert']
+              });
+              console.log('Issue created for ' + billsList + ' on ' + m.date);
+            }
+
+      - name: Log result (no bills found)
+        if: steps.monitor.outputs.bills_found == 'false'
+        run: echo "$(date -u) — No MOAA bills on any upcoming Government Operations agenda." >> $GITHUB_STEP_SUMMARY
