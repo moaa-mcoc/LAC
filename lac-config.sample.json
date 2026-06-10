@@ -1,5 +1,4 @@
-{
-  "state_bills": [
+"state_bills": [
     {
       "id": 1,
       "code": "HB 5280",
@@ -29,12 +28,14 @@
     }
   ],
   "state_committee": [
-    { "name": "Brian BeGole", "title": "Chair · Republican · District 71", "salutation": "Representative", "email": "bbeGole@house.mi.gov", "phone": "(517) 373-0853", "contact_url": "https://www.house.mi.gov/" },
-    { "name": "Mike Harris", "title": "Majority Vice Chair · Republican · District 52", "salutation": "Representative", "email": "MikeHarris@house.mi.gov", "phone": "(517) 373-0828", "contact_url": "https://www.house.mi.gov/" },
-    { "name": "John Fitzgerald", "title": "Minority Vice Chair · Democrat · District 83", "salutation": "Representative", "email": "jfitzgerald@house.mi.gov", "phone": "(517) 373-0835", "contact_url": "https://www.house.mi.gov/" }
+    { "name": "Brian BeGole",      "title": "Chair · Republican · District 71",              "salutation": "Representative", "email": "bbeGole@house.mi.gov",           "phone": "(517) 373-0853", "contact_url": "https://www.house.mi.gov/" },
+    { "name": "Mike Harris",       "title": "Majority Vice Chair · Republican · District 52", "salutation": "Representative", "email": "MikeHarris@house.mi.gov",         "phone": "(517) 373-0828", "contact_url": "https://www.house.mi.gov/" },
+    { "name": "John Fitzgerald",   "title": "Minority Vice Chair · Democrat · District 83",   "salutation": "Representative", "email": "jfitzgerald@house.mi.gov",         "phone": "(517) 373-0835", "contact_url": "https://www.house.mi.gov/" },
+    { "name": "Curtis VanderWall", "title": "Member · Republican · District 102",             "salutation": "Representative", "email": "CurtisVanderWall@house.mi.gov",    "phone": "(517) 373-1747", "contact_url": "https://www.house.mi.gov/" },
+    { "name": "Mike McFall",       "title": "Member · Democrat · District 14",                "salutation": "Representative", "email": "mmcfall@house.mi.gov",             "phone": "(517) 373-0140", "contact_url": "https://www.house.mi.gov/" }
   ],
   "mi_senators": [
-    { "name": "Gary Peters", "title": "U.S. Senator · Michigan", "salutation": "Senator", "email": "senator@peters.senate.gov", "phone": "(202) 224-6221", "type": "federal", "contact_url": "https://www.peters.senate.gov/contact/email-gary" },
+    { "name": "Gary Peters",    "title": "U.S. Senator · Michigan", "salutation": "Senator", "email": "senator@peters.senate.gov",  "phone": "(202) 224-6221", "type": "federal", "contact_url": "https://www.peters.senate.gov/contact/email-gary" },
     { "name": "Elissa Slotkin", "title": "U.S. Senator · Michigan", "salutation": "Senator", "email": "senator@slotkin.senate.gov", "phone": "(202) 224-4822", "type": "federal", "contact_url": "https://www.slotkin.senate.gov/" }
   ]
 }
