@@ -3,7 +3,7 @@
 ## Files
 
 - `index-v1.1.html` — updated static Legislative Action Center.
-- `lac-config.sample.json` — sample external campaign configuration.
+- `lac-config.json` — external campaign configuration.
 
 ## What changed in Version 1.1
 
