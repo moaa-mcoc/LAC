@@ -57,5 +57,16 @@
       "body": "Dear Representative [LAST_NAME],\n\nI am writing to request your support for HB 5279, which would extend the veteran designation on Michigan driver's licenses to commissioned officers of NOAA and the USPHS.\n\nThese federally recognized uniformed service veterans currently cannot receive the veteran designation on their Michigan driver's license — an inconsistency with federal law that this bill would correct. The change carries no meaningful fiscal impact and simply provides fair, equal recognition to all who have served.\n\nI ask that you support HB 5279 and help advance it through the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
     }
   ],
-  "federal_bills": []
+  "federal_bills": [],
+  "alerts": [
+    {
+      "tab": "state",
+      "headline": "HB 5280 scheduled for committee hearing",
+      "desc": "The House Committee on Government Operations has scheduled HB 5280 for a hearing. Now is the time to contact committee members.",
+      "bill_code": "HB 5280",
+      "info_url": "",
+      "info_label": "View hearing notice ↗",
+      "expires": "2099-12-31"
+    }
+  ]
 }
