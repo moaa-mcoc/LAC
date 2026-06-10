@@ -13,6 +13,48 @@
       "relatedFederal": null,
       "subject": "Support for HB 5280",
       "body": "Dear Representative [LAST_NAME],\n\nI am writing to respectfully request your support for HB 5280, which would extend Michigan retirement tax fairness to active duty, retired officers, and surviving spouses of the United States Public Health Service and National Oceanic and Atmospheric Administration Commissioned Corps.\n\nThese individuals are members of the uniformed services of the United States and are recognized as veterans by the Department of Veterans Affairs. HB 5280 is a narrow, fiscally responsible measure that simply ensures equal treatment among federally recognized uniformed services retirees.\n\nI respectfully ask that you support HB 5280 and assist in advancing the bill through the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
+    },
+    {
+      "id": 2,
+      "code": "HB 5262",
+      "priority": false,
+      "target": "committee",
+      "districts": ["71", "52", "83", "102", "14"],
+      "committeeLabel": "House Committee on Government Operations — send to each member",
+      "short": "Uniformity of Service Dates Act",
+      "desc": "Amends Act 190 of 1965 to include commissioned officers of NOAA and USPHS as a class of veterans as defined in Title 38 USC.",
+      "url": "https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5262.pdf",
+      "relatedFederal": null,
+      "subject": "Support for HB 5262 — Veteran Recognition for NOAA & USPHS Officers",
+      "body": "Dear Representative [LAST_NAME],\n\nI am writing to urge your support for HB 5262, which would amend Act 190 of 1965 to include commissioned officers of NOAA and the USPHS as a class of veterans, consistent with the federal definition under Title 38 of the United States Code.\n\nUnder federal law, NOAA and USPHS commissioned officers are recognized as veterans by the Department of Veterans Affairs. Michigan law currently fails to extend this same recognition, creating an unjust gap in benefits and honors for individuals who have served in a uniformed capacity.\n\nHB 5262 is a straightforward alignment of Michigan law with existing federal standards. I respectfully ask for your support in advancing this bill through committee.\n\nThank you for your service to the people of Michigan.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
+    },
+    {
+      "id": 3,
+      "code": "HB 5278",
+      "priority": false,
+      "target": "committee",
+      "districts": ["71", "52", "83", "102", "14"],
+      "committeeLabel": "House Committee on Government Operations — send to each member",
+      "short": "State Personal Identification Card Act",
+      "desc": "Extends veteran designation on state ID cards to NOAA and USPHS commissioned officers.",
+      "url": "https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5278.pdf",
+      "relatedFederal": null,
+      "subject": "Support for HB 5278 — Veteran ID Recognition for NOAA & USPHS Officers",
+      "body": "Dear Representative [LAST_NAME],\n\nI am writing to ask for your support of HB 5278, which would extend the veteran designation on Michigan state identification cards to commissioned officers of NOAA and the USPHS.\n\nThese uniformed service members are recognized as veterans under federal law (38 USC) but are currently excluded from this recognition on Michigan state IDs. This small change would mean a great deal to the men and women who served in these federal uniformed services and now call Michigan home.\n\nI respectfully request your support in moving HB 5278 forward in the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
+    },
+    {
+      "id": 4,
+      "code": "HB 5279",
+      "priority": false,
+      "target": "committee",
+      "districts": ["71", "52", "83", "102", "14"],
+      "committeeLabel": "House Committee on Government Operations — send to each member",
+      "short": "Michigan Vehicle Code",
+      "desc": "Extends veteran designation on Michigan driver's licenses to NOAA and USPHS commissioned officers.",
+      "url": "https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5279.pdf",
+      "relatedFederal": null,
+      "subject": "Support for HB 5279 — Veteran Driver's License Recognition for NOAA & USPHS Officers",
+      "body": "Dear Representative [LAST_NAME],\n\nI am writing to request your support for HB 5279, which would extend the veteran designation on Michigan driver's licenses to commissioned officers of NOAA and the USPHS.\n\nThese federally recognized uniformed service veterans currently cannot receive the veteran designation on their Michigan driver's license — an inconsistency with federal law that this bill would correct. The change carries no meaningful fiscal impact and simply provides fair, equal recognition to all who have served.\n\nI ask that you support HB 5279 and help advance it through the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
     }
   ],
   "federal_bills": []
