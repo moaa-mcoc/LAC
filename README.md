@@ -1,16 +1,23 @@
 # Legislative Action Center — Version 1.2
 
-## Files
+## Repository files
 
-- `index.html` — Legislative Action Center, v1.2.
-- `lac-config.json` — Campaign configuration: bills, targets, letter templates.
-- `lac-legislators.json` — Legislator database: all 110 MI House members, 37 MI Senate members (district 35 currently vacant), and 2 U.S. Senators.
+| File | Purpose |
+|---|---|
+| `index.html` | Application — LAC v1.2 |
+| `lac-config.json` | Campaign configuration: bills, targets, letter templates, alerts |
+| `lac-legislators.json` | Legislator database: 162 records (110 MI House, 37 MI Senate, 13 US House, 2 US Senate) |
+| `.github/workflows/monitor-committee.yml` | Daily GitHub Actions workflow — monitors committee schedule |
+| `.github/workflows/monitor-committee.py` | Python script — RSS fetch and agenda parsing logic |
+| `README.md` | This file |
+
+---
 
 ## What changed in Version 1.2
 
 ### 1. Legislator database (`lac-legislators.json`)
 
-A standalone legislator database replaces the inline contact lists that were previously embedded in `lac-config.json`. Each record follows this schema:
+A standalone legislator database replaces the inline contact lists previously embedded in `lac-config.json`. Each record follows this schema:
 
 ```json
 {
@@ -28,9 +35,9 @@ A standalone legislator database replaces the inline contact lists that were pre
 
 **Chamber values:** `"MI House"`, `"MI Senate"`, `"US House"`, `"US Senate"`
 
-U.S. Senate records use `"district": null` (statewide). The chamber naming convention is state-prefixed (`MI House`, `MI Senate`) to support future reuse by councils in other states.
+U.S. Senate records use `"district": null` (statewide). U.S. House members use `contact_url` only — no direct email address is published. The chamber naming convention is state-prefixed to support future reuse by councils in other states.
 
-The database is loaded at startup alongside `lac-config.json`. If the file is missing, the app falls back to any inline legislator data in `lac-config.json` (v1.1 behavior), then to built-in defaults.
+The database is loaded at startup alongside `lac-config.json` using `Promise.allSettled()`. A missing file degrades gracefully without blocking the other.
 
 ### 2. District-based bill targeting
 
@@ -44,31 +51,45 @@ Bill entries in `lac-config.json` now use a `districts` array instead of inline 
 }
 ```
 
-The optional `committeeLabel` field controls the recipient header shown to the user in Step 3. If omitted, a generic label is used.
-
-**Target modes (unchanged from v1.1):**
+**Target modes:**
 
 | `target` | Behavior |
 |---|---|
-| `"committee"` | Contacts the legislators listed in `districts`, resolved from the database |
-| `"district"` | ZIP → Google Civic API lookup → matched against the database by district number |
+| `"committee"` | Contacts legislators in `districts`, resolved from the database |
+| `"district"` | ZIP → Google Civic API → matched against database by district number |
 | `"delegation"` | MI U.S. Senators (from database) + member's U.S. House rep (Civic API) |
 
-### 3. Parallel file loading
+### 3. Action alert banner
 
-`loadExternalData()` replaces `loadExternalConfig()`. Both files are fetched simultaneously using `Promise.allSettled()`. A missing or invalid file degrades gracefully without blocking the other.
+`lac-config.json` supports an `alerts` array. Active alerts display as a prominent red banner above the issue banner on the relevant tab. Alerts expire automatically based on the `expires` field — no manual cleanup needed.
 
-The `config-status` line visible to administrators now reports which files loaded successfully.
+```json
+{
+  "alerts": [
+    {
+      "tab": "state",
+      "headline": "HB 5280 scheduled for committee hearing",
+      "desc": "The House Committee on Government Operations has scheduled HB 5280 for a hearing on 6/15/2026 09:00 AM. Now is the time to contact committee members.",
+      "bill_code": "HB 5280",
+      "info_url": "https://legislature.mi.gov/Committees/Meeting?meetingID=XXXX",
+      "info_label": "View hearing notice ↗",
+      "expires": "2026-06-16"
+    }
+  ]
+}
+```
 
-### 4. Database-backed district lookup
+`tab` accepts `"state"`, `"federal"`, or `"both"`. Set `expires` to the day after the hearing. The alert clears automatically at midnight on that date.
 
-When a bill uses `target: "district"`, the app calls the Google Civic API to determine the user's state House and Senate district numbers, then cross-references those numbers against `lac-legislators.json` to retrieve verified email addresses, phone numbers, and contact form URLs. If no database match is found for a given district, the app falls back to whatever contact details the Civic API returned directly.
+### 4. Automated committee monitoring
 
-The same pattern applies to federal `target: "delegation"` bills — the U.S. House district number from the Civic API is matched against the database.
+A GitHub Actions workflow runs every morning at 7:00 AM Eastern. It checks the Michigan Legislature RSS feed for House Government Operations Committee meetings and fetches each agenda looking for HB 5262, 5278, 5279, or 5280. If a match is found, it creates a GitHub Issue in the repo — GitHub automatically emails the repo owner. The issue contains the exact JSON block to paste into `lac-config.json`, with only the `expires` date to fill in.
+
+The workflow can also be triggered manually from the Actions tab at any time.
 
 ### 5. `state_committee` and `mi_senators` removed from `lac-config.json`
 
-These blocks are no longer needed. All legislator data is sourced from `lac-legislators.json`. The app still honors these fields if present in the config (for backward compatibility with any cached or forked versions), but they should not be included in new configurations.
+All legislator data is now sourced from `lac-legislators.json`. The app still honors these fields if present in the config for backward compatibility, but they should not be included in new configurations.
 
 ---
 
@@ -93,44 +114,75 @@ These blocks are no longer needed. All legislator data is sourced from `lac-legi
 
 **Merge fields available in `body`:** `[FULL_NAME]`, `[LAST_NAME]`, `[SALUTATION]`, `[CITY]`, `[ZIP]`, `[ADDRESS]`, `[EMAIL]`, `[CHAPTER]`
 
-**Statewide floor-vote campaign:** Add a new bill entry with `"target": "district"` and no `districts` array. The Civic API and database handle all 110 House and 38 Senate members automatically based on the user's address.
+**Statewide floor-vote campaign:** Add a bill entry with `"target": "district"` and no `districts` array. The Civic API and database handle all 110 House and 38 Senate members automatically based on the user's address.
 
 ---
 
-## Deployment steps
+## When a committee alert is triggered
 
-1. Commit or upload all three files to the repo root: `index.html`, `lac-config.json`, `lac-legislators.json`.
-2. Replace `YOUR_API_KEY_HERE` in `index.html` with your Google Civic Information API key.
-3. Change the default admin password in `index.html` before posting publicly:
+The GitHub Actions workflow will create an Issue in this repo and email you. The issue contains a pre-filled alert JSON block. Steps to activate the alert:
+
+1. Open `lac-config.json` in the repo
+2. Add the JSON block from the issue into the `alerts` array
+3. Set `expires` to the day after the hearing date (`YYYY-MM-DD`)
+4. Commit — the alert banner goes live on the LAC immediately
+5. Close the GitHub Issue once the alert is live
+
+To clear the alert after the hearing: set `expires` to a past date and commit, or delete the entry from the `alerts` array.
+
+---
+
+## Deployment steps (new council)
+
+1. Commit all files to the repo root: `index.html`, `lac-config.json`, `lac-legislators.json`
+2. Commit `.github/workflows/monitor-committee.yml` and `.github/workflows/monitor-committee.py`
+3. Replace `YOUR_API_KEY_HERE` in `index.html` with a Google Civic Information API key
+4. Change the default admin password in `index.html`:
    ```js
    const LAC_ADMIN_PASSWORD = 'ChangeMe2026!';
    ```
-4. Test:
+5. Create the `committee-alert` label in the repo (Issues → Labels → New label)
+6. Test:
    - State bill selection and committee email flow
    - District lookup (requires a valid Google Civic API key)
    - Gmail / Outlook / Yahoo / AOL fallback links
-   - Copy message
-   - Contact form links
-   - Federal tab (shows "Coming Soon" until a federal bill is added to `lac-config.json`)
+   - Copy message and contact form links
+   - Federal tab (shows "Coming Soon" until a federal bill is added)
    - Metrics dashboard via `#metrics` or `Ctrl+Alt+M`
    - Metrics CSV export
+   - GitHub Actions workflow via manual trigger (Actions tab → Run workflow)
 
 ---
 
 ## Maintaining the legislator database
 
-`lac-legislators.json` should be reviewed at the start of each legislative session (January) and updated whenever a seat changes hands due to resignation, special election, or appointment.
+`lac-legislators.json` should be reviewed each January ahead of the new legislative session and updated whenever a seat changes hands.
 
 - **MI House emails:** `FirstnameLastname@house.mi.gov` — verify at [house.mi.gov/AllRepresentatives](https://www.house.mi.gov/AllRepresentatives)
 - **MI Senate emails:** `Sen[FI][Lastname]@senate.michigan.gov` — verify at [senate.michigan.gov/senators/all-senators](https://senate.michigan.gov/senators/all-senators/)
-- **MI Senate district 35** is currently vacant. Add the record when a replacement is seated.
-- Phone numbers should be verified against official directories; some currently reflect general switchboard numbers.
+- **MI Senate district 35** is currently vacant — add the record when a replacement is seated
+- **US House members** use `contact_url` only; `email` is intentionally blank
+- Phone numbers should be verified against official directories; some currently reflect general switchboard numbers
+
+---
+
+## Monitoring workflow maintenance
+
+The workflow uses `actions/checkout@v5` and `actions/github-script@v8`, compatible with Node.js 24 (required after September 16, 2026).
+
+To update the list of bills being monitored, edit `WATCH_BILLS` in `.github/workflows/monitor-committee.py`:
+
+```python
+WATCH_BILLS = ['HB 5262', 'HB 5278', 'HB 5279', 'HB 5280']
+```
+
+Add or remove bill codes as campaigns change. No other changes are needed.
 
 ---
 
 ## Important limitation
 
-Because this is a static website using mailto and webmail links, it cannot verify that an email was actually sent. Metrics track visits, lookups, email attempts, copy-and-send actions, contact form clicks, ZIP codes, chapters, and bill selections stored locally in the user's browser, plus GA4 event hooks. Centralized reporting requires GA4 or a future server-backed version.
+Because this is a static website using mailto and webmail links, it cannot verify that an email was actually sent. Metrics track visits, lookups, email attempts, copy-and-send actions, contact form clicks, ZIP codes, chapters, and bill selections — stored locally in the user's browser and reported via GA4. Centralized reporting across all users requires GA4 or a future server-backed version.
 
 ---
 
@@ -139,5 +191,5 @@ Because this is a static website using mailto and webmail links, it cannot verif
 - Verify and update all phone numbers in `lac-legislators.json` against official directories.
 - Add individual contact form URLs for MI House members (currently all point to the general `house.mi.gov` directory).
 - Add federal campaigns to `lac-config.json` when ready (GUARD VA Benefits Act, CHOICE Act, etc.).
-- Add U.S. House member records to `lac-legislators.json` as campaigns require them.
 - Build a server-backed dashboard for centralized cross-user campaign reporting.
+- **Per-state bill files (v1.3 candidate):** When a second state council adopts the LAC, refactor campaign bills into a `/legislation/` folder with one file per state (e.g., `michigan.json`, `ohio.json`) plus a shared `federal.json` for bill descriptions that apply across states. The right trigger for this refactor is managing bills for two states simultaneously — `lac-config.json` works well for a single-state deployment and this complexity is not yet warranted.
