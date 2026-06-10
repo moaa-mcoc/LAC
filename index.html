@@ -372,6 +372,50 @@ textarea { resize: vertical; line-height: 1.65; }
 }
 .notice.warning { background: var(--gold-pale); border-left-color: var(--gold); color: #6b4a00; }
 
+/* Action alert banner */
+.action-alert {
+  background: #7a1a1a; color: #fff;
+  border-radius: var(--radius-lg); padding: 1.1rem 1.5rem;
+  margin-bottom: 1.25rem;
+  display: flex; align-items: flex-start; gap: 14px;
+  animation: alertPulse 2.5s ease-in-out 3;
+}
+@keyframes alertPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139,26,26,0); }
+  50% { box-shadow: 0 0 0 6px rgba(139,26,26,0.25); }
+}
+.action-alert-icon {
+  font-size: 22px; flex-shrink: 0; line-height: 1; margin-top: 1px;
+}
+.action-alert-body { flex: 1; min-width: 0; }
+.action-alert-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #ffb3b3; margin-bottom: 4px;
+}
+.action-alert-headline {
+  font-family: 'Merriweather', serif; font-size: 15px; font-weight: 700;
+  color: #fff; margin-bottom: 4px; line-height: 1.4;
+}
+.action-alert-desc {
+  font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 10px;
+}
+.action-alert-links { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.action-alert-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: var(--radius);
+  font-size: 13px; font-weight: 600; text-decoration: none;
+  transition: background 0.15s;
+}
+.action-alert-link.primary {
+  background: #fff; color: #7a1a1a;
+}
+.action-alert-link.primary:hover { background: #ffe8e8; }
+.action-alert-link.secondary {
+  background: rgba(255,255,255,0.15); color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.action-alert-link.secondary:hover { background: rgba(255,255,255,0.25); }
+
 /* Phone script */
 .phone-script {
   background: var(--gold-pale); border: 1.5px solid var(--gold-light);
@@ -505,6 +549,9 @@ textarea { resize: vertical; line-height: 1.65; }
   <!-- STATE TAB                                   -->
   <!-- ═══════════════════════════════════════════ -->
   <div class="tab-panel active" id="tab-state">
+
+    <!-- Action alerts — populated by renderAlerts() from lac-config.json -->
+    <div id="state-alerts"></div>
 
     <div class="issue-banner">
       <h2>Current Priority: Aligning Veteran Recognition for NOAA &amp; USPHS Officers</h2>
@@ -663,6 +710,9 @@ textarea { resize: vertical; line-height: 1.65; }
   <!-- FEDERAL TAB                                 -->
   <!-- ═══════════════════════════════════════════ -->
   <div class="tab-panel" id="tab-federal">
+
+    <!-- Action alerts — populated by renderAlerts() from lac-config.json -->
+    <div id="federal-alerts"></div>
 
     <div class="issue-banner federal">
       <h2>Federal Legislative Priorities</h2>
@@ -980,6 +1030,10 @@ let MI_SENATORS = [];
 // Each record: { state, chamber, district, name, salutation, party, email, phone, contact_url }
 // chamber values: 'MI House', 'MI Senate', 'US House', 'US Senate'
 let LEGISLATORS = [];
+
+// Action alerts — populated from lac-config.json at startup.
+// Each record: { tab, headline, desc, bill_code, info_url, info_label, expires }
+let ALERTS = [];
 
 // ─────────────────────────────────────────────────────────────────
 // STATE TAB LOGIC
@@ -1654,6 +1708,89 @@ function getLocalMetrics(){
   catch(e){ return []; }
 }
 
+function renderAlerts(){
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  ['state','federal'].forEach(tab => {
+    const container = document.getElementById(tab+'-alerts');
+    if(!container) return;
+    container.innerHTML = '';
+
+    const active = ALERTS.filter(a => {
+      if(a.tab !== tab && a.tab !== 'both') return false;
+      if(a.expires){
+        const exp = new Date(a.expires);
+        exp.setHours(23,59,59,999);
+        if(today > exp) return false;
+      }
+      return true;
+    });
+
+    active.forEach(alert => {
+      const div = document.createElement('div');
+      div.className = 'action-alert';
+      div.setAttribute('role', 'alert');
+
+      const infoLink = alert.info_url
+        ? `<a class="action-alert-link secondary" href="${escapeHtml(alert.info_url)}" target="_blank" rel="noopener">
+             ${escapeHtml(alert.info_label || 'More information ↗')}
+           </a>`
+        : '';
+
+      const actionLink = alert.bill_code
+        ? `<button class="action-alert-link primary" type="button"
+             onclick="lacAlertAction('${escapeHtml(tab)}','${escapeHtml(alert.bill_code)}')">
+             ✉ Contact legislators now
+           </button>`
+        : '';
+
+      div.innerHTML = `
+        <div class="action-alert-icon">🚨</div>
+        <div class="action-alert-body">
+          <div class="action-alert-label">Action Alert</div>
+          <div class="action-alert-headline">${escapeHtml(alert.headline)}</div>
+          ${alert.desc ? `<div class="action-alert-desc">${escapeHtml(alert.desc)}</div>` : ''}
+          <div class="action-alert-links">
+            ${actionLink}
+            ${infoLink}
+          </div>
+        </div>`;
+
+      container.appendChild(div);
+      lacEvent('alert_displayed', { tab, bill_code: alert.bill_code || '', headline: alert.headline });
+    });
+  });
+}
+
+// Called when user clicks "Contact legislators now" on an alert.
+// Switches to the correct tab and pre-selects the relevant bill.
+function lacAlertAction(tab, billCode){
+  lacEvent('alert_action_click', { tab, bill_code: billCode });
+  if(tab === 'federal'){
+    const bill = FEDERAL_BILLS.find(b => b.code === billCode);
+    if(bill){
+      selectedFedBill = bill;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('tab-federal').classList.add('active');
+      document.querySelector('[onclick="switchTab(\'federal\')"]')?.classList.add('active');
+      renderFedBills();
+    }
+  } else {
+    const bill = STATE_BILLS.find(b => b.code === billCode);
+    if(bill){
+      selectedStateBill = bill;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('tab-state').classList.add('active');
+      document.querySelector('[onclick="switchTab(\'state\')"]')?.classList.add('active');
+      renderStateBills();
+    }
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 async function loadExternalData(){
   const status = document.getElementById('config-status');
   const [cfgResult, legResult] = await Promise.allSettled([
@@ -1666,6 +1803,7 @@ async function loadExternalData(){
     const cfg = cfgResult.value;
     if(Array.isArray(cfg.state_bills))   STATE_BILLS   = cfg.state_bills;
     if(Array.isArray(cfg.federal_bills)) FEDERAL_BILLS = cfg.federal_bills;
+    if(Array.isArray(cfg.alerts))        ALERTS        = cfg.alerts;
     // v1.1 fallback: honour inline state_committee/mi_senators if present in config
     if(Array.isArray(cfg.state_committee)) STATE_COMMITTEE = cfg.state_committee;
     if(Array.isArray(cfg.mi_senators))     MI_SENATORS     = cfg.mi_senators;
@@ -1781,6 +1919,7 @@ function clearMetrics(){
 async function initApp(){
   lacEvent('page_visit', { page: location.pathname || 'index.html' });
   await loadExternalData();
+  renderAlerts();
   renderStateBills();
   renderFedBills();
   updateBadges();
