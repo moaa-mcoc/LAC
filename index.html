@@ -416,6 +416,20 @@ textarea { resize: vertical; line-height: 1.65; }
 }
 .action-alert-link.secondary:hover { background: rgba(255,255,255,0.25); }
 
+/* Committee monitoring status bar */
+.monitor-status {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted);
+  padding: 6px 2px; margin-bottom: 1rem;
+  border-top: 1px solid var(--border);
+}
+.monitor-status.alert { color: #7a1a1a; font-weight: 600; }
+.monitor-status-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #4caf50; flex-shrink: 0;
+}
+.monitor-status.alert .monitor-status-dot { background: #7a1a1a; }
+
 /* Phone script */
 .phone-script {
   background: var(--gold-pale); border: 1.5px solid var(--gold-light);
@@ -563,6 +577,9 @@ textarea { resize: vertical; line-height: 1.65; }
         <a class="bill-tag-pill" href="https://archive.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5280.pdf" target="_blank">HB 5280 ★</a>
       </div>
     </div>
+
+    <!-- Committee monitoring status — populated from monitor-status.json -->
+    <div id="monitor-status-bar" class="monitor-status hidden"></div>
 
     <div class="resources-row">
       <a class="resource-link" href="https://www.moaamcoc.com/uploads/1/4/8/4/148483887/hb_5280_battle_card_r2.pdf" target="_blank">
@@ -1793,9 +1810,10 @@ function lacAlertAction(tab, billCode){
 
 async function loadExternalData(){
   const status = document.getElementById('config-status');
-  const [cfgResult, legResult] = await Promise.allSettled([
-    fetch(LAC_CONFIG_URL,      { cache: 'no-store' }).then(r => r.ok ? r.json() : Promise.reject()),
-    fetch(LAC_LEGISLATORS_URL, { cache: 'no-store' }).then(r => r.ok ? r.json() : Promise.reject())
+  const [cfgResult, legResult, statusResult] = await Promise.allSettled([
+    fetch(LAC_CONFIG_URL,        { cache: 'no-store' }).then(r => r.ok ? r.json() : Promise.reject()),
+    fetch(LAC_LEGISLATORS_URL,   { cache: 'no-store' }).then(r => r.ok ? r.json() : Promise.reject()),
+    fetch('monitor-status.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : Promise.reject())
   ]);
 
   // Apply campaign configuration
@@ -1826,6 +1844,26 @@ async function loadExternalData(){
     else                 status.textContent = 'Using built-in campaign configuration.';
   }
   lacEvent('config_loaded', { config: cfgOk ? 'external' : 'built_in', legislators: legOk ? LEGISLATORS.length : 0 });
+
+  // Render committee monitoring status bar
+  const bar = document.getElementById('monitor-status-bar');
+  if(bar && statusResult.status === 'fulfilled'){
+    const s = statusResult.value;
+    const checkedAt = s.checked_at ? new Date(s.checked_at) : null;
+    const timeStr = checkedAt
+      ? checkedAt.toLocaleString('en-US', { month:'short', day:'numeric', year:'numeric', hour:'numeric', minute:'2-digit', timeZoneName:'short' })
+      : 'recently';
+    if(s.bills_found){
+      bar.className = 'monitor-status alert';
+      bar.innerHTML = `<span class="monitor-status-dot"></span>
+        Committee hearing detected for ${escapeHtml(s.bills_found)} — see alert above. Last checked: ${timeStr}.`;
+    } else {
+      bar.className = 'monitor-status';
+      bar.innerHTML = `<span class="monitor-status-dot"></span>
+        Committee monitoring last run: ${timeStr} — no hearings currently scheduled for HB 5262, HB 5278, HB 5279, or HB 5280.`;
+    }
+    bar.classList.remove('hidden');
+  }
 }
 
 // Look up legislators from the database by chamber and district list.
