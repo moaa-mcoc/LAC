@@ -969,21 +969,17 @@ let FEDERAL_BILLS = [
   // ─────────────────────────────────────────────────────────────────────────
 ];
 
-// Committee members for state bills with target:'committee'
-// Add/remove/change as needed when committee membership changes
-let STATE_COMMITTEE = [
-  { name: 'Brian BeGole',    title: 'Chair · Republican · District 71',              salutation: 'Representative', email: 'bbeGole@house.mi.gov',           phone: '(517) 373-0853' },
-  { name: 'Mike Harris',     title: 'Majority Vice Chair · Republican · District 52', salutation: 'Representative', email: 'MikeHarris@house.mi.gov',         phone: '(517) 373-0828' },
-  { name: 'John Fitzgerald', title: 'Minority Vice Chair · Democrat · District 83',   salutation: 'Representative', email: 'jfitzgerald@house.mi.gov',         phone: '(517) 373-0835' },
-  { name: 'Curtis VanderWall', title: 'Member · Republican · District 102',           salutation: 'Representative', email: 'CurtisVanderWall@house.mi.gov',    phone: '(517) 373-1747' },
-  { name: 'Mike McFall',     title: 'Member · Democrat · District 14',                salutation: 'Representative', email: 'mmcfall@house.mi.gov',             phone: '(517) 373-0140' },
-];
+// ─── VERSION 1.2 — Legislator database ───────────────────────────
+// STATE_COMMITTEE and MI_SENATORS are no longer the primary data source.
+// Legislators are resolved from LEGISLATORS, loaded from lac-legislators.json.
+// These empty arrays remain as in-code fallbacks if the database fails to load.
+let STATE_COMMITTEE = [];
+let MI_SENATORS = [];
 
-// Michigan US Senators — for federal delegation targeting
-let MI_SENATORS = [
-  { name: 'Gary Peters',    title: 'U.S. Senator · Michigan',  salutation: 'Senator',         email: 'senator@peters.senate.gov',  phone: '(202) 224-6221', type: 'federal' },
-  { name: 'Elissa Slotkin', title: 'U.S. Senator · Michigan',  salutation: 'Senator',         email: 'senator@slotkin.senate.gov', phone: '(202) 224-4822', type: 'federal' },
-];
+// Legislator database — populated from lac-legislators.json at startup.
+// Each record: { state, chamber, district, name, salutation, party, email, phone, contact_url }
+// chamber values: 'MI House', 'MI Senate', 'US House', 'US Senate'
+let LEGISLATORS = [];
 
 // ─────────────────────────────────────────────────────────────────
 // STATE TAB LOGIC
@@ -1050,8 +1046,11 @@ async function buildStateComposer(){
   const fn=sv('s-fname'), ln=sv('s-lname'), addr=sv('s-addr'), city=sv('s-city'), zip=sv('s-zip'), em=sv('s-email');
   const ch = sv('s-chapter') || 'my MOAA chapter';
 
-  // Set subject and body
-  const firstLeg = selectedStateBill.target === 'committee' ? STATE_COMMITTEE[0] : { name: 'Representative', salutation: 'Representative' };
+  // Set subject and body — use first committee member or generic placeholder for merge
+  const committeeLegs = selectedStateBill.target === 'committee'
+    ? getLegislatorsByDistricts(['MI House'], selectedStateBill.districts || [])
+    : [];
+  const firstLeg = committeeLegs[0] || { name: 'Representative', salutation: 'Representative' };
   const lastName = firstLeg.name.split(' ').pop();
 
   document.getElementById('s-esubj').value = selectedStateBill.subject;
@@ -1066,10 +1065,11 @@ async function buildStateComposer(){
 
   // Determine legislators
   if(selectedStateBill.target === 'committee'){
-    document.getElementById('state-rec-header').textContent = 'House Committee on Government Operations — send to each member';
+    const label = selectedStateBill.committeeLabel || 'House Committee — send to each member';
+    document.getElementById('state-rec-header').textContent = label;
     document.getElementById('state-lookup-status').className = 'hidden';
     document.getElementById('state-manual-fallback').classList.add('hidden');
-    stateDistrictLegislators = STATE_COMMITTEE;
+    stateDistrictLegislators = committeeLegs.length ? committeeLegs : STATE_COMMITTEE;
     renderStateButtons();
   } else {
     // ZIP/address lookup
@@ -1096,22 +1096,44 @@ async function lookupStateDistrict(addr, city, zip){
       throw new Error(data.error?.message || 'No results');
     }
 
-    // Build legislator list from API response
+    // Build legislator list — match Civic API district numbers against the database.
+    // Falls back to API-supplied contact details if no database match is found.
     const legislators = [];
     const offices = data.offices || [];
     offices.forEach(office => {
-      const chamber = office.roles?.includes('legislatorLowerBody') ? 'State Representative' : 'State Senator';
+      const isHouse  = office.roles?.includes('legislatorLowerBody');
+      const isSenate = office.roles?.includes('legislatorUpperBody');
+      const chamber  = isHouse ? 'MI House' : 'MI Senate';
+      const salutationFallback = isHouse ? 'Representative' : 'Senator';
       (office.officialIndices || []).forEach(idx => {
         const official = data.officials[idx];
         if(!official) return;
-        const email = official.emails?.[0] || '';
-        const phone = official.phones?.[0] || '';
-        legislators.push({
-          name: official.name,
-          title: `${chamber} · Michigan`,
-          salutation: chamber === 'State Representative' ? 'Representative' : 'Senator',
-          email, phone, type: 'district'
-        });
+        // Extract district number from the division OCD-ID (e.g. ocd-division/country:us/state:mi/sldl:71)
+        const divisionKey = Object.keys(data.divisions || {}).find(k =>
+          office.divisionId ? k === office.divisionId : false
+        ) || office.divisionId || '';
+        const districtMatch = divisionKey.match(/:(\d+)$/);
+        const districtNum   = districtMatch ? districtMatch[1] : null;
+
+        // Try database lookup first
+        const dbRecord = districtNum
+          ? LEGISLATORS.find(l => l.chamber === chamber && l.district === districtNum)
+          : null;
+
+        if(dbRecord){
+          legislators.push({ ...dbRecord, type: 'district' });
+        } else {
+          // Fallback to API data
+          legislators.push({
+            name: official.name,
+            title: `${chamber} · Michigan`,
+            salutation: salutationFallback,
+            email: official.emails?.[0] || '',
+            phone: official.phones?.[0] || '',
+            contact_url: '',
+            type: 'district'
+          });
+        }
       });
     });
 
@@ -1240,9 +1262,10 @@ async function buildFedComposer(){
   const fn=fv('f-fname'), ln=fv('f-lname'), addr=fv('f-addr'), city=fv('f-city'), zip=fv('f-zip'), em=fv('f-email');
   const ch = fv('f-chapter') || 'my MOAA chapter';
 
+  const firstSenator = MI_SENATORS[0] || { name: 'Senator', salutation: 'Senator' };
   document.getElementById('f-esubj').value = selectedFedBill.subject;
   document.getElementById('f-ebody').value = fillMerge(selectedFedBill.body, {
-    LAST_NAME: MI_SENATORS[0].name.split(' ').pop(),
+    LAST_NAME: firstSenator.name.split(' ').pop(),
     FULL_NAME: fn+' '+ln, CITY: city, ZIP: zip,
     EMAIL: em, ADDRESS: addr, CHAPTER: ch, SALUTATION: 'Senator'
   });
@@ -1273,17 +1296,33 @@ async function lookupFedRep(addr, city, zip){
     const houseReps = [];
     (data.offices||[]).forEach(office => {
       if(office.roles?.includes('legislatorLowerBody')){
+        // Extract congressional district number from OCD-ID
+        const divisionKey = office.divisionId || '';
+        const districtMatch = divisionKey.match(/:(\d+)$/);
+        const districtNum = districtMatch ? districtMatch[1] : null;
+
         (office.officialIndices||[]).forEach(idx => {
           const official = data.officials[idx];
           if(!official) return;
-          houseReps.push({
-            name: official.name,
-            title: `U.S. Representative · Michigan`,
-            salutation: 'Representative',
-            email: official.emails?.[0] || '',
-            phone: official.phones?.[0] || '',
-            type: 'federal'
-          });
+
+          // Try database lookup first
+          const dbRecord = districtNum
+            ? LEGISLATORS.find(l => l.chamber === 'US House' && l.district === districtNum)
+            : null;
+
+          if(dbRecord){
+            houseReps.push({ ...dbRecord, type: 'federal' });
+          } else {
+            houseReps.push({
+              name: official.name,
+              title: 'U.S. Representative · Michigan',
+              salutation: 'Representative',
+              email: official.emails?.[0] || '',
+              phone: official.phones?.[0] || '',
+              contact_url: '',
+              type: 'federal'
+            });
+          }
         });
       }
     });
@@ -1582,10 +1621,11 @@ function showEhTab(prefix, provider, el){
 
 
 // ─────────────────────────────────────────────────────────────────
-// VERSION 1.1 — External configuration and metrics
+// VERSION 1.2 — Legislator database + external configuration
 // ─────────────────────────────────────────────────────────────────
 
 const LAC_CONFIG_URL = 'lac-config.json';
+const LAC_LEGISLATORS_URL = 'lac-legislators.json';
 const LAC_METRICS_KEY = 'mcoc_lac_metrics_v1';
 const LAC_ADMIN_PASSWORD = 'ChangeMe2026!'; // Change before posting publicly. This is light protection only.
 const LAC_ADMIN_SESSION_KEY = 'mcoc_lac_admin_unlocked_v1';
@@ -1614,22 +1654,54 @@ function getLocalMetrics(){
   catch(e){ return []; }
 }
 
-async function loadExternalConfig(){
+async function loadExternalData(){
   const status = document.getElementById('config-status');
-  try {
-    const resp = await fetch(LAC_CONFIG_URL, { cache: 'no-store' });
-    if(!resp.ok) throw new Error('No external config found');
-    const cfg = await resp.json();
-    if(Array.isArray(cfg.state_bills)) STATE_BILLS = cfg.state_bills;
+  const [cfgResult, legResult] = await Promise.allSettled([
+    fetch(LAC_CONFIG_URL,      { cache: 'no-store' }).then(r => r.ok ? r.json() : Promise.reject()),
+    fetch(LAC_LEGISLATORS_URL, { cache: 'no-store' }).then(r => r.ok ? r.json() : Promise.reject())
+  ]);
+
+  // Apply campaign configuration
+  if(cfgResult.status === 'fulfilled'){
+    const cfg = cfgResult.value;
+    if(Array.isArray(cfg.state_bills))   STATE_BILLS   = cfg.state_bills;
     if(Array.isArray(cfg.federal_bills)) FEDERAL_BILLS = cfg.federal_bills;
+    // v1.1 fallback: honour inline state_committee/mi_senators if present in config
     if(Array.isArray(cfg.state_committee)) STATE_COMMITTEE = cfg.state_committee;
-    if(Array.isArray(cfg.mi_senators)) MI_SENATORS = cfg.mi_senators;
-    if(status) status.textContent = 'Loaded external campaign configuration: lac-config.json';
-    lacEvent('config_loaded', { source: 'external' });
-  } catch(e) {
-    if(status) status.textContent = 'Using built-in campaign configuration. Optional external file not loaded: lac-config.json';
-    lacEvent('config_loaded', { source: 'built_in' });
+    if(Array.isArray(cfg.mi_senators))     MI_SENATORS     = cfg.mi_senators;
   }
+
+  // Apply legislator database
+  if(legResult.status === 'fulfilled'){
+    const db = legResult.value;
+    if(Array.isArray(db.legislators)) LEGISLATORS = db.legislators;
+    // Derive MI_SENATORS from database for federal delegation targeting
+    MI_SENATORS = LEGISLATORS.filter(l => l.chamber === 'US Senate' && l.state === 'MI');
+  }
+
+  const cfgOk  = cfgResult.status  === 'fulfilled';
+  const legOk  = legResult.status  === 'fulfilled';
+  if(status){
+    if(cfgOk && legOk)   status.textContent = 'Campaign configuration and legislator database loaded.';
+    else if(cfgOk)       status.textContent = 'Campaign configuration loaded. Legislator database (lac-legislators.json) not found.';
+    else if(legOk)       status.textContent = 'Legislator database loaded. Using built-in campaign configuration.';
+    else                 status.textContent = 'Using built-in campaign configuration.';
+  }
+  lacEvent('config_loaded', { config: cfgOk ? 'external' : 'built_in', legislators: legOk ? LEGISLATORS.length : 0 });
+}
+
+// Look up legislators from the database by chamber and district list.
+// chambers: array of chamber strings, e.g. ['MI House'] or ['MI House','MI Senate']
+// districts: array of district strings, e.g. ['71','52','83']
+// Returns legislator records in district order, with a generated title field for display.
+function getLegislatorsByDistricts(chambers, districts){
+  return districts
+    .map(d => LEGISLATORS.find(l => chambers.includes(l.chamber) && l.district === String(d)))
+    .filter(Boolean)
+    .map(l => ({
+      ...l,
+      title: `${l.chamber} · District ${l.district} · ${l.party === 'R' ? 'Republican' : 'Democrat'}`
+    }));
 }
 
 function showMetricsDashboard(){
@@ -1707,8 +1779,8 @@ function clearMetrics(){
 }
 
 async function initApp(){
-  lacEvent('page_visit', { page: location.pathname || 'index-v1.1.html' });
-  await loadExternalConfig();
+  lacEvent('page_visit', { page: location.pathname || 'index.html' });
+  await loadExternalData();
   renderStateBills();
   renderFedBills();
   updateBadges();
