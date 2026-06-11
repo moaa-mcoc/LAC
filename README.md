@@ -256,17 +256,4 @@ A password-protected **metrics dashboard** is accessible via `Ctrl+Alt+M` or `in
 
 ---
 
-## Enterprise Licensing
-
-The LAC is available to MOAA councils nationwide as a turnkey advocacy tool.
-
-- **Setup fee:** $1,000 (501(c)(3) contribution to SE Michigan Chapter MOAA Scholarship Fund)
-- **Annual maintenance:** $400
-- **Onboarding materials:** `LAC-Program-Brief.html` · `LAC-Onboarding-Checklist.md`
-- **Forum presentation:** MOAA State Legislation Exchange, July 21, 2026
-
-Contact: LCDR Rich Higgins, USN (Ret.) — [moaamcoc.com](https://www.moaamcoc.com)
-
----
-
 *Last updated: June 2026 · Version 1.3*
