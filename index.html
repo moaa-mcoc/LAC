@@ -350,7 +350,7 @@ function renderFedShowcase(){
   const g = document.getElementById('fed-showcase-grid');
   if(!g) return;
   if(FEDERAL_BILLS.length === 0){
-    g.innerHTML = `<div class="empty-state"><h3>Federal bills coming soon</h3><p>Federal priority legislation will appear here when added. Check back soon, or visit <a href="https://www.moaa.org/content/legislative-action/legislative-action/" target="_blank" style="color:var(--navy);font-weight:600">MOAA National</a> for current federal advocacy priorities.</p></div>`;
+    g.innerHTML = `<div class="empty-state"><h3>Federal bills coming soon</h3><p>Federal priority legislation will appear here when added. Check back soon, or visit <a href="https://moaa.quorum.us" target="_blank" style="color:var(--navy);font-weight:600">MOAA National</a> for current federal advocacy priorities.</p></div>`;
     return;
   }
   g.innerHTML = '';
