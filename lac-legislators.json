@@ -1,5 +1,5 @@
 {
-  "_comment": "Michigan Legislature \u2014 103rd Legislature (2025-2026). Emails follow official patterns: MI House = FirstnameLastname@house.mi.gov, MI Senate = Sen[Lastname]@senate.michigan.gov or Sen[FI][Lastname]@senate.michigan.gov where needed for disambiguation. Verify individual emails before deployment at house.mi.gov and senate.michigan.gov. District 35 MI Senate is currently vacant.",
+  "_comment": "Michigan Legislature \u2014 103rd Legislature (2025-2026). Phones verified against mlcmi.com legislative directory (May 2025). Emails follow official patterns: MI House = FirstnameLastname@house.mi.gov, MI Senate = Sen[Lastname]@senate.michigan.gov or Sen[FI][Lastname]@senate.michigan.gov where needed for disambiguation. MI House contact URLs are individual district pages. District 35 MI Senate is currently vacant.",
   "legislators": [
     {
       "state": "MI",
@@ -9,8 +9,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "TyroneCarter@house.mi.gov",
-      "phone": "(517) 373-0475",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0154",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=1"
     },
     {
       "state": "MI",
@@ -20,8 +20,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "TullioLiberati@house.mi.gov",
-      "phone": "(517) 373-0854",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1776",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=2"
     },
     {
       "state": "MI",
@@ -31,8 +31,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "AlabasFarhat@house.mi.gov",
-      "phone": "(517) 373-1399",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0144",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=3"
     },
     {
       "state": "MI",
@@ -42,8 +42,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "KarenWhitsett@house.mi.gov",
-      "phone": "(517) 373-0772",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1008",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=4"
     },
     {
       "state": "MI",
@@ -53,8 +53,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "ReginaWeiss@house.mi.gov",
-      "phone": "(517) 373-1788",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0844",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=5"
     },
     {
       "state": "MI",
@@ -64,8 +64,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "NataliePrice@house.mi.gov",
-      "phone": "(517) 373-0478",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0823",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=6"
     },
     {
       "state": "MI",
@@ -75,8 +75,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "TonyaMyersPhillips@house.mi.gov",
-      "phone": "(517) 373-1771",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-2276",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=7"
     },
     {
       "state": "MI",
@@ -86,8 +86,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "HelenaScott@house.mi.gov",
-      "phone": "(517) 373-0844",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-3815",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=8"
     },
     {
       "state": "MI",
@@ -97,8 +97,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "JoeTate@house.mi.gov",
-      "phone": "(517) 373-0144",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-6990",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=9"
     },
     {
       "state": "MI",
@@ -108,8 +108,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "VeronicaPaiz@house.mi.gov",
-      "phone": "(517) 373-0843",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0857",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=10"
     },
     {
       "state": "MI",
@@ -118,9 +118,9 @@
       "name": "Donavan McKinney",
       "salutation": "Representative",
       "party": "D",
-      "email": "DanavanMcKinney@house.mi.gov",
-      "phone": "(517) 373-0857",
-      "contact_url": "https://www.house.mi.gov/"
+      "email": "DonavanMcKinney@house.mi.gov",
+      "phone": "(517) 373-0849",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=11"
     },
     {
       "state": "MI",
@@ -130,8 +130,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "KimberlyEdwards@house.mi.gov",
-      "phone": "(517) 373-0576",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0852",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=12"
     },
     {
       "state": "MI",
@@ -141,8 +141,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "MaiXiong@house.mi.gov",
-      "phone": "(517) 373-0490",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0845",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=13"
     },
     {
       "state": "MI",
@@ -153,7 +153,7 @@
       "party": "D",
       "email": "mmcfall@house.mi.gov",
       "phone": "(517) 373-0140",
-      "contact_url": "https://www.house.mi.gov/"
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=14"
     },
     {
       "state": "MI",
@@ -163,8 +163,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "ErinByrnes@house.mi.gov",
-      "phone": "(517) 373-1793",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0847",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=15"
     },
     {
       "state": "MI",
@@ -174,8 +174,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "StephanieYoung@house.mi.gov",
-      "phone": "(517) 373-1008",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-2576",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=16"
     },
     {
       "state": "MI",
@@ -185,8 +185,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "LauriePohutsky@house.mi.gov",
-      "phone": "(517) 373-0820",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1530",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=17"
     },
     {
       "state": "MI",
@@ -196,8 +196,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "JasonHoskins@house.mi.gov",
-      "phone": "(517) 373-0475",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1180",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=18"
     },
     {
       "state": "MI",
@@ -207,8 +207,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "SamanthaSteckloff@house.mi.gov",
-      "phone": "(517) 373-0843",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-3920",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=19"
     },
     {
       "state": "MI",
@@ -218,8 +218,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "NoahArbit@house.mi.gov",
-      "phone": "(517) 373-1799",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-3816",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=20"
     },
     {
       "state": "MI",
@@ -229,8 +229,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "KellyBreen@house.mi.gov",
-      "phone": "(517) 373-1784",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-2575",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=21"
     },
     {
       "state": "MI",
@@ -240,8 +240,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "MattKoleszar@house.mi.gov",
-      "phone": "(517) 373-1180",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0854",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=22"
     },
     {
       "state": "MI",
@@ -251,8 +251,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "JasonMorgan@house.mi.gov",
-      "phone": "(517) 373-0887",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0855",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=23"
     },
     {
       "state": "MI",
@@ -262,8 +262,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "RanjeevPuri@house.mi.gov",
-      "phone": "(517) 373-1771",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0113",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=24"
     },
     {
       "state": "MI",
@@ -273,8 +273,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "PeterHerzberg@house.mi.gov",
-      "phone": "(517) 373-2577",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-2275",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=25"
     },
     {
       "state": "MI",
@@ -284,8 +284,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "DylanWegela@house.mi.gov",
-      "phone": "(517) 373-2275",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-3818",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=26"
     },
     {
       "state": "MI",
@@ -295,8 +295,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "RyleeLinting@house.mi.gov",
-      "phone": "(517) 373-2617",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0478",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=27"
     },
     {
       "state": "MI",
@@ -307,7 +307,7 @@
       "party": "R",
       "email": "JamieThompson@house.mi.gov",
       "phone": "(517) 373-1772",
-      "contact_url": "https://www.house.mi.gov/"
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=28"
     },
     {
       "state": "MI",
@@ -317,8 +317,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "JamesDeSana@house.mi.gov",
-      "phone": "(517) 373-0820",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0475",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=29"
     },
     {
       "state": "MI",
@@ -328,8 +328,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "WilliamBruck@house.mi.gov",
-      "phone": "(517) 373-1780",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-7768",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=30"
     },
     {
       "state": "MI",
@@ -339,8 +339,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "ReggieMiller@house.mi.gov",
-      "phone": "(517) 373-1790",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0159",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=31"
     },
     {
       "state": "MI",
@@ -349,9 +349,9 @@
       "name": "Jimmie Wilson Jr.",
       "salutation": "Representative",
       "party": "D",
-      "email": "JimmieWilson@house.mi.gov",
-      "phone": "(517) 373-0854",
-      "contact_url": "https://www.house.mi.gov/"
+      "email": "JimmieWilsonJr@house.mi.gov",
+      "phone": "(517) 373-8931",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=32"
     },
     {
       "state": "MI",
@@ -361,8 +361,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "MorganForeman@house.mi.gov",
-      "phone": "(517) 373-1792",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0820",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=33"
     },
     {
       "state": "MI",
@@ -372,8 +372,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "NancyJenkinsArno@house.mi.gov",
-      "phone": "(517) 373-1780",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-8808",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=34"
     },
     {
       "state": "MI",
@@ -383,8 +383,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "JenniferWortz@house.mi.gov",
-      "phone": "(517) 373-1780",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1788",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=35"
     },
     {
       "state": "MI",
@@ -394,8 +394,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "SteveCarra@house.mi.gov",
-      "phone": "(517) 373-0836",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0843",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=36"
     },
     {
       "state": "MI",
@@ -405,8 +405,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "BradPaquette@house.mi.gov",
-      "phone": "(517) 373-1403",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1793",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=37"
     },
     {
       "state": "MI",
@@ -416,8 +416,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "JoeyAndrews@house.mi.gov",
-      "phone": "(517) 373-0839",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0827",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=38"
     },
     {
       "state": "MI",
@@ -427,8 +427,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "PaulineWendzel@house.mi.gov",
-      "phone": "(517) 373-1791",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1799",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=39"
     },
     {
       "state": "MI",
@@ -438,8 +438,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "MattLongjohn@house.mi.gov",
-      "phone": "(517) 373-1185",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-8670",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=40"
     },
     {
       "state": "MI",
@@ -449,8 +449,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "JulieRogers@house.mi.gov",
-      "phone": "(517) 373-1800",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1783",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=41"
     },
     {
       "state": "MI",
@@ -460,8 +460,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "MattHall@house.mi.gov",
-      "phone": "(517) 373-1787",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1784",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=42"
     },
     {
       "state": "MI",
@@ -471,8 +471,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "RachelleSmit@house.mi.gov",
-      "phone": "(517) 373-0838",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0615",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=43"
     },
     {
       "state": "MI",
@@ -482,8 +482,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "SteveFrisbie@house.mi.gov",
-      "phone": "(517) 373-1795",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-2616",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=44"
     },
     {
       "state": "MI",
@@ -493,8 +493,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "SarahLightner@house.mi.gov",
-      "phone": "(517) 373-1794",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1773",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=45"
     },
     {
       "state": "MI",
@@ -505,7 +505,7 @@
       "party": "R",
       "email": "KathySchmaltz@house.mi.gov",
       "phone": "(517) 373-1798",
-      "contact_url": "https://www.house.mi.gov/"
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=46"
     },
     {
       "state": "MI",
@@ -515,8 +515,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "CarrieRheingans@house.mi.gov",
-      "phone": "(517) 373-2617",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-8835",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=47"
     },
     {
       "state": "MI",
@@ -526,8 +526,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "JenniferConlin@house.mi.gov",
-      "phone": "(517) 373-1788",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-7557",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=48"
     },
     {
       "state": "MI",
@@ -537,8 +537,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "AnnBollin@house.mi.gov",
-      "phone": "(517) 373-1793",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-7515",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=49"
     },
     {
       "state": "MI",
@@ -548,8 +548,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "JasonWoolford@house.mi.gov",
-      "phone": "(517) 373-1799",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-3906",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=50"
     },
     {
       "state": "MI",
@@ -560,7 +560,7 @@
       "party": "R",
       "email": "MattMaddock@house.mi.gov",
       "phone": "(517) 373-1780",
-      "contact_url": "https://www.house.mi.gov/"
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=51"
     },
     {
       "state": "MI",
@@ -571,7 +571,7 @@
       "party": "R",
       "email": "MikeHarris@house.mi.gov",
       "phone": "(517) 373-0828",
-      "contact_url": "https://www.house.mi.gov/"
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=52"
     },
     {
       "state": "MI",
@@ -581,8 +581,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "BrendaCarter@house.mi.gov",
-      "phone": "(517) 373-8931",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-2577",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=53"
     },
     {
       "state": "MI",
@@ -592,8 +592,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "DonniSteele@house.mi.gov",
-      "phone": "(517) 373-1788",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1771",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=54"
     },
     {
       "state": "MI",
@@ -603,8 +603,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "MarkTisdel@house.mi.gov",
-      "phone": "(517) 373-1784",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1792",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=55"
     },
     {
       "state": "MI",
@@ -614,19 +614,19 @@
       "salutation": "Representative",
       "party": "D",
       "email": "SharonMacDonell@house.mi.gov",
-      "phone": "(517) 373-0843",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-2617",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=56"
     },
     {
       "state": "MI",
       "chamber": "MI House",
       "district": "57",
-      "name": "Thomas Kuhn",
+      "name": "Tom Kuhn",
       "salutation": "Representative",
       "party": "R",
       "email": "ThomasKuhn@house.mi.gov",
-      "phone": "(517) 373-1799",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1706",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=57"
     },
     {
       "state": "MI",
@@ -636,8 +636,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "RonRobinson@house.mi.gov",
-      "phone": "(517) 373-0475",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1794",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=58"
     },
     {
       "state": "MI",
@@ -647,8 +647,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "DougWozniak@house.mi.gov",
-      "phone": "(517) 373-1180",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0832",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=59"
     },
     {
       "state": "MI",
@@ -658,8 +658,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "JosephAragona@house.mi.gov",
-      "phone": "(517) 373-0476",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1785",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=60"
     },
     {
       "state": "MI",
@@ -669,8 +669,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "DeniseMentzer@house.mi.gov",
-      "phone": "(517) 373-0854",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1774",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=61"
     },
     {
       "state": "MI",
@@ -680,8 +680,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "AliciaStGermaine@house.mi.gov",
-      "phone": "(517) 373-0476",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0555",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=62"
     },
     {
       "state": "MI",
@@ -691,8 +691,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "JayDeBoyer@house.mi.gov",
-      "phone": "(517) 373-0820",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1787",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=63"
     },
     {
       "state": "MI",
@@ -702,8 +702,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "JosephPavlov@house.mi.gov",
-      "phone": "(517) 373-1780",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1795",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=64"
     },
     {
       "state": "MI",
@@ -713,8 +713,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "JaimeGreene@house.mi.gov",
-      "phone": "(517) 373-1791",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1775",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=65"
     },
     {
       "state": "MI",
@@ -724,8 +724,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "JoshSchriver@house.mi.gov",
-      "phone": "(517) 373-1799",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0839",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=66"
     },
     {
       "state": "MI",
@@ -735,8 +735,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "PhilGreen@house.mi.gov",
-      "phone": "(517) 373-1780",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0587",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=67"
     },
     {
       "state": "MI",
@@ -746,8 +746,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "DavidMartin@house.mi.gov",
-      "phone": "(517) 373-1793",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0826",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=68"
     },
     {
       "state": "MI",
@@ -757,8 +757,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "JasperMartus@house.mi.gov",
-      "phone": "(517) 373-0854",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1786",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=69"
     },
     {
       "state": "MI",
@@ -768,8 +768,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "CynthiaNeeley@house.mi.gov",
-      "phone": "(517) 373-0850",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0834",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=70"
     },
     {
       "state": "MI",
@@ -778,9 +778,9 @@
       "name": "Brian BeGole",
       "salutation": "Representative",
       "party": "R",
-      "email": "bbeGole@house.mi.gov",
+      "email": "BrianBeGole@house.mi.gov",
       "phone": "(517) 373-0853",
-      "contact_url": "https://www.house.mi.gov/"
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=71"
     },
     {
       "state": "MI",
@@ -790,8 +790,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "MikeMueller@house.mi.gov",
-      "phone": "(517) 373-1799",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0840",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=72"
     },
     {
       "state": "MI",
@@ -801,8 +801,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "JulieBrixie@house.mi.gov",
-      "phone": "(517) 373-0822",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0218",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=73"
     },
     {
       "state": "MI",
@@ -812,8 +812,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "KaraHope@house.mi.gov",
-      "phone": "(517) 373-0587",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-8900",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=74"
     },
     {
       "state": "MI",
@@ -823,8 +823,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "PenelopeTsernoglou@house.mi.gov",
-      "phone": "(517) 373-0827",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-2668",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=75"
     },
     {
       "state": "MI",
@@ -834,8 +834,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "AngelaWitwer@house.mi.gov",
-      "phone": "(517) 373-1793",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0822",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=76"
     },
     {
       "state": "MI",
@@ -845,8 +845,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "EmilyDievendorf@house.mi.gov",
-      "phone": "(517) 373-0822",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-2277",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=77"
     },
     {
       "state": "MI",
@@ -856,8 +856,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "GinaJohnsen@house.mi.gov",
-      "phone": "(517) 373-1791",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1796",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=78"
     },
     {
       "state": "MI",
@@ -867,8 +867,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "AngelaRigas@house.mi.gov",
-      "phone": "(517) 373-1791",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1403",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=79"
     },
     {
       "state": "MI",
@@ -878,8 +878,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "PhilSkaggs@house.mi.gov",
-      "phone": "(517) 373-0822",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0836",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=80"
     },
     {
       "state": "MI",
@@ -889,8 +889,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "StephenWooden@house.mi.gov",
-      "phone": "(517) 373-1787",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1790",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=81"
     },
     {
       "state": "MI",
@@ -900,8 +900,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "KristianGrant@house.mi.gov",
-      "phone": "(517) 373-0827",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1800",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=82"
     },
     {
       "state": "MI",
@@ -912,7 +912,7 @@
       "party": "D",
       "email": "jfitzgerald@house.mi.gov",
       "phone": "(517) 373-0835",
-      "contact_url": "https://www.house.mi.gov/"
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=83"
     },
     {
       "state": "MI",
@@ -922,8 +922,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "CarolGlanville@house.mi.gov",
-      "phone": "(517) 373-0822",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0476",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=84"
     },
     {
       "state": "MI",
@@ -933,19 +933,19 @@
       "salutation": "Representative",
       "party": "R",
       "email": "BradleySlagh@house.mi.gov",
-      "phone": "(517) 373-2617",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0841",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=85"
     },
     {
       "state": "MI",
       "chamber": "MI House",
       "district": "86",
-      "name": "Nancy De Boer",
+      "name": "Nancy DeBoer",
       "salutation": "Representative",
       "party": "R",
       "email": "NancyDeBoer@house.mi.gov",
-      "phone": "(517) 373-2617",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0846",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=86"
     },
     {
       "state": "MI",
@@ -955,8 +955,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "WillSnyder@house.mi.gov",
-      "phone": "(517) 373-1791",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0842",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=87"
     },
     {
       "state": "MI",
@@ -966,8 +966,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "GregVanWoerkom@house.mi.gov",
-      "phone": "(517) 373-0839",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1830",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=88"
     },
     {
       "state": "MI",
@@ -977,8 +977,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "LukeMeerman@house.mi.gov",
-      "phone": "(517) 373-1791",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0838",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=89"
     },
     {
       "state": "MI",
@@ -988,8 +988,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "BryanPosthumus@house.mi.gov",
-      "phone": "(517) 373-0834",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0830",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=90"
     },
     {
       "state": "MI",
@@ -999,8 +999,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "PatOutman@house.mi.gov",
-      "phone": "(517) 373-1791",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-3436",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=91"
     },
     {
       "state": "MI",
@@ -1010,8 +1010,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "JerryNeyer@house.mi.gov",
-      "phone": "(517) 373-1793",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-2646",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=92"
     },
     {
       "state": "MI",
@@ -1021,8 +1021,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "TimKelly@house.mi.gov",
-      "phone": "(517) 373-1793",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1778",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=93"
     },
     {
       "state": "MI",
@@ -1032,52 +1032,52 @@
       "salutation": "Representative",
       "party": "D",
       "email": "AmosONeal@house.mi.gov",
-      "phone": "(517) 373-0850",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0837",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=94"
     },
     {
       "state": "MI",
       "chamber": "MI House",
       "district": "95",
-      "name": "Bill G. Schuette",
+      "name": "Bill Schuette",
       "salutation": "Representative",
       "party": "R",
       "email": "BillSchuette@house.mi.gov",
-      "phone": "(517) 373-1799",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0152",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=95"
     },
     {
       "state": "MI",
       "chamber": "MI House",
       "district": "96",
-      "name": "Timothy Beson",
+      "name": "Timmy Beson",
       "salutation": "Representative",
       "party": "R",
       "email": "TimothyBeson@house.mi.gov",
-      "phone": "(517) 373-1796",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0158",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=96"
     },
     {
       "state": "MI",
       "chamber": "MI House",
       "district": "97",
-      "name": "Matthew Bierlein",
+      "name": "Matt Bierlein",
       "salutation": "Representative",
       "party": "R",
       "email": "MatthewBierlein@house.mi.gov",
-      "phone": "(517) 373-1780",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-8962",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=97"
     },
     {
       "state": "MI",
       "chamber": "MI House",
       "district": "98",
-      "name": "Gregory Alexander",
+      "name": "Greg Alexander",
       "salutation": "Representative",
       "party": "R",
-      "email": "GregoryAlexander@house.mi.gov",
-      "phone": "(517) 373-1780",
-      "contact_url": "https://www.house.mi.gov/"
+      "email": "GregAlexander@house.mi.gov",
+      "phone": "(517) 373-1791",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=98"
     },
     {
       "state": "MI",
@@ -1087,8 +1087,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "MikeHoadley@house.mi.gov",
-      "phone": "(517) 373-1799",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1789",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=99"
     },
     {
       "state": "MI",
@@ -1098,8 +1098,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "TomKunse@house.mi.gov",
-      "phone": "(517) 373-1799",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-7317",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=100"
     },
     {
       "state": "MI",
@@ -1109,19 +1109,19 @@
       "salutation": "Representative",
       "party": "R",
       "email": "JosephFox@house.mi.gov",
-      "phone": "(517) 373-1791",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0825",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=101"
     },
     {
       "state": "MI",
       "chamber": "MI House",
       "district": "102",
-      "name": "Curtis VanderWall",
+      "name": "Curt VanderWall",
       "salutation": "Representative",
       "party": "R",
       "email": "CurtisVanderWall@house.mi.gov",
       "phone": "(517) 373-1747",
-      "contact_url": "https://www.house.mi.gov/"
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=102"
     },
     {
       "state": "MI",
@@ -1131,8 +1131,8 @@
       "salutation": "Representative",
       "party": "D",
       "email": "BetsyCoffia@house.mi.gov",
-      "phone": "(517) 373-1791",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-3817",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=103"
     },
     {
       "state": "MI",
@@ -1142,8 +1142,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "JohnRoth@house.mi.gov",
-      "phone": "(517) 373-1799",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-1766",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=104"
     },
     {
       "state": "MI",
@@ -1153,8 +1153,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "KenBorton@house.mi.gov",
-      "phone": "(517) 373-1791",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0829",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=105"
     },
     {
       "state": "MI",
@@ -1164,8 +1164,8 @@
       "salutation": "Representative",
       "party": "R",
       "email": "CamCavitt@house.mi.gov",
-      "phone": "(517) 373-1791",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0833",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=106"
     },
     {
       "state": "MI",
@@ -1175,19 +1175,19 @@
       "salutation": "Representative",
       "party": "R",
       "email": "ParkerFairbairn@house.mi.gov",
-      "phone": "(517) 373-1791",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-2629",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=107"
     },
     {
       "state": "MI",
       "chamber": "MI House",
       "district": "108",
-      "name": "David Prestin",
+      "name": "Dave Prestin",
       "salutation": "Representative",
       "party": "R",
       "email": "DavidPrestin@house.mi.gov",
-      "phone": "(517) 373-1791",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0156",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=108"
     },
     {
       "state": "MI",
@@ -1197,19 +1197,19 @@
       "salutation": "Representative",
       "party": "R",
       "email": "KarlBohnak@house.mi.gov",
-      "phone": "(517) 373-1791",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0498",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=109"
     },
     {
       "state": "MI",
       "chamber": "MI House",
       "district": "110",
-      "name": "Gregory Markkanen",
+      "name": "Greg Markkanen",
       "salutation": "Representative",
       "party": "R",
       "email": "GregoryMarkkanen@house.mi.gov",
-      "phone": "(517) 373-1791",
-      "contact_url": "https://www.house.mi.gov/"
+      "phone": "(517) 373-0850",
+      "contact_url": "https://www.house.mi.gov/MemberDetails?district=110"
     },
     {
       "state": "MI",
@@ -1230,7 +1230,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenSSantana@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-0990",
       "contact_url": "https://senate.michigan.gov/senator/district-2/"
     },
     {
@@ -1241,7 +1241,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenSChang@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-7346",
       "contact_url": "https://senate.michigan.gov/senator/district-3/"
     },
     {
@@ -1263,7 +1263,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenDPolehanki@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-7350",
       "contact_url": "https://senate.michigan.gov/senator/district-5/"
     },
     {
@@ -1274,7 +1274,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenMCavanagh@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-7748",
       "contact_url": "https://senate.michigan.gov/senator/district-6/"
     },
     {
@@ -1285,7 +1285,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenJMoss@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-7888",
       "contact_url": "https://senate.michigan.gov/senator/district-7/"
     },
     {
@@ -1296,7 +1296,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenMMcMorrow@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-2523",
       "contact_url": "https://senate.michigan.gov/senator/district-8/"
     },
     {
@@ -1307,7 +1307,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenMWebber@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-0994",
       "contact_url": "https://senate.michigan.gov/senator/district-9/"
     },
     {
@@ -1318,7 +1318,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenPWojno@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-8360",
       "contact_url": "https://senate.michigan.gov/senator/district-10/"
     },
     {
@@ -1329,7 +1329,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenVKlinefelt@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-7670",
       "contact_url": "https://senate.michigan.gov/senator/district-11/"
     },
     {
@@ -1340,7 +1340,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenKHertel@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-7315",
       "contact_url": "https://senate.michigan.gov/senator/district-12/"
     },
     {
@@ -1351,7 +1351,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenRBayer@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-2417",
       "contact_url": "https://senate.michigan.gov/senator/district-13/"
     },
     {
@@ -1362,7 +1362,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenSShink@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-2426",
       "contact_url": "https://senate.michigan.gov/senator/district-14/"
     },
     {
@@ -1373,7 +1373,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenJIrwin@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-2406",
       "contact_url": "https://senate.michigan.gov/senator/district-15/"
     },
     {
@@ -1384,7 +1384,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenJBellino@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-5932",
       "contact_url": "https://senate.michigan.gov/senator/district-16/"
     },
     {
@@ -1395,7 +1395,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenJLindsey@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-3543",
       "contact_url": "https://senate.michigan.gov/senator/district-17/"
     },
     {
@@ -1406,7 +1406,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenTAlbert@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-1734",
       "contact_url": "https://senate.michigan.gov/senator/district-18/"
     },
     {
@@ -1417,7 +1417,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenSMcCann@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-5100",
       "contact_url": "https://senate.michigan.gov/senator/district-19/"
     },
     {
@@ -1428,7 +1428,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenANesbitt@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-0793",
       "contact_url": "https://senate.michigan.gov/senator/district-20/"
     },
     {
@@ -1439,7 +1439,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenSAnthony@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-6960",
       "contact_url": "https://senate.michigan.gov/senator/district-21/"
     },
     {
@@ -1450,7 +1450,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenLTheis@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-2420",
       "contact_url": "https://senate.michigan.gov/senator/district-22/"
     },
     {
@@ -1461,7 +1461,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenJRunestad@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-1758",
       "contact_url": "https://senate.michigan.gov/senator/district-23/"
     },
     {
@@ -1472,7 +1472,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenRJohnson@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-1636",
       "contact_url": "https://senate.michigan.gov/senator/district-24/"
     },
     {
@@ -1483,7 +1483,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenDLauwers@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-7708",
       "contact_url": "https://senate.michigan.gov/senator/district-25/"
     },
     {
@@ -1494,7 +1494,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenKDaley@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-1777",
       "contact_url": "https://senate.michigan.gov/senator/district-26/"
     },
     {
@@ -1505,7 +1505,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenJCherry@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-0142",
       "contact_url": "https://senate.michigan.gov/senator/district-27/"
     },
     {
@@ -1516,7 +1516,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenSSingh@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-3447",
       "contact_url": "https://senate.michigan.gov/senator/district-28/"
     },
     {
@@ -1527,7 +1527,7 @@
       "salutation": "Senator",
       "party": "D",
       "email": "SenWBrinks@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-1801",
       "contact_url": "https://senate.michigan.gov/senator/district-29/"
     },
     {
@@ -1538,7 +1538,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenMHuizenga@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-0797",
       "contact_url": "https://senate.michigan.gov/senator/district-30/"
     },
     {
@@ -1549,7 +1549,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenRVictory@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-6920",
       "contact_url": "https://senate.michigan.gov/senator/district-31/"
     },
     {
@@ -1560,7 +1560,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenJBumstead@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-1635",
       "contact_url": "https://senate.michigan.gov/senator/district-32/"
     },
     {
@@ -1571,7 +1571,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenROutman@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-3760",
       "contact_url": "https://senate.michigan.gov/senator/district-33/"
     },
     {
@@ -1582,7 +1582,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenRHauck@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-1760",
       "contact_url": "https://senate.michigan.gov/senator/district-34/"
     },
     {
@@ -1593,7 +1593,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenMHoitenga@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-7946",
       "contact_url": "https://senate.michigan.gov/senator/district-36/"
     },
     {
@@ -1604,7 +1604,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenJDamoose@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-2413",
       "contact_url": "https://senate.michigan.gov/senator/district-37/"
     },
     {
@@ -1615,7 +1615,7 @@
       "salutation": "Senator",
       "party": "R",
       "email": "SenEMcBroom@senate.michigan.gov",
-      "phone": "(517) 373-7800",
+      "phone": "(517) 373-7840",
       "contact_url": "https://senate.michigan.gov/senator/district-38/"
     },
     {
