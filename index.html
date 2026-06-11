@@ -6,15 +6,12 @@
 <title>Legislative Action Center — Michigan Council of Chapters, MOAA</title>
 
 <!-- Google tag (gtag.js) — GA4 -->
-<!-- GA4 Analytics — Measurement ID: G-J7VGNRJQ98 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7VGNRJQ98"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-J7VGNRJQ98');
-
-  // LAC custom event helper
   function lacEvent(event_name, params){
     if(typeof gtag === 'function') gtag('event', event_name, params || {});
   }
@@ -41,454 +38,121 @@
   --radius-lg: 10px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 15px;
-  color: var(--text);
-  background: #fff;
-  line-height: 1.6;
-}
+body { font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: var(--text); background: #fff; line-height: 1.6; }
 
-/* MCOC Logo */
-.mcoc-logo {
-  height: 48px; width: auto; display: block; flex-shrink: 0;
-  /* If logo has a light background, uncomment the next line to blend cleanly */
-  /* mix-blend-mode: multiply; */
-}
-.mcoc-logo-fallback {
-  /* Shown if image fails to load */
-  display: none;
-}
+.mcoc-logo { height: 48px; width: auto; display: block; flex-shrink: 0; }
 
 /* Back nav */
 .back-nav { background: var(--navy); width: 100%; }
-.back-nav-inner {
-  max-width: 820px; margin: 0 auto; padding: 0.6rem 1.5rem;
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-}
-.back-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  color: var(--gold-light); text-decoration: none;
-  font-size: 13px; font-weight: 600; transition: color 0.15s;
-}
+.back-nav-inner { max-width: 820px; margin: 0 auto; padding: 0.6rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--gold-light); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
 .back-link:hover { color: #fff; }
 .back-link svg { width: 14px; height: 14px; flex-shrink: 0; }
 .back-nav-links { display: flex; gap: 20px; }
-.back-nav-links a {
-  color: rgba(255,255,255,0.7); text-decoration: none;
-  font-size: 12px; font-weight: 500; transition: color 0.15s;
-}
+.back-nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 12px; font-weight: 500; transition: color 0.15s; }
 .back-nav-links a:hover { color: #fff; }
 
 .page { max-width: 820px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
 /* Header */
-.site-header {
-  border-bottom: 3px solid var(--navy);
-  padding-bottom: 1.25rem; margin-bottom: 1.75rem;
-  display: flex; align-items: center; gap: 16px;
-}
-.header-flag {
-  width: 48px; height: 48px; background: var(--navy);
-  border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
+.site-header { border-bottom: 3px solid var(--navy); padding-bottom: 1.25rem; margin-bottom: 1.75rem; display: flex; align-items: center; gap: 16px; }
+.header-flag { width: 48px; height: 48px; background: var(--navy); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .header-flag svg { width: 28px; height: 28px; fill: var(--gold-light); }
 .header-org { font-family: 'Merriweather', serif; font-size: 11px; font-weight: 700; color: var(--navy); letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.4; }
 .header-tool { font-size: 22px; font-family: 'Merriweather', serif; font-weight: 700; color: var(--navy); margin-top: 0.25rem; }
 
 /* Tab bar */
-.tab-bar {
-  display: flex; gap: 0; margin-bottom: 1.75rem;
-  border-bottom: 2.5px solid var(--navy);
-}
-.tab-btn {
-  padding: 10px 28px; font-size: 15px; font-weight: 600;
-  font-family: 'Source Sans 3', sans-serif;
-  border: none; background: var(--gray-50); color: var(--gray-500);
-  cursor: pointer; border-radius: var(--radius) var(--radius) 0 0;
-  border: 1.5px solid var(--gray-100); border-bottom: none;
-  margin-right: 4px; transition: all 0.15s; position: relative; bottom: -2px;
-}
-.tab-btn.active {
-  background: #fff; color: var(--navy);
-  border-color: var(--navy); border-bottom: 2.5px solid #fff;
-  z-index: 1;
-}
+.tab-bar { display: flex; gap: 0; margin-bottom: 1.75rem; border-bottom: 2.5px solid var(--navy); }
+.tab-btn { padding: 10px 28px; font-size: 15px; font-weight: 600; font-family: 'Source Sans 3', sans-serif; border: none; background: var(--gray-50); color: var(--gray-500); cursor: pointer; border-radius: var(--radius) var(--radius) 0 0; border: 1.5px solid var(--gray-100); border-bottom: none; margin-right: 4px; transition: all 0.15s; position: relative; bottom: -2px; }
+.tab-btn.active { background: #fff; color: var(--navy); border-color: var(--navy); border-bottom: 2.5px solid #fff; z-index: 1; }
 .tab-btn:hover:not(.active) { background: var(--blue-pale); color: var(--navy); }
-.tab-badge {
-  display: inline-block; font-size: 10px; font-weight: 700;
-  padding: 1px 6px; border-radius: 10px; margin-left: 6px;
-  background: var(--gold); color: #fff; vertical-align: middle;
-}
+.tab-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 10px; margin-left: 6px; background: var(--gold); color: #fff; vertical-align: middle; }
 .tab-badge.coming { background: var(--gray-300); color: var(--gray-700); }
-
-/* Tab panels */
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
 
-/* Issue banners */
-.issue-banner {
-  background: var(--navy); color: #fff;
-  border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin-bottom: 1.75rem;
-}
+/* Issue banner */
+.issue-banner { background: var(--navy); color: #fff; border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin-bottom: 1.75rem; }
 .issue-banner.federal { background: #2c1a4f; }
-.issue-banner h2 {
-  font-family: 'Merriweather', serif; font-size: 15px; font-weight: 700;
-  color: var(--gold-light); margin-bottom: 0.4rem; letter-spacing: 0.02em;
-}
+.issue-banner h2 { font-family: 'Merriweather', serif; font-size: 15px; font-weight: 700; color: var(--gold-light); margin-bottom: 0.4rem; letter-spacing: 0.02em; }
 .issue-banner p { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.6; }
 .bill-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 0.75rem; }
-.bill-tag-pill {
-  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
-  color: var(--gold-light); font-size: 12px; font-weight: 600;
-  padding: 3px 10px; border-radius: 20px; letter-spacing: 0.03em;
-  text-decoration: none; cursor: pointer; transition: background 0.15s;
-}
+.bill-tag-pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: var(--gold-light); font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.03em; text-decoration: none; cursor: pointer; transition: background 0.15s; }
 .bill-tag-pill:hover { background: rgba(255,255,255,0.2); }
 
-/* Resources */
-.resources-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1.75rem; }
-.resource-link {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-size: 13px; font-weight: 600; color: var(--navy);
-  text-decoration: none; border: 1.5px solid var(--navy);
-  padding: 6px 14px; border-radius: var(--radius);
-  transition: background 0.15s, color 0.15s;
-}
-.resource-link:hover { background: var(--navy); color: #fff; }
-.resource-link svg { width: 15px; height: 15px; }
-
-/* Steps */
-.steps-track { display: flex; align-items: center; margin-bottom: 1.75rem; }
-.step-dot { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--gray-500); }
-.step-dot.active { color: var(--navy); }
-.step-dot.done { color: var(--green); }
-.step-circle {
-  width: 28px; height: 28px; border-radius: 50%;
-  border: 2px solid var(--gray-300);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 700; color: var(--gray-500); flex-shrink: 0;
-}
-.step-dot.active .step-circle { border-color: var(--navy); color: var(--navy); background: var(--blue-pale); }
-.step-dot.done .step-circle { border-color: var(--green); background: var(--green-light); color: var(--green); }
-.step-line { flex: 1; height: 2px; background: var(--gray-100); margin: 0 8px; }
-
-/* Card */
-.card {
-  background: #fff; border: 1.5px solid var(--gray-100);
-  border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.25rem;
-}
-.card-title {
-  font-family: 'Merriweather', serif; font-size: 15px; font-weight: 700;
-  color: var(--navy); margin-bottom: 1rem; padding-bottom: 0.75rem;
-  border-bottom: 1.5px solid var(--gray-100);
-}
-
-/* Form */
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.form-group { display: flex; flex-direction: column; gap: 5px; }
-.form-group.full { grid-column: 1 / -1; }
-label { font-size: 13px; font-weight: 600; color: var(--gray-700); letter-spacing: 0.01em; }
-input, select, textarea {
-  width: 100%; padding: 9px 12px;
-  border: 1.5px solid var(--gray-300); border-radius: var(--radius);
-  font-size: 14px; font-family: 'Source Sans 3', sans-serif;
-  color: var(--text); background: #fff; transition: border-color 0.15s;
-}
-input:focus, select:focus, textarea:focus {
-  outline: none; border-color: var(--navy);
-  box-shadow: 0 0 0 3px rgba(26,45,79,0.08);
-}
-textarea { resize: vertical; line-height: 1.65; }
-
-/* Bills grid */
-.bills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.bill-card {
-  border: 1.5px solid var(--gray-100); border-radius: var(--radius);
-  padding: 14px; cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
-  background: var(--gray-50); position: relative;
-}
-.bill-card:hover { border-color: var(--navy); background: var(--blue-pale); }
-.bill-card.selected { border-color: var(--navy); background: var(--blue-pale); border-width: 2px; }
-.priority-badge {
-  display: inline-block; background: var(--gold); color: #fff;
-  font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px;
-  letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px;
-}
-.target-badge {
-  display: inline-block; font-size: 10px; font-weight: 700;
-  padding: 2px 8px; border-radius: 20px; margin-bottom: 6px; margin-left: 4px;
-  letter-spacing: 0.04em; text-transform: uppercase;
-}
+/* Priority / target badges */
+.priority-badge { display: inline-block; background: var(--gold); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px; }
+.target-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-bottom: 6px; margin-left: 4px; letter-spacing: 0.04em; text-transform: uppercase; }
 .target-badge.committee { background: #fdecea; color: #7a1a1a; }
 .target-badge.district { background: var(--green-light); color: var(--green); }
 .target-badge.delegation { background: #eeedfe; color: #3c3489; }
-.federal-link {
-  display: inline-flex; align-items: center; gap: 4px;
-  font-size: 11px; color: #3c3489; font-weight: 600;
-  text-decoration: none; margin-top: 6px;
-  padding: 2px 8px; background: #eeedfe; border-radius: 20px;
-  cursor: pointer; border: none; font-family: 'Source Sans 3', sans-serif;
-}
-.federal-link:hover { background: #d9d8fc; }
-.bill-code { font-family: 'Merriweather', serif; font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
-.bill-short { font-size: 12px; font-weight: 600; color: var(--gray-700); margin-bottom: 5px; }
-.bill-desc { font-size: 12px; color: var(--gray-500); line-height: 1.5; }
-.bill-text-link { font-size: 11px; color: var(--navy); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 3px; margin-top: 6px; }
-.bill-text-link:hover { text-decoration: underline; }
 
-/* Empty state */
-.empty-state {
-  text-align: center; padding: 3rem 1.5rem;
-  border: 2px dashed var(--gray-300); border-radius: var(--radius-lg);
-  color: var(--gray-500);
-}
+/* Action alert */
+.action-alert { background: #7a1a1a; color: #fff; border-radius: var(--radius-lg); padding: 1.1rem 1.5rem; margin-bottom: 1.25rem; display: flex; align-items: flex-start; gap: 14px; animation: alertPulse 2.5s ease-in-out 3; }
+@keyframes alertPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(139,26,26,0); } 50% { box-shadow: 0 0 0 6px rgba(139,26,26,0.25); } }
+.action-alert-icon { font-size: 22px; flex-shrink: 0; line-height: 1; margin-top: 1px; }
+.action-alert-body { flex: 1; min-width: 0; }
+.action-alert-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #ffb3b3; margin-bottom: 4px; }
+.action-alert-headline { font-family: 'Merriweather', serif; font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; line-height: 1.4; }
+.action-alert-desc { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 10px; }
+.action-alert-links { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.action-alert-link { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: var(--radius); font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.15s; }
+.action-alert-link.primary { background: #fff; color: #7a1a1a; }
+.action-alert-link.primary:hover { background: #ffe8e8; }
+.action-alert-link.secondary { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+.action-alert-link.secondary:hover { background: rgba(255,255,255,0.25); }
+
+/* Monitor status bar */
+.monitor-status { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--gray-500); padding: 6px 2px; margin-bottom: 1rem; border-top: 1px solid var(--gray-100); }
+.monitor-status.alert { color: #7a1a1a; font-weight: 600; }
+.monitor-status-dot { width: 7px; height: 7px; border-radius: 50%; background: #4caf50; flex-shrink: 0; }
+.monitor-status.alert .monitor-status-dot { background: #7a1a1a; }
+.hidden { display: none; }
+
+/* Hero */
+.hero { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: var(--radius-lg); padding: 2rem 2rem 1.75rem; margin-bottom: 1.75rem; color: #fff; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 40%; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); pointer-events: none; }
+.hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 8px; }
+.hero-eyebrow::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--gold); }
+.hero h1 { font-family: 'Merriweather', serif; font-size: 22px; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 0.75rem; }
+.hero-desc { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.7; max-width: 580px; margin-bottom: 1.25rem; }
+.hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #fff; font-weight: 700; font-size: 14px; padding: 10px 22px; border-radius: var(--radius); text-decoration: none; border: none; cursor: pointer; font-family: 'Source Sans 3', sans-serif; transition: background 0.15s; letter-spacing: 0.02em; }
+.hero-cta:hover { background: #a07820; }
+.hero-cta svg { width: 16px; height: 16px; }
+
+/* Bill showcase */
+.bill-showcase { margin-bottom: 1.75rem; }
+.bill-showcase-header { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+.bill-showcase-header::after { content: ''; flex: 1; height: 1px; background: var(--gray-100); }
+.bill-showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.showcase-card { border: 1.5px solid var(--gray-100); border-radius: var(--radius-lg); padding: 16px; background: var(--gray-50); display: flex; flex-direction: column; transition: border-color 0.15s, box-shadow 0.15s; }
+.showcase-card:hover { border-color: var(--navy); box-shadow: 0 2px 8px rgba(26,45,79,0.08); }
+.showcase-card.priority-card { border-color: var(--gold); background: var(--gold-pale); grid-column: 1 / -1; }
+.showcase-card.priority-card:hover { border-color: #a07820; box-shadow: 0 2px 12px rgba(184,145,42,0.15); }
+.sc-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+.sc-code { font-family: 'Merriweather', serif; font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+.sc-short { font-size: 13px; font-weight: 600; color: var(--gray-700); margin-bottom: 6px; }
+.sc-desc { font-size: 13px; color: var(--gray-500); line-height: 1.55; flex: 1; }
+.sc-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--gray-100); }
+.showcase-card.priority-card .sc-actions { border-top-color: var(--gold-light); }
+.sc-take-action { display: inline-flex; align-items: center; gap: 6px; background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; padding: 8px 18px; border-radius: var(--radius); border: none; cursor: pointer; font-family: 'Source Sans 3', sans-serif; transition: background 0.15s; text-decoration: none; }
+.sc-take-action:hover { background: var(--navy-mid); }
+.showcase-card.priority-card .sc-take-action { background: var(--gold); }
+.showcase-card.priority-card .sc-take-action:hover { background: #a07820; }
+.sc-bill-link { font-size: 12px; font-weight: 600; color: var(--navy); text-decoration: none; display: inline-flex; align-items: center; gap: 3px; }
+.sc-bill-link:hover { text-decoration: underline; }
+.sc-resources { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.sc-resource-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--gold); text-decoration: none; padding: 4px 10px; border: 1.5px solid var(--gold-light); border-radius: var(--radius); background: #fff; transition: background 0.15s; }
+.sc-resource-link:hover { background: var(--gold-pale); }
+.sc-resource-link svg { width: 13px; height: 13px; }
+
+/* Federal empty state */
+.empty-state { text-align: center; padding: 3rem 1.5rem; border: 2px dashed var(--gray-300); border-radius: var(--radius-lg); color: var(--gray-500); }
 .empty-state h3 { font-size: 16px; font-weight: 600; color: var(--gray-700); margin-bottom: 8px; }
 .empty-state p { font-size: 14px; line-height: 1.6; }
 
-/* Lookup status */
-.lookup-status {
-  display: flex; align-items: center; gap: 10px;
-  padding: 12px 14px; border-radius: var(--radius);
-  font-size: 13px; margin-bottom: 14px;
-}
-.lookup-status.loading { background: var(--blue-pale); color: var(--navy); }
-.lookup-status.success { background: var(--green-light); color: var(--green); }
-.lookup-status.error { background: #fdecea; color: var(--red); }
-.spinner {
-  width: 16px; height: 16px; border: 2px solid rgba(26,45,79,0.2);
-  border-top-color: var(--navy); border-radius: 50%;
-  animation: spin 0.7s linear infinite; flex-shrink: 0;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* Recipients */
-.recipients-header {
-  font-size: 12px; font-weight: 700; color: var(--gray-500);
-  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px;
-}
-.leg-send-btn {
-  display: flex; align-items: center; gap: 12px;
-  padding: 12px 16px; border: 1.5px solid var(--gray-100);
-  border-radius: var(--radius); background: var(--gray-50);
-  color: var(--text); font-size: 14px; cursor: pointer;
-  text-decoration: none; font-family: 'Source Sans 3', sans-serif;
-  transition: background 0.15s, border-color 0.15s;
-  margin-bottom: 8px; width: 100%;
-}
-.leg-send-btn:hover { background: var(--blue-pale); border-color: var(--navy); }
-.leg-choice-card {
-  border: 1.5px solid var(--gray-100);
-  border-radius: var(--radius);
-  background: var(--gray-50);
-  margin-bottom: 10px;
-  overflow: hidden;
-}
-.leg-choice-card .leg-send-btn {
-  margin-bottom: 0;
-  border: 0;
-  border-radius: 0;
-  text-align: left;
-}
-.leg-choice-card.open .leg-send-btn { background: var(--blue-pale); }
-.leg-send-label {
-  font-size: 12px; font-weight: 700; color: var(--navy);
-  text-transform: uppercase; letter-spacing: 0.05em;
-  white-space: nowrap; flex-shrink: 0;
-}
-.leg-choice-panel {
-  display: none;
-  border-top: 1.5px solid var(--gray-100);
-  background: #fff;
-  padding: 12px 16px 14px 66px;
-}
-.leg-choice-card.open .leg-choice-panel { display: block; }
-.leg-choice-title {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--gray-500);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 8px;
-}
-.leg-choice-row { display: flex; flex-wrap: wrap; gap: 8px; }
-.leg-choice-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 7px 11px; border-radius: var(--radius);
-  border: 1.5px solid var(--gray-300);
-  color: var(--navy); background: #fff;
-  font-size: 13px; font-weight: 600;
-  text-decoration: none; cursor: pointer;
-  font-family: 'Source Sans 3', sans-serif;
-}
-.leg-choice-link:hover { background: var(--blue-pale); border-color: var(--navy); }
-.leg-choice-link.primary { background: var(--navy); border-color: var(--navy); color: #fff; }
-.leg-choice-link.primary:hover { background: var(--navy-mid); border-color: var(--navy-mid); }
-.leg-choice-note {
-  font-size: 12px;
-  color: var(--gray-500);
-  margin-top: 9px;
-  line-height: 1.5;
-}
-.leg-avatar {
-  width: 38px; height: 38px; border-radius: 50%;
-  background: var(--navy); color: var(--gold-light);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 700; flex-shrink: 0;
-  font-family: 'Merriweather', serif;
-}
-.leg-avatar.federal { background: #2c1a4f; }
-.leg-avatar.district-found { background: var(--green); }
-.leg-name { font-weight: 600; font-size: 14px; color: var(--navy); }
-.leg-meta { font-size: 12px; color: var(--gray-500); margin-top: 1px; }
-.leg-arrow { margin-left: auto; color: var(--gray-300); flex-shrink: 0; }
-.opened-badge {
-  background: var(--green-light); color: var(--green);
-  font-size: 11px; font-weight: 700; padding: 2px 10px;
-  border-radius: 20px; margin-left: auto; flex-shrink: 0; letter-spacing: 0.03em;
-}
-
-/* Buttons */
-.btn-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 1.25rem; }
-.btn {
-  padding: 9px 20px; border-radius: var(--radius);
-  font-size: 14px; font-weight: 600; cursor: pointer;
-  font-family: 'Source Sans 3', sans-serif;
-  display: inline-flex; align-items: center; gap: 7px;
-  transition: all 0.15s; border: 1.5px solid var(--gray-300);
-  background: #fff; color: var(--text);
-}
-.btn:hover { background: var(--gray-50); border-color: var(--gray-500); }
-.btn-primary { background: var(--navy); border-color: var(--navy); color: #fff; }
-.btn-primary:hover { background: var(--navy-mid); border-color: var(--navy-mid); }
-
-/* Notice */
-.notice {
-  background: var(--blue-pale); border-left: 3px solid var(--navy);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  padding: 12px 14px; font-size: 13px; color: var(--navy-mid);
-  margin-bottom: 1.25rem; line-height: 1.6;
-}
-.notice.warning { background: var(--gold-pale); border-left-color: var(--gold); color: #6b4a00; }
-
-/* Action alert banner */
-.action-alert {
-  background: #7a1a1a; color: #fff;
-  border-radius: var(--radius-lg); padding: 1.1rem 1.5rem;
-  margin-bottom: 1.25rem;
-  display: flex; align-items: flex-start; gap: 14px;
-  animation: alertPulse 2.5s ease-in-out 3;
-}
-@keyframes alertPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(139,26,26,0); }
-  50% { box-shadow: 0 0 0 6px rgba(139,26,26,0.25); }
-}
-.action-alert-icon {
-  font-size: 22px; flex-shrink: 0; line-height: 1; margin-top: 1px;
-}
-.action-alert-body { flex: 1; min-width: 0; }
-.action-alert-label {
-  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: #ffb3b3; margin-bottom: 4px;
-}
-.action-alert-headline {
-  font-family: 'Merriweather', serif; font-size: 15px; font-weight: 700;
-  color: #fff; margin-bottom: 4px; line-height: 1.4;
-}
-.action-alert-desc {
-  font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 10px;
-}
-.action-alert-links { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-.action-alert-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 6px 14px; border-radius: var(--radius);
-  font-size: 13px; font-weight: 600; text-decoration: none;
-  transition: background 0.15s;
-}
-.action-alert-link.primary {
-  background: #fff; color: #7a1a1a;
-}
-.action-alert-link.primary:hover { background: #ffe8e8; }
-.action-alert-link.secondary {
-  background: rgba(255,255,255,0.15); color: #fff;
-  border: 1px solid rgba(255,255,255,0.3);
-}
-.action-alert-link.secondary:hover { background: rgba(255,255,255,0.25); }
-
-/* Committee monitoring status bar */
-.monitor-status {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 12px; color: var(--muted);
-  padding: 6px 2px; margin-bottom: 1rem;
-  border-top: 1px solid var(--border);
-}
-.monitor-status.alert { color: #7a1a1a; font-weight: 600; }
-.monitor-status-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: #4caf50; flex-shrink: 0;
-}
-.monitor-status.alert .monitor-status-dot { background: #7a1a1a; }
-
-/* Phone script */
-.phone-script {
-  background: var(--gold-pale); border: 1.5px solid var(--gold-light);
-  border-radius: var(--radius); padding: 14px 16px; margin-top: 1.25rem;
-}
-.phone-script-title { font-size: 12px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
-.phone-script p { font-size: 13px; color: var(--gray-700); line-height: 1.65; }
-
-/* Manual fallback */
-.manual-fallback {
-  background: var(--gray-50); border: 1.5px solid var(--gray-100);
-  border-radius: var(--radius); padding: 14px 16px; margin-top: 10px; font-size: 13px;
-}
-.manual-fallback a { color: var(--navy); font-weight: 600; }
-
-.err { font-size: 13px; color: var(--red); margin-top: 8px; }
-.hidden { display: none; }
-.footer-note { font-size: 12px; color: var(--gray-500); margin-top: 10px; line-height: 1.6; }
-
-@media (max-width: 560px) {
-  .form-grid { grid-template-columns: 1fr; }
-  .bills-grid { grid-template-columns: 1fr; }
-  .leg-choice-panel { padding-left: 16px; }
-  .steps-track .step-label { display: none; }
-  .tab-btn { padding: 8px 16px; font-size: 13px; }
-}
-.chapter-other { display: none; margin-top: 6px; }
-.chapter-other.visible { display: block; }
-
-/* Email help accordion */
-.email-help-wrap { margin: 1.25rem 0 0.5rem; border: 1px solid var(--gold); border-radius: 8px; overflow: hidden; }
-.email-help-toggle {
-  width: 100%; background: #fffbf0; border: none; cursor: pointer;
-  padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between;
-  font-size: 14px; font-weight: 600; color: #7a5c00; text-align: left; gap: 8px;
-}
-.email-help-toggle:hover { background: #fff3cc; }
-.email-help-toggle .eh-arrow { font-size: 11px; transition: transform 0.2s; flex-shrink: 0; }
-.email-help-toggle.open .eh-arrow { transform: rotate(180deg); }
-.email-help-body { display: none; background: #fff; padding: 1rem 1.1rem 1.1rem; border-top: 1px solid #f0d87a; }
-.email-help-body.visible { display: block; }
-.eh-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
-.eh-tab { padding: 5px 14px; font-size: 13px; font-weight: 600; border-radius: 20px; border: 1.5px solid #bbb; background: transparent; cursor: pointer; color: #444; transition: all 0.15s; }
-.eh-tab.active { background: var(--navy); color: #fff; border-color: var(--navy); }
-.eh-panel { display: none; }
-.eh-panel.visible { display: block; }
-.eh-step { background: #f8f8f8; border-radius: 6px; padding: 0.7rem 0.9rem; margin-bottom: 0.6rem; font-size: 14px; line-height: 1.6; color: #333; }
-.eh-step strong { color: #111; }
-.eh-step ol { margin: 0.4rem 0 0; padding-left: 1.2rem; }
-.eh-step ol li { margin-bottom: 2px; }
-.eh-step.success { background: #f0faf3; border-left: 3px solid #2e9e5b; }
-.eh-step.fallback { background: #fff8e1; border-left: 3px solid var(--gold); }
-
-
-/* Version 1.1 metrics dashboard */
-.metrics-link {
-  color: rgba(255,255,255,0.7); text-decoration: none;
-  font-size: 12px; font-weight: 500; transition: color 0.15s;
-}
+/* Metrics */
+.metrics-link { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 12px; font-weight: 500; transition: color 0.15s; }
 .metrics-link:hover { color: #fff; }
 .metrics-dashboard { display:none; }
 .metrics-dashboard.active { display:block; }
@@ -500,14 +164,19 @@ textarea { resize: vertical; line-height: 1.65; }
 .metrics-table th, .metrics-table td { border-bottom:1px solid var(--gray-100); padding:8px 6px; text-align:left; vertical-align:top; }
 .metrics-table th { color: var(--navy); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
 .config-status { font-size:12px; color: var(--gray-500); margin: 0 0 1rem; }
-.contact-form-link { background: var(--green-light); color: var(--green); border-color: var(--green); }
+.card { background: #fff; border: 1.5px solid var(--gray-100); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.25rem; }
+.card-title { font-family: 'Merriweather', serif; font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1.5px solid var(--gray-100); }
+.btn-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 1.25rem; }
+.btn { padding: 9px 20px; border-radius: var(--radius); font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Source Sans 3', sans-serif; display: inline-flex; align-items: center; gap: 7px; transition: all 0.15s; border: 1.5px solid var(--gray-300); background: #fff; color: var(--text); }
+.btn:hover { background: var(--gray-50); border-color: var(--gray-500); }
+.btn-primary { background: var(--navy); border-color: var(--navy); color: #fff; }
+.btn-primary:hover { background: var(--navy-mid); border-color: var(--navy-mid); }
 @media (max-width: 700px) { .metrics-grid { grid-template-columns: 1fr 1fr; } }
-
+@media (max-width: 560px) { .bill-showcase-grid { grid-template-columns: 1fr; } .showcase-card.priority-card { grid-column: 1; } .hero h1 { font-size: 18px; } .tab-btn { padding: 8px 16px; font-size: 13px; } }
 </style>
 </head>
 <body>
 
-<!-- Back nav -->
 <nav class="back-nav">
   <div class="back-nav-inner">
     <a class="back-link" href="https://www.moaamcoc.com/legislation.html">
@@ -524,18 +193,7 @@ textarea { resize: vertical; line-height: 1.65; }
 
 <div class="page">
 
-  <!-- Header -->
   <div class="site-header">
-    <!--
-      MCOC Logo — two options:
-      Option A (recommended): upload your logo file to the repo and reference it directly.
-        <img class="mcoc-logo" src="https://www.moaamcoc.com/uploads/1/4/8/4/148483887/published/mcoc-logo.png?1740860645" alt="Michigan Council of Chapters, MOAA" onerror="this.style.display='none';document.querySelector('.header-flag').style.display='flex';">
-      Option B: link to the logo hosted on moaamcoc.com.
-        <img class="mcoc-logo" src="https://www.moaamcoc.com/uploads/1/4/8/4/148483887/[LOGO-FILENAME]" alt="Michigan Council of Chapters, MOAA" onerror="this.style.display='none';document.querySelector('.header-flag').style.display='flex';">
-
-      The header-flag below is the fallback if the logo fails to load.
-      Once you confirm your logo path, you can remove the header-flag div entirely.
-    -->
     <img class="mcoc-logo" src="https://www.moaamcoc.com/uploads/1/4/8/4/148483887/published/mcoc-logo.png?1740860645" alt="Michigan Council of Chapters, MOAA"
          onerror="this.style.display='none';document.getElementById('header-flag-fallback').style.display='flex';">
     <div class="header-flag" id="header-flag-fallback" style="display:none">
@@ -547,320 +205,53 @@ textarea { resize: vertical; line-height: 1.65; }
     </div>
   </div>
 
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-eyebrow">Michigan Council of Chapters, MOAA</div>
+    <h1>Make Your Voice Heard for Michigan's Veterans</h1>
+    <p class="hero-desc">Michigan law fails to recognize commissioned officers of the U.S. Public Health Service and NOAA as veterans — even though federal law does. Four House bills would fix that. Choose an issue below, tell us who you are, and we'll write a personalized letter to your legislators in under two minutes.</p>
+    <button class="hero-cta" onclick="document.getElementById('bill-showcase').scrollIntoView({behavior:'smooth'})">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      Choose an issue to support
+    </button>
+  </div>
+
   <!-- Tab bar -->
   <div class="tab-bar" role="tablist">
-    <button class="tab-btn active" role="tab" aria-selected="true" onclick="switchTab('state')">
+    <button class="tab-btn active" role="tab" aria-selected="true" onclick="switchTab('state', event)">
       🏛 State Legislation <span class="tab-badge" id="state-badge">4</span>
     </button>
-    <button class="tab-btn" role="tab" aria-selected="false" onclick="switchTab('federal')">
+    <button class="tab-btn" role="tab" aria-selected="false" onclick="switchTab('federal', event)">
       🇺🇸 Federal Legislation <span class="tab-badge coming" id="federal-badge">Coming Soon</span>
     </button>
   </div>
 
-  <div id="config-status" class="config-status">Using built-in campaign configuration.</div>
+  <div id="config-status" class="config-status">Loading…</div>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- STATE TAB                                   -->
-  <!-- ═══════════════════════════════════════════ -->
+  <!-- ═══════ STATE TAB ═══════ -->
   <div class="tab-panel active" id="tab-state">
-
-    <!-- Action alerts — populated by renderAlerts() from lac-config.json -->
     <div id="state-alerts"></div>
-
-    <div class="issue-banner">
-      <h2>Current Priority: Aligning Veteran Recognition for NOAA &amp; USPHS Officers</h2>
-      <p>Michigan law does not recognize commissioned officers of the U.S. Public Health Service (USPHS) and National Oceanic and Atmospheric Administration (NOAA) as veterans — even though federal law (38 USC) does. These four House bills would correct that gap.</p>
-      <div class="bill-tags">
-        <a class="bill-tag-pill" href="https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5262.pdf" target="_blank">HB 5262</a>
-        <a class="bill-tag-pill" href="https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5278.pdf" target="_blank">HB 5278</a>
-        <a class="bill-tag-pill" href="https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5279.pdf" target="_blank">HB 5279</a>
-        <a class="bill-tag-pill" href="https://archive.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5280.pdf" target="_blank">HB 5280 ★</a>
-      </div>
-    </div>
-
-    <!-- Committee monitoring status — populated from monitor-status.json -->
     <div id="monitor-status-bar" class="monitor-status hidden"></div>
 
-    <div class="resources-row">
-      <a class="resource-link" href="https://www.moaamcoc.com/uploads/1/4/8/4/148483887/hb_5280_battle_card_r2.pdf" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        HB 5280 Battle Card
-      </a>
-      <a class="resource-link" href="https://www.moaamcoc.com/uploads/1/4/8/4/148483887/michigan_house_bill_5280_-_one-pager.pdf" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        HB 5280 One-Pager
-      </a>
-      <a class="resource-link" href="https://www.moaamcoc.com/legislation.html" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        Full Issue Background
-      </a>
-    </div>
-
-    <!-- Step tracker -->
-    <div class="steps-track" id="state-steps">
-      <div class="step-dot active" id="state-sdot1"><div class="step-circle">1</div><span class="step-label">Your info</span></div>
-      <div class="step-line"></div>
-      <div class="step-dot" id="state-sdot2"><div class="step-circle">2</div><span class="step-label">Select bill</span></div>
-      <div class="step-line"></div>
-      <div class="step-dot" id="state-sdot3"><div class="step-circle">3</div><span class="step-label">Send email</span></div>
-    </div>
-
-    <!-- Step 1 -->
-    <div id="state-step1">
-      <div class="card">
-        <div class="card-title">Step 1 — Your information</div>
-        <div class="form-grid">
-          <div class="form-group"><label for="s-fname">First name</label><input id="s-fname" type="text" placeholder="Jane"/></div>
-          <div class="form-group"><label for="s-lname">Last name</label><input id="s-lname" type="text" placeholder="Smith"/></div>
-          <div class="form-group full"><label for="s-addr">Street address</label><input id="s-addr" type="text" placeholder="123 Main Street"/></div>
-          <div class="form-group"><label for="s-city">City</label><input id="s-city" type="text" placeholder="Lansing"/></div>
-          <div class="form-group"><label for="s-zip">ZIP code</label><input id="s-zip" type="text" placeholder="48933" maxlength="5"/></div>
-          <div class="form-group full"><label for="s-email">Your email address</label><input id="s-email" type="email" placeholder="jane.smith@email.com"/></div>
-          <div class="form-group full">
-            <label for="s-chapter">MOAA Chapter</label>
-            <select id="s-chapter-select" onchange="chapterSelectChange('s')">
-              <option value="">— Select your chapter —</option>
-              <option value="SE Michigan Chapter, MOAA">SE Michigan Chapter</option>
-              <option value="Capitol Area Chapter, MOAA">Capitol Area Chapter</option>
-              <option value="Army &amp; Navy Club of Grand Rapids, MOAA">Army &amp; Navy Club of Grand Rapids</option>
-              <option value="NW Michigan Chapter, MOAA">NW Michigan Chapter</option>
-              <option value="__other__">Other</option>
-            </select>
-            <div class="chapter-other" id="s-chapter-other">
-              <input id="s-chapter" type="text" placeholder="Enter your organization name"/>
-            </div>
-          </div>
-        </div>
-        <div class="btn-row">
-          <button class="btn btn-primary" onclick="stateGoStep2()">Continue to bill selection ›</button>
-        </div>
-        <div id="s-s1err" class="err"></div>
+    <div class="bill-showcase" id="bill-showcase">
+      <div class="bill-showcase-header">4 bills currently before the House Committee on Government Operations</div>
+      <div class="bill-showcase-grid" id="state-showcase-grid">
+        <!-- populated by renderShowcase() -->
       </div>
     </div>
+  </div>
 
-    <!-- Step 2 -->
-    <div id="state-step2" class="hidden">
-      <div class="card">
-        <div class="card-title">Step 2 — Select a bill to support</div>
-        <div class="notice">
-          <strong>Our primary target is HB 5280</strong> — it has the least opposition and does not rely on redefining "veteran." Bills marked <strong>Committee</strong> target specific committee members. Bills marked <strong>My District</strong> will contact your own state representative and senator based on your address.
-        </div>
-        <div class="bills-grid" id="state-bills-grid"></div>
-        <div class="btn-row">
-          <button class="btn" onclick="stateGoStep(1)">‹ Back</button>
-          <button class="btn btn-primary" onclick="stateGoStep3()">Compose email ›</button>
-        </div>
-        <div id="s-s2err" class="err"></div>
-      </div>
-    </div>
-
-    <!-- Step 3 -->
-    <div id="state-step3" class="hidden">
-      <div class="card">
-        <div class="card-title">Step 3 — Review and send your email</div>
-        <div class="notice">
-          Click a legislator to try your computer's email app first. If nothing opens, use the choices that appear below for Gmail, Outlook on the web, Yahoo Mail, or copy/paste.
-        </div>
-        <div id="state-lookup-status" class="hidden"></div>
-        <div class="form-grid" style="margin-bottom:1.25rem">
-          <div class="form-group full"><label for="s-esubj">Subject line (editable)</label><input id="s-esubj" type="text"/></div>
-          <div class="form-group full"><label for="s-ebody">Message body (editable)</label><textarea id="s-ebody" rows="14"></textarea></div>
-        </div>
-        <div class="recipients-header" id="state-rec-header">Send to each legislator</div>
-        <div id="state-leg-buttons"></div>
-        <div id="state-manual-fallback" class="hidden manual-fallback">
-          <strong>Can't find your legislators automatically?</strong> Visit <a href="https://www.legislature.mi.gov/MemberDetails" target="_blank">Michigan Legislature</a> to find your state rep and senator by address, then use the Copy button below to paste your message into an email to them directly.
-        </div>
-        <div class="btn-row">
-          <button class="btn" onclick="stateGoStep(2)">‹ Back</button>
-          <button class="btn" id="s-copybtn" onclick="stateCopyMsg()">Copy message</button>
-          <button class="btn" onclick="stateRefreshLinks()">↺ Refresh links</button>
-        </div>
-        <div class="footer-note">After editing the subject or body, click <strong>Refresh links</strong> before sending.</div>
-      </div>
-
-        <!-- Email help accordion -->
-        <div class="email-help-wrap">
-          <button class="email-help-toggle" onclick="toggleEmailHelp('s')" aria-expanded="false">
-            <span>&#9888; Having trouble? &mdash; How to connect your email to the Legislative Action Center</span>
-            <span class="eh-arrow">&#9660;</span>
-          </button>
-          <div class="email-help-body" id="s-email-help-body">
-            <p style="font-size:13px;color:#555;margin:0 0 0.75rem;">Click the legislator button first &mdash; it will try to open your email automatically. If nothing opens, use one of the options below.</p>
-            <div class="eh-tabs">
-              <button class="eh-tab active" onclick="showEhTab('s','aol',this)">AOL Mail</button>
-              <button class="eh-tab" onclick="showEhTab('s','yahoo',this)">Yahoo Mail</button>
-              <button class="eh-tab" onclick="showEhTab('s','gmail',this)">Gmail</button>
-              <button class="eh-tab" onclick="showEhTab('s','outlook',this)">Outlook</button>
-            </div>
-            <div class="eh-panel visible" id="s-eh-aol">
-              <div class="eh-step"><strong>Easiest option &mdash;</strong> After clicking the legislator button, if AOL didn't open, click <strong>Copy message</strong>, go to <strong>mail.aol.com</strong>, start a new email, paste your message, and type the legislator's address in the To field.</div>
-              <div class="eh-step"><strong>Set up automatic opening &mdash;</strong> Go to <strong>mail.aol.com</strong> in Edge and sign in. Look for a bar asking <em>"Allow mail.aol.com to open mailto links?"</em> and click <strong>Allow</strong>.</div>
-              <div class="eh-step success"><strong>Test it &mdash;</strong> Click a legislator button again. AOL Mail should open with the message pre-filled.</div>
-            </div>
-            <div class="eh-panel" id="s-eh-yahoo">
-              <div class="eh-step"><strong>Easiest option &mdash;</strong> Click the legislator button, then click <strong>Yahoo Mail</strong> in the panel that opens. Yahoo will open in your browser with the message pre-filled.</div>
-              <div class="eh-step"><strong>Set up automatic opening &mdash;</strong> Go to <strong>mail.yahoo.com</strong> in Edge, sign in, and click <strong>Allow</strong> when asked to open mailto links.</div>
-              <div class="eh-step success"><strong>Test it &mdash;</strong> Click a legislator button. Yahoo Mail should open with the message pre-filled.</div>
-            </div>
-            <div class="eh-panel" id="s-eh-gmail">
-              <div class="eh-step"><strong>No setup needed &mdash;</strong> Click the legislator button, then click <strong>Gmail</strong> in the panel that opens. Gmail opens in your browser with the message pre-filled.</div>
-              <div class="eh-step success"><strong>That is it &mdash;</strong> Review the message and click <strong>Send</strong>.</div>
-            </div>
-            <div class="eh-panel" id="s-eh-outlook">
-              <div class="eh-step"><strong>Outlook desktop &mdash;</strong> Clicking the legislator button should open Outlook automatically if it is installed. If not, click <strong>Outlook web</strong> in the panel instead.</div>
-              <div class="eh-step"><strong>Outlook web &mdash;</strong> Click the legislator button, then click <strong>Outlook web</strong>. Opens in your browser with the message pre-filled. No setup needed.</div>
-              <div class="eh-step success"><strong>Test it &mdash;</strong> Click a legislator button and choose Outlook web. Review and click <strong>Send</strong>.</div>
-            </div>
-            <div class="eh-step fallback" style="margin-top:0.75rem;"><strong>Still stuck? &mdash;</strong> Click <strong>Copy address</strong> next to the legislator, open your email manually, start a new message, paste the address, then click <strong>Copy message</strong> and paste the body in.</div>
-          </div>
-        </div>
-      <div class="phone-script">
-        <div class="phone-script-title">📞 Prefer to call? Use this script</div>
-        <p id="state-phone-script">Complete Step 1 to generate your personalized phone script.</p>
-      </div>
-    </div>
-
-  </div><!-- end state tab -->
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- FEDERAL TAB                                 -->
-  <!-- ═══════════════════════════════════════════ -->
+  <!-- ═══════ FEDERAL TAB ═══════ -->
   <div class="tab-panel" id="tab-federal">
-
-    <!-- Action alerts — populated by renderAlerts() from lac-config.json -->
     <div id="federal-alerts"></div>
-
     <div class="issue-banner federal">
       <h2>Federal Legislative Priorities</h2>
       <p>Contact Michigan's U.S. Senators and House members on MOAA priority federal legislation. Federal bills may also be related to state legislation — look for the link on state bill cards.</p>
     </div>
+    <div id="fed-showcase-grid"></div>
+  </div>
 
-    <!-- Step tracker -->
-    <div class="steps-track" id="federal-steps">
-      <div class="step-dot active" id="fed-sdot1"><div class="step-circle">1</div><span class="step-label">Your info</span></div>
-      <div class="step-line"></div>
-      <div class="step-dot" id="fed-sdot2"><div class="step-circle">2</div><span class="step-label">Select bill</span></div>
-      <div class="step-line"></div>
-      <div class="step-dot" id="fed-sdot3"><div class="step-circle">3</div><span class="step-label">Send email</span></div>
-    </div>
-
-    <!-- Step 1 Federal -->
-    <div id="fed-step1">
-      <div class="card">
-        <div class="card-title">Step 1 — Your information</div>
-        <div class="form-grid">
-          <div class="form-group"><label for="f-fname">First name</label><input id="f-fname" type="text" placeholder="Jane"/></div>
-          <div class="form-group"><label for="f-lname">Last name</label><input id="f-lname" type="text" placeholder="Smith"/></div>
-          <div class="form-group full"><label for="f-addr">Street address</label><input id="f-addr" type="text" placeholder="123 Main Street"/></div>
-          <div class="form-group"><label for="f-city">City</label><input id="f-city" type="text" placeholder="Lansing"/></div>
-          <div class="form-group"><label for="f-zip">ZIP code</label><input id="f-zip" type="text" placeholder="48933" maxlength="5"/></div>
-          <div class="form-group full"><label for="f-email">Your email address</label><input id="f-email" type="email" placeholder="jane.smith@email.com"/></div>
-          <div class="form-group full">
-            <label for="f-chapter">MOAA Chapter</label>
-            <select id="f-chapter-select" onchange="chapterSelectChange('f')">
-              <option value="">— Select your chapter —</option>
-              <option value="SE Michigan Chapter, MOAA">SE Michigan Chapter</option>
-              <option value="Capitol Area Chapter, MOAA">Capitol Area Chapter</option>
-              <option value="Army &amp; Navy Club of Grand Rapids, MOAA">Army &amp; Navy Club of Grand Rapids</option>
-              <option value="NW Michigan Chapter, MOAA">NW Michigan Chapter</option>
-              <option value="__other__">Other</option>
-            </select>
-            <div class="chapter-other" id="f-chapter-other">
-              <input id="f-chapter" type="text" placeholder="Enter your organization name"/>
-            </div>
-          </div>
-        </div>
-        <div class="btn-row">
-          <button class="btn btn-primary" onclick="fedGoStep2()">Continue to bill selection ›</button>
-        </div>
-        <div id="f-s1err" class="err"></div>
-      </div>
-    </div>
-
-    <!-- Step 2 Federal -->
-    <div id="fed-step2" class="hidden">
-      <div class="card">
-        <div class="card-title">Step 2 — Select a federal bill to support</div>
-        <div id="fed-bills-grid"></div>
-        <div class="btn-row">
-          <button class="btn" onclick="fedGoStep(1)">‹ Back</button>
-          <button class="btn btn-primary" onclick="fedGoStep3()">Compose email ›</button>
-        </div>
-        <div id="f-s2err" class="err"></div>
-      </div>
-    </div>
-
-    <!-- Step 3 Federal -->
-    <div id="fed-step3" class="hidden">
-      <div class="card">
-        <div class="card-title">Step 3 — Review and send your email</div>
-        <div class="notice">
-          Click a legislator to try your computer's email app first. If nothing opens, use the choices that appear below for Gmail, Outlook on the web, Yahoo Mail, or copy/paste.
-        </div>
-        <div id="fed-lookup-status" class="hidden"></div>
-        <div class="form-grid" style="margin-bottom:1.25rem">
-          <div class="form-group full"><label for="f-esubj">Subject line (editable)</label><input id="f-esubj" type="text"/></div>
-          <div class="form-group full"><label for="f-ebody">Message body (editable)</label><textarea id="f-ebody" rows="14"></textarea></div>
-        </div>
-        <div class="recipients-header">Send to each legislator</div>
-        <div id="fed-leg-buttons"></div>
-        <div class="btn-row">
-          <button class="btn" onclick="fedGoStep(2)">‹ Back</button>
-          <button class="btn" id="f-copybtn" onclick="fedCopyMsg()">Copy message</button>
-          <button class="btn" onclick="fedRefreshLinks()">↺ Refresh links</button>
-        </div>
-        <div class="footer-note">After editing the subject or body, click <strong>Refresh links</strong> before sending.</div>
-      </div>
-
-        <!-- Email help accordion -->
-        <div class="email-help-wrap">
-          <button class="email-help-toggle" onclick="toggleEmailHelp('f')" aria-expanded="false">
-            <span>&#9888; Having trouble? &mdash; How to connect your email to the Legislative Action Center</span>
-            <span class="eh-arrow">&#9660;</span>
-          </button>
-          <div class="email-help-body" id="f-email-help-body">
-            <p style="font-size:13px;color:#555;margin:0 0 0.75rem;">Click the legislator button first &mdash; it will try to open your email automatically. If nothing opens, use one of the options below.</p>
-            <div class="eh-tabs">
-              <button class="eh-tab active" onclick="showEhTab('f','aol',this)">AOL Mail</button>
-              <button class="eh-tab" onclick="showEhTab('f','yahoo',this)">Yahoo Mail</button>
-              <button class="eh-tab" onclick="showEhTab('f','gmail',this)">Gmail</button>
-              <button class="eh-tab" onclick="showEhTab('f','outlook',this)">Outlook</button>
-            </div>
-            <div class="eh-panel visible" id="f-eh-aol">
-              <div class="eh-step"><strong>Easiest option &mdash;</strong> After clicking the legislator button, if AOL didn't open, click <strong>Copy message</strong>, go to <strong>mail.aol.com</strong>, start a new email, paste your message, and type the legislator's address in the To field.</div>
-              <div class="eh-step"><strong>Set up automatic opening &mdash;</strong> Go to <strong>mail.aol.com</strong> in Edge and sign in. Look for a bar asking <em>"Allow mail.aol.com to open mailto links?"</em> and click <strong>Allow</strong>.</div>
-              <div class="eh-step success"><strong>Test it &mdash;</strong> Click a legislator button again. AOL Mail should open with the message pre-filled.</div>
-            </div>
-            <div class="eh-panel" id="f-eh-yahoo">
-              <div class="eh-step"><strong>Easiest option &mdash;</strong> Click the legislator button, then click <strong>Yahoo Mail</strong> in the panel that opens. Yahoo will open in your browser with the message pre-filled.</div>
-              <div class="eh-step"><strong>Set up automatic opening &mdash;</strong> Go to <strong>mail.yahoo.com</strong> in Edge, sign in, and click <strong>Allow</strong> when asked to open mailto links.</div>
-              <div class="eh-step success"><strong>Test it &mdash;</strong> Click a legislator button. Yahoo Mail should open with the message pre-filled.</div>
-            </div>
-            <div class="eh-panel" id="f-eh-gmail">
-              <div class="eh-step"><strong>No setup needed &mdash;</strong> Click the legislator button, then click <strong>Gmail</strong> in the panel that opens. Gmail opens in your browser with the message pre-filled.</div>
-              <div class="eh-step success"><strong>That is it &mdash;</strong> Review the message and click <strong>Send</strong>.</div>
-            </div>
-            <div class="eh-panel" id="f-eh-outlook">
-              <div class="eh-step"><strong>Outlook desktop &mdash;</strong> Clicking the legislator button should open Outlook automatically if it is installed. If not, click <strong>Outlook web</strong> in the panel instead.</div>
-              <div class="eh-step"><strong>Outlook web &mdash;</strong> Click the legislator button, then click <strong>Outlook web</strong>. Opens in your browser with the message pre-filled. No setup needed.</div>
-              <div class="eh-step success"><strong>Test it &mdash;</strong> Click a legislator button and choose Outlook web. Review and click <strong>Send</strong>.</div>
-            </div>
-            <div class="eh-step fallback" style="margin-top:0.75rem;"><strong>Still stuck? &mdash;</strong> Click <strong>Copy address</strong> next to the legislator, open your email manually, start a new message, paste the address, then click <strong>Copy message</strong> and paste the body in.</div>
-          </div>
-        </div>
-      <div class="phone-script">
-        <div class="phone-script-title">📞 Prefer to call?</div>
-        <p id="fed-phone-script">Complete Step 1 to generate your personalized phone script.</p>
-      </div>
-    </div>
-
-  </div><!-- end federal tab -->
-
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- METRICS DASHBOARD — Version 1.1               -->
-  <!-- ═══════════════════════════════════════════ -->
+  <!-- ═══════ METRICS DASHBOARD ═══════ -->
   <div class="metrics-dashboard" id="metrics-dashboard">
     <div class="issue-banner">
       <h2>Campaign Metrics Dashboard</h2>
@@ -887,1089 +278,254 @@ textarea { resize: vertical; line-height: 1.65; }
         <button class="btn" onclick="clearMetrics()">Clear local metrics</button>
         <button class="btn" onclick="hideMetricsDashboard()">Back to Action Center</button>
       </div>
-      <div class="footer-note">Note: Static websites cannot verify that an email was actually sent. These metrics track visits, lookups, email attempts, copy-and-send actions, contact-form clicks, ZIP codes, chapters, and bill selections stored locally in this browser, plus GA4 event hooks where configured.</div>
+      <div style="font-size:12px;color:var(--gray-500);margin-top:10px">Note: Static websites cannot verify that an email was actually sent. These metrics track visits, lookups, email attempts, copy-and-send actions, contact-form clicks, ZIP codes, chapters, and bill selections stored locally in this browser, plus GA4 event hooks where configured.</div>
     </div>
   </div>
-
 
 </div><!-- end .page -->
 
 <script>
-// ─────────────────────────────────────────────────────────────────
-// CONFIGURATION — update bills and legislators here
-// ─────────────────────────────────────────────────────────────────
-
-const GOOGLE_API_KEY = 'YOUR_API_KEY_HERE';
-
-// TARGET MODES:
-//   'committee' — fixed list of legislators (COMMITTEE_MEMBERS used)
-//   'district'  — ZIP lookup finds member's own state rep + senator
-//   'delegation'— Michigan's US Senators + member's US House rep (federal)
-
-let STATE_BILLS = [
-  {
-    id: 1, code: 'HB 5280', priority: true,
-    target: 'committee',
-    short: 'Income Tax Act — retirement pay equity',
-    desc: 'Extends Michigan retirement tax fairness to active duty, retired officers, and surviving spouses of USPHS and NOAA Commissioned Corps. Primary advocacy target.',
-    url: 'https://archive.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5280.pdf',
-    relatedFederal: null,
-    subject: 'Support for HB 5280',
-    body: `Dear Representative [LAST_NAME],
-
-I am writing to respectfully request your support for a revised version of HB 5280, which would extend Michigan retirement tax fairness to active duty, retired officers, and surviving spouses of the United States Public Health Service (USPHS) and National Oceanic and Atmospheric Administration (NOAA) Commissioned Corps.
-
-The revision to the current version of the bill would amend section 30(1)(e)(iv) to read: "(iv) Beginning January 1, 2026, compensation, including retirement or pension benefits, received for services as a commissioned officer in the National Oceanic and Atmospheric Administration Commissioned Officer Corps or the United States Public Health Service Commissioned Corps."
-
-These individuals are members of the uniformed services of the United States and are recognized as veterans by the Department of Veterans Affairs. HB 5280 is a narrow, fiscally responsible measure that simply ensures equal treatment among federally recognized uniformed services retirees.
-
-The bill affects only a small number of Michigan residents and carries minimal fiscal impact, while correcting an inconsistency in current law. Importantly, the legislation does not create a new category of veterans or expand eligibility beyond those already recognized under federal standards.
-
-I respectfully ask that you support HB 5280 and assist in advancing the bill through the House Government Operations Committee.
-
-Thank you for your consideration and for your service to the people of Michigan.
-
-Respectfully,
-[FULL_NAME]
-[CITY], Michigan
-Member, [CHAPTER]`
-  },
-  {
-    id: 2, code: 'HB 5262', priority: false,
-    target: 'committee',
-    short: 'Uniformity of Service Dates Act',
-    desc: 'Amends Act 190 of 1965 to include commissioned officers of NOAA and USPHS as a class of veterans as defined in Title 38 USC.',
-    url: 'https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5262.pdf',
-    relatedFederal: null,
-    subject: 'Support for HB 5262 — Veteran Recognition for NOAA & USPHS Officers',
-    body: `Dear Representative [LAST_NAME],
-
-I am writing to urge your support for HB 5262, which would amend Act 190 of 1965 to include commissioned officers of NOAA and the USPHS as a class of veterans, consistent with the federal definition under Title 38 of the United States Code.
-
-Under federal law, NOAA and USPHS commissioned officers are recognized as veterans by the Department of Veterans Affairs. Michigan law currently fails to extend this same recognition, creating an unjust gap in benefits and honors for individuals who have served in a uniformed capacity.
-
-HB 5262 is a straightforward alignment of Michigan law with existing federal standards. I respectfully ask for your support in advancing this bill through committee.
-
-Thank you for your service to the people of Michigan.
-
-Respectfully,
-[FULL_NAME]
-[CITY], Michigan
-Member, [CHAPTER]`
-  },
-  {
-    id: 3, code: 'HB 5278', priority: false,
-    target: 'committee',
-    short: 'State Personal Identification Card Act',
-    desc: 'Extends veteran designation on state ID cards to NOAA and USPHS commissioned officers.',
-    url: 'https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5278.pdf',
-    relatedFederal: null,
-    subject: 'Support for HB 5278 — Veteran ID Recognition for NOAA & USPHS Officers',
-    body: `Dear Representative [LAST_NAME],
-
-I am writing to ask for your support of HB 5278, which would extend the veteran designation on Michigan state identification cards to commissioned officers of NOAA and the USPHS.
-
-These uniformed service members are recognized as veterans under federal law (38 USC) but are currently excluded from this recognition on Michigan state IDs. This small change would mean a great deal to the men and women who served in these federal uniformed services and now call Michigan home.
-
-I respectfully request your support in moving HB 5278 forward in the House Government Operations Committee.
-
-Respectfully,
-[FULL_NAME]
-[CITY], Michigan
-Member, [CHAPTER]`
-  },
-  {
-    id: 4, code: 'HB 5279', priority: false,
-    target: 'committee',
-    short: 'Michigan Vehicle Code',
-    desc: 'Extends veteran designation on Michigan driver\'s licenses to NOAA and USPHS commissioned officers.',
-    url: 'https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5279.pdf',
-    relatedFederal: null,
-    subject: 'Support for HB 5279 — Veteran Driver\'s License Recognition for NOAA & USPHS Officers',
-    body: `Dear Representative [LAST_NAME],
-
-I am writing to request your support for HB 5279, which would extend the veteran designation on Michigan driver's licenses to commissioned officers of NOAA and the USPHS.
-
-These federally recognized uniformed service veterans currently cannot receive the veteran designation on their Michigan driver's license — an inconsistency with federal law that this bill would correct. The change carries no meaningful fiscal impact and simply provides fair, equal recognition to all who have served.
-
-I ask that you support HB 5279 and help advance it through the House Government Operations Committee.
-
-Respectfully,
-[FULL_NAME]
-[CITY], Michigan
-Member, [CHAPTER]`
-  }
-];
-
-// Federal bills — add entries here when ready
-// Each entry follows the same structure as STATE_BILLS
-// target: 'delegation' contacts MI Senators + member's US House rep
-// target: 'committee' contacts a fixed federal committee list
-let FEDERAL_BILLS = [
-  // ─── FEDERAL BILL TEMPLATE ───────────────────────────────────────────────
-  // Uncomment and populate when a federal priority is confirmed.
-  // Copy the block below and increment the id for additional bills.
-  //
-  // {
-  //   id: 1,
-  //   code: 'S.1234',          // Bill number (e.g. S.1234, H.R.5678)
-  //   priority: true,           // true = gold "★ Priority" badge
-  //   target: 'delegation',     // 'delegation' = MI Senators + member's US Rep
-  //                             // 'committee'  = fixed committee list (add below)
-  //   committee: [],            // Only needed if target:'committee' — list of
-  //                             // legislators in same format as STATE_COMMITTEE
-  //   relatedState: 'HB 5280', // Optional: links to a state bill card
-  //   short: 'Short title of the bill',
-  //   desc: 'One or two sentence plain-English description shown on the bill card.',
-  //   url: 'https://www.congress.gov/bill/...',
-  //   subject: 'Please support S.1234 — [Short Title]',
-  //   body: `Dear [SALUTATION] [LAST_NAME],
-  //
-  // [Your letter body here. Use merge fields:]
-  // [FULL_NAME]  [CITY]  [ZIP]  [ADDRESS]  [CHAPTER]  [SALUTATION]  [LAST_NAME]
-  //
-  // Respectfully,
-  // [FULL_NAME]
-  // [CITY], Michigan
-  // Member, [CHAPTER]`
-  // },
-  // ─────────────────────────────────────────────────────────────────────────
-];
-
-// ─── VERSION 1.2 — Legislator database ───────────────────────────
-// STATE_COMMITTEE and MI_SENATORS are no longer the primary data source.
-// Legislators are resolved from LEGISLATORS, loaded from lac-legislators.json.
-// These empty arrays remain as in-code fallbacks if the database fails to load.
-let STATE_COMMITTEE = [];
-let MI_SENATORS = [];
-
-// Legislator database — populated from lac-legislators.json at startup.
-// Each record: { state, chamber, district, name, salutation, party, email, phone, contact_url }
-// chamber values: 'MI House', 'MI Senate', 'US House', 'US Senate'
-let LEGISLATORS = [];
-
-// Action alerts — populated from lac-config.json at startup.
-// Each record: { tab, headline, desc, bill_code, info_url, info_label, expires }
-let ALERTS = [];
-
-// ─────────────────────────────────────────────────────────────────
-// STATE TAB LOGIC
-// ─────────────────────────────────────────────────────────────────
-
-let selectedStateBill = null;
-let stateDistrictLegislators = [];
-
-function sv(id){
-  if(id === 's-chapter'){
-    const sel = document.getElementById('s-chapter-select');
-    if(sel.value === '__other__') return document.getElementById('s-chapter').value.trim();
-    return sel.value.trim();
-  }
-  return document.getElementById(id).value.trim();
-}
-
-function initials(name){
-  const parts = name.split(' ');
-  return (parts[0][0] + parts[parts.length-1][0]).toUpperCase();
-}
-
-function renderStateBills(){
-  const g = document.getElementById('state-bills-grid');
-  g.innerHTML = '';
-  STATE_BILLS.forEach(b => {
-    const d = document.createElement('div');
-    d.className = 'bill-card' + (selectedStateBill && selectedStateBill.id === b.id ? ' selected' : '');
-    const targetLabel = b.target === 'committee' ? 'Committee' : 'My District';
-    const targetClass = b.target === 'committee' ? 'committee' : 'district';
-    d.innerHTML =
-      (b.priority ? '<div class="priority-badge">★ Primary target</div>' : '') +
-      `<span class="target-badge ${targetClass}">${targetLabel}</span>` +
-      `<div class="bill-code">${b.code}</div>` +
-      `<div class="bill-short">${b.short}</div>` +
-      `<div class="bill-desc">${b.desc}</div>` +
-      (b.relatedFederal ? `<button class="federal-link" onclick="event.stopPropagation();jumpToFederal('${b.relatedFederal}')">↗ Related federal bill: ${b.relatedFederal}</button>` : '') +
-      `<a class="bill-text-link" href="${b.url}" target="_blank" onclick="event.stopPropagation()">View full bill text ↗</a>`;
-    d.onclick = () => { selectedStateBill = b; renderStateBills(); lacEvent('bill_selected', { tab: 'state', bill_code: b.code, ...getAdvocateContext('s') }); };
-    g.appendChild(d);
-  });
-}
-
-function stateGoStep2(){
-  const fn=sv('s-fname'), ln=sv('s-lname'), addr=sv('s-addr'), city=sv('s-city'), zip=sv('s-zip'), em=sv('s-email');
-  const ch=sv('s-chapter');
-  if(!fn||!ln||!addr||!city||!zip||!em||!ch){ document.getElementById('s-s1err').textContent='Please complete all fields before continuing.'; return; }
-  if(!/^\d{5}$/.test(zip)){ document.getElementById('s-s1err').textContent='Please enter a valid 5-digit ZIP code.'; return; }
-  document.getElementById('s-s1err').textContent = '';
-  if(!selectedStateBill) selectedStateBill = STATE_BILLS[0];
-  lacEvent('step_complete', { tab: 'state', step: 1, ...getAdvocateContext('s') });
-  stateGoStep(2); renderStateBills();
-}
-
-async function stateGoStep3(){
-  if(!selectedStateBill){ document.getElementById('s-s2err').textContent='Please select a bill first.'; return; }
-  document.getElementById('s-s2err').textContent = '';
-  lacEvent('step_complete', { tab: 'state', step: 2, bill_code: selectedStateBill.code });
-  stateGoStep(3);
-  await buildStateComposer();
-}
-
-async function buildStateComposer(){
-  const fn=sv('s-fname'), ln=sv('s-lname'), addr=sv('s-addr'), city=sv('s-city'), zip=sv('s-zip'), em=sv('s-email');
-  const ch = sv('s-chapter') || 'my MOAA chapter';
-
-  // Set subject and body — use first committee member or generic placeholder for merge
-  const committeeLegs = selectedStateBill.target === 'committee'
-    ? getLegislatorsByDistricts(['MI House'], selectedStateBill.districts || [])
-    : [];
-  const firstLeg = committeeLegs[0] || { name: 'Representative', salutation: 'Representative' };
-  const lastName = firstLeg.name.split(' ').pop();
-
-  document.getElementById('s-esubj').value = selectedStateBill.subject;
-  document.getElementById('s-ebody').value = fillMerge(selectedStateBill.body, {
-    LAST_NAME: lastName, FULL_NAME: fn+' '+ln, CITY: city,
-    ZIP: zip, EMAIL: em, ADDRESS: addr, CHAPTER: ch, SALUTATION: firstLeg.salutation
-  });
-
-  // Phone script
-  document.getElementById('state-phone-script').textContent =
-    `"Hello, my name is ${fn} ${ln}. I'm a constituent of Representative [Name] and a member of the ${ch}, Military Officers Association of America. I'm calling to ask for your support in moving ${selectedStateBill.code} forward${selectedStateBill.target==='committee'?' in committee':''}. It's a common-sense fix to ensure equal treatment for all uniformed service veterans."`;
-
-  // Determine legislators
-  if(selectedStateBill.target === 'committee'){
-    const label = selectedStateBill.committeeLabel || 'House Committee — send to each member';
-    document.getElementById('state-rec-header').textContent = label;
-    document.getElementById('state-lookup-status').className = 'hidden';
-    document.getElementById('state-manual-fallback').classList.add('hidden');
-    stateDistrictLegislators = committeeLegs.length ? committeeLegs : STATE_COMMITTEE;
-    renderStateButtons();
-  } else {
-    // ZIP/address lookup
-    document.getElementById('state-rec-header').textContent = 'Your Michigan legislators';
-    await lookupStateDistrict(addr, city, zip);
-  }
-}
-
-async function lookupStateDistrict(addr, city, zip){
-  const statusEl = document.getElementById('state-lookup-status');
-  statusEl.className = 'lookup-status loading';
-  statusEl.innerHTML = '<div class="spinner"></div> Looking up your state legislators by address…';
-  document.getElementById('state-leg-buttons').innerHTML = '';
-  document.getElementById('state-manual-fallback').classList.add('hidden');
-
-  const address = encodeURIComponent(`${addr}, ${city}, MI ${zip}`);
-  const url = `https://www.googleapis.com/civicinfo/v2/representatives?address=${address}&levels=administrativeArea1&roles=legislatorLowerBody&roles=legislatorUpperBody&key=${GOOGLE_API_KEY}`;
-
-  try {
-    const resp = await fetch(url);
-    const data = await resp.json();
-
-    if(data.error || !data.officials){
-      throw new Error(data.error?.message || 'No results');
-    }
-
-    // Build legislator list — match Civic API district numbers against the database.
-    // Falls back to API-supplied contact details if no database match is found.
-    const legislators = [];
-    const offices = data.offices || [];
-    offices.forEach(office => {
-      const isHouse  = office.roles?.includes('legislatorLowerBody');
-      const isSenate = office.roles?.includes('legislatorUpperBody');
-      const chamber  = isHouse ? 'MI House' : 'MI Senate';
-      const salutationFallback = isHouse ? 'Representative' : 'Senator';
-      (office.officialIndices || []).forEach(idx => {
-        const official = data.officials[idx];
-        if(!official) return;
-        // Extract district number from the division OCD-ID (e.g. ocd-division/country:us/state:mi/sldl:71)
-        const divisionKey = Object.keys(data.divisions || {}).find(k =>
-          office.divisionId ? k === office.divisionId : false
-        ) || office.divisionId || '';
-        const districtMatch = divisionKey.match(/:(\d+)$/);
-        const districtNum   = districtMatch ? districtMatch[1] : null;
-
-        // Try database lookup first
-        const dbRecord = districtNum
-          ? LEGISLATORS.find(l => l.chamber === chamber && l.district === districtNum)
-          : null;
-
-        if(dbRecord){
-          legislators.push({ ...dbRecord, type: 'district' });
-        } else {
-          // Fallback to API data
-          legislators.push({
-            name: official.name,
-            title: `${chamber} · Michigan`,
-            salutation: salutationFallback,
-            email: official.emails?.[0] || '',
-            phone: official.phones?.[0] || '',
-            contact_url: '',
-            type: 'district'
-          });
-        }
-      });
-    });
-
-    if(legislators.length === 0) throw new Error('No legislators found for this address');
-
-    stateDistrictLegislators = legislators;
-    statusEl.className = 'lookup-status success';
-    statusEl.innerHTML = `✓ Found ${legislators.length} Michigan legislators for your address`;
-    lacEvent('zip_lookup', { tab: 'state', result: 'success', count: legislators.length, ...getAdvocateContext('s') });
-    renderStateButtons();
-
-  } catch(err){
-    statusEl.className = 'lookup-status error';
-    statusEl.innerHTML = `⚠ Could not automatically find your legislators. Use the manual lookup link below or try a different address.`;
-    lacEvent('zip_lookup', { tab: 'state', result: 'error', ...getAdvocateContext('s') });
-    stateDistrictLegislators = [];
-    document.getElementById('state-leg-buttons').innerHTML = '';
-    document.getElementById('state-manual-fallback').classList.remove('hidden');
-  }
-}
-
-function renderStateButtons(){
-  const fn=sv('s-fname'), ln=sv('s-lname'), addr=sv('s-addr'), city=sv('s-city'), zip=sv('s-zip'), em=sv('s-email');
-  const ch = sv('s-chapter') || 'my MOAA chapter';
-  const subj = document.getElementById('s-esubj').value;
-  const bodyTpl = document.getElementById('s-ebody').value;
-  const container = document.getElementById('state-leg-buttons');
-  container.innerHTML = '';
-
-  stateDistrictLegislators.forEach(leg => {
-    const lastName = leg.name.split(' ').pop();
-    const body = fillMerge(bodyTpl, {
-      LAST_NAME: lastName, FULL_NAME: fn+' '+ln, CITY: city,
-      ZIP: zip, EMAIL: em, ADDRESS: addr, CHAPTER: ch, SALUTATION: leg.salutation
-    });
-    renderLegButton(container, leg, subj, body, leg.type === 'district' ? 'district-found' : '');
-  });
-}
-
-function stateRefreshLinks(){ renderStateButtons(); }
-
-function stateCopyMsg(){
-  const btn = document.getElementById('s-copybtn');
-  copyText('Subject: '+document.getElementById('s-esubj').value+'\n\n'+document.getElementById('s-ebody').value, btn, 'Copied ✓');
-}
-
-function stateGoStep(n){
-  [1,2,3].forEach(i=>{
-    document.getElementById('state-step'+i).classList.toggle('hidden', i!==n);
-    const dot = document.getElementById('state-sdot'+i);
-    dot.classList.remove('active','done');
-    if(i < n) dot.classList.add('done');
-    else if(i === n) dot.classList.add('active');
-  });
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-
-// ─────────────────────────────────────────────────────────────────
-// FEDERAL TAB LOGIC
-// ─────────────────────────────────────────────────────────────────
-
-let selectedFedBill = null;
-
-function fv(id){
-  if(id === 'f-chapter'){
-    const sel = document.getElementById('f-chapter-select');
-    if(sel.value === '__other__') return document.getElementById('f-chapter').value.trim();
-    return sel.value.trim();
-  }
-  return document.getElementById(id).value.trim();
-}
-
-function renderFedBills(){
-  const g = document.getElementById('fed-bills-grid');
-  g.innerHTML = '';
-
-  if(FEDERAL_BILLS.length === 0){
-    g.innerHTML = `<div class="empty-state">
-      <h3>Federal bills coming soon</h3>
-      <p>Federal priority legislation will appear here when added. Check back soon, or visit <a href="https://www.moaa.org/content/legislative-action/legislative-action/" target="_blank" style="color:var(--navy);font-weight:600">MOAA National</a> for current federal advocacy priorities.</p>
-    </div>`;
-    return;
-  }
-
-  const grid = document.createElement('div');
-  grid.className = 'bills-grid';
-  FEDERAL_BILLS.forEach(b => {
-    const d = document.createElement('div');
-    d.className = 'bill-card' + (selectedFedBill && selectedFedBill.id === b.id ? ' selected' : '');
-    const targetLabel = b.target === 'delegation' ? 'Full Delegation' : 'Committee';
-    const targetClass = b.target === 'delegation' ? 'delegation' : 'committee';
-    d.innerHTML =
-      (b.priority ? '<div class="priority-badge">★ Priority</div>' : '') +
-      `<span class="target-badge ${targetClass}">${targetLabel}</span>` +
-      `<div class="bill-code">${b.code}</div>` +
-      `<div class="bill-short">${b.short}</div>` +
-      `<div class="bill-desc">${b.desc}</div>` +
-      (b.relatedState ? `<span style="font-size:11px;color:var(--green);font-weight:600;margin-top:6px;display:block">↔ Related state bill: ${b.relatedState}</span>` : '') +
-      `<a class="bill-text-link" href="${b.url}" target="_blank" onclick="event.stopPropagation()">View full bill text ↗</a>`;
-    d.onclick = () => { selectedFedBill = b; renderFedBills(); lacEvent('bill_selected', { tab: 'federal', bill_code: b.code, ...getAdvocateContext('f') }); };
-    grid.appendChild(d);
-  });
-  g.appendChild(grid);
-}
-
-function fedGoStep2(){
-  const fn=fv('f-fname'), ln=fv('f-lname'), addr=fv('f-addr'), city=fv('f-city'), zip=fv('f-zip'), em=fv('f-email');
-  const ch=fv('f-chapter');
-  if(!fn||!ln||!addr||!city||!zip||!em||!ch){ document.getElementById('f-s1err').textContent='Please complete all fields.'; return; }
-  if(!/^\d{5}$/.test(zip)){ document.getElementById('f-s1err').textContent='Please enter a valid 5-digit ZIP code.'; return; }
-  document.getElementById('f-s1err').textContent = '';
-  lacEvent('step_complete', { tab: 'federal', step: 1, ...getAdvocateContext('f') });
-  fedGoStep(2); renderFedBills();
-}
-
-async function fedGoStep3(){
-  if(FEDERAL_BILLS.length === 0){ document.getElementById('f-s2err').textContent='No federal bills are available yet.'; return; }
-  if(!selectedFedBill){ document.getElementById('f-s2err').textContent='Please select a bill first.'; return; }
-  document.getElementById('f-s2err').textContent = '';
-  lacEvent('step_complete', { tab: 'federal', step: 2, bill_code: selectedFedBill.code });
-  fedGoStep(3);
-  await buildFedComposer();
-}
-
-async function buildFedComposer(){
-  const fn=fv('f-fname'), ln=fv('f-lname'), addr=fv('f-addr'), city=fv('f-city'), zip=fv('f-zip'), em=fv('f-email');
-  const ch = fv('f-chapter') || 'my MOAA chapter';
-
-  const firstSenator = MI_SENATORS[0] || { name: 'Senator', salutation: 'Senator' };
-  document.getElementById('f-esubj').value = selectedFedBill.subject;
-  document.getElementById('f-ebody').value = fillMerge(selectedFedBill.body, {
-    LAST_NAME: firstSenator.name.split(' ').pop(),
-    FULL_NAME: fn+' '+ln, CITY: city, ZIP: zip,
-    EMAIL: em, ADDRESS: addr, CHAPTER: ch, SALUTATION: 'Senator'
-  });
-
-  document.getElementById('fed-phone-script').textContent =
-    `"Hello, my name is ${fn} ${ln}. I'm a constituent from ${city}, Michigan and a member of the ${ch}, Military Officers Association of America. I'm calling to urge support for ${selectedFedBill.code}. ${selectedFedBill.short}. I ask that the Senator support this important legislation for our veterans."`;
-
-  if(selectedFedBill.target === 'delegation'){
-    document.getElementById('fed-lookup-status').className = 'lookup-status loading';
-    document.getElementById('fed-lookup-status').innerHTML = '<div class="spinner"></div> Looking up your U.S. House representative…';
-    await lookupFedRep(addr, city, zip);
-  } else {
-    document.getElementById('fed-lookup-status').className = 'hidden';
-    renderFedButtons(selectedFedBill.committee || []);
-  }
-}
-
-async function lookupFedRep(addr, city, zip){
-  const statusEl = document.getElementById('fed-lookup-status');
-  const address = encodeURIComponent(`${addr}, ${city}, MI ${zip}`);
-  const url = `https://www.googleapis.com/civicinfo/v2/representatives?address=${address}&levels=country&roles=legislatorLowerBody&key=${GOOGLE_API_KEY}`;
-
-  try {
-    const resp = await fetch(url);
-    const data = await resp.json();
-    if(data.error || !data.officials) throw new Error('No results');
-
-    const houseReps = [];
-    (data.offices||[]).forEach(office => {
-      if(office.roles?.includes('legislatorLowerBody')){
-        // Extract congressional district number from OCD-ID
-        const divisionKey = office.divisionId || '';
-        const districtMatch = divisionKey.match(/:(\d+)$/);
-        const districtNum = districtMatch ? districtMatch[1] : null;
-
-        (office.officialIndices||[]).forEach(idx => {
-          const official = data.officials[idx];
-          if(!official) return;
-
-          // Try database lookup first
-          const dbRecord = districtNum
-            ? LEGISLATORS.find(l => l.chamber === 'US House' && l.district === districtNum)
-            : null;
-
-          if(dbRecord){
-            houseReps.push({ ...dbRecord, type: 'federal' });
-          } else {
-            houseReps.push({
-              name: official.name,
-              title: 'U.S. Representative · Michigan',
-              salutation: 'Representative',
-              email: official.emails?.[0] || '',
-              phone: official.phones?.[0] || '',
-              contact_url: '',
-              type: 'federal'
-            });
-          }
-        });
-      }
-    });
-
-    statusEl.className = 'lookup-status success';
-    statusEl.innerHTML = `✓ Found your U.S. House representative`;
-    lacEvent('zip_lookup', { tab: 'federal', result: 'success', ...getAdvocateContext('f') });
-    renderFedButtons([...MI_SENATORS, ...houseReps]);
-
-  } catch(err){
-    statusEl.className = 'lookup-status error';
-    statusEl.innerHTML = `⚠ Could not find your House representative automatically. Senators are still included below.`;
-    lacEvent('zip_lookup', { tab: 'federal', result: 'error', ...getAdvocateContext('f') });
-    renderFedButtons([...MI_SENATORS]);
-  }
-}
-
-function renderFedButtons(legislators){
-  const fn=fv('f-fname'), ln=fv('f-lname'), addr=fv('f-addr'), city=fv('f-city'), zip=fv('f-zip'), em=fv('f-email');
-  const ch = fv('f-chapter') || 'my MOAA chapter';
-  const subj = document.getElementById('f-esubj').value;
-  const bodyTpl = document.getElementById('f-ebody').value;
-  const container = document.getElementById('fed-leg-buttons');
-  container.innerHTML = '';
-
-  legislators.forEach(leg => {
-    const lastName = leg.name.split(' ').pop();
-    const body = fillMerge(bodyTpl, {
-      LAST_NAME: lastName, FULL_NAME: fn+' '+ln, CITY: city,
-      ZIP: zip, EMAIL: em, ADDRESS: addr, CHAPTER: ch, SALUTATION: leg.salutation
-    });
-    renderLegButton(container, leg, subj, body, 'federal');
-  });
-}
-
-function fedRefreshLinks(){
-  if(selectedFedBill?.target === 'delegation') renderFedButtons([...MI_SENATORS]);
-  else if(selectedFedBill?.committee) renderFedButtons(selectedFedBill.committee);
-}
-
-function fedCopyMsg(){
-  const btn = document.getElementById('f-copybtn');
-  copyText('Subject: '+document.getElementById('f-esubj').value+'\n\n'+document.getElementById('f-ebody').value, btn, 'Copied ✓');
-}
-
-function fedGoStep(n){
-  [1,2,3].forEach(i=>{
-    document.getElementById('fed-step'+i).classList.toggle('hidden', i!==n);
-    const dot = document.getElementById('fed-sdot'+i);
-    dot.classList.remove('active','done');
-    if(i < n) dot.classList.add('done');
-    else if(i === n) dot.classList.add('active');
-  });
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-
-// ─────────────────────────────────────────────────────────────────
-// SHARED UTILITIES
-// ─────────────────────────────────────────────────────────────────
-
-function getAdvocateContext(prefix){
-  const isFederal = prefix === 'f';
-  const fn = isFederal ? fv('f-fname') : sv('s-fname');
-  const ln = isFederal ? fv('f-lname') : sv('s-lname');
-  const city = isFederal ? fv('f-city') : sv('s-city');
-  const zip = isFederal ? fv('f-zip') : sv('s-zip');
-  const chapter = isFederal ? fv('f-chapter') : sv('s-chapter');
-  return { full_name: (fn + ' ' + ln).trim(), city, zip, chapter };
-}
-
-function fillMerge(template, vals){
-  return template
-    .replace(/\[FULL_NAME\]/g, vals.FULL_NAME||'')
-    .replace(/\[LAST_NAME\]/g, vals.LAST_NAME||'')
-    .replace(/\[CITY\]/g, vals.CITY||'')
-    .replace(/\[ZIP\]/g, vals.ZIP||'')
-    .replace(/\[EMAIL\]/g, vals.EMAIL||'')
-    .replace(/\[ADDRESS\]/g, vals.ADDRESS||'')
-    .replace(/\[CHAPTER\]/g, vals.CHAPTER||'')
-    .replace(/\[SALUTATION\]/g, vals.SALUTATION||'');
-}
-
-function escapeHtml(value){
-  return String(value || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
-
-function buildEmailLinks(email, subj, body){
-  const to = encodeURIComponent(email);
-  const mailtoTo = to.replace(/%40/g, '@');
-  const subject = encodeURIComponent(subj);
-  const message = encodeURIComponent(body);
-  return {
-    mailto: `mailto:${mailtoTo}?subject=${subject}&body=${message}`,
-    gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${message}`,
-    outlook: `https://outlook.office.com/mail/deeplink/compose?to=${to}&subject=${subject}&body=${message}`,
-    yahoo: `https://compose.mail.yahoo.com/?to=${to}&subject=${subject}&body=${message}`
-  };
-}
-
-function copyText(text, btn, doneLabel){
-  const finish = () => {
-    const original = btn.textContent;
-    btn.textContent = doneLabel || 'Copied';
-    setTimeout(()=>{ btn.textContent = original; }, 2000);
-  };
-
-  if(navigator.clipboard && window.isSecureContext){
-    navigator.clipboard.writeText(text).then(finish).catch(()=>fallbackCopyText(text, finish));
-  } else {
-    fallbackCopyText(text, finish);
-  }
-}
-
-function fallbackCopyText(text, done){
-  const ta = document.createElement('textarea');
-  ta.value = text;
-  ta.setAttribute('readonly', '');
-  ta.style.position = 'fixed';
-  ta.style.left = '-9999px';
-  document.body.appendChild(ta);
-  ta.select();
-  document.execCommand('copy');
-  document.body.removeChild(ta);
-  done();
-}
-
-function markLegOpened(card, leg, avatarClass, method){
-  const tabName = avatarClass === 'federal' ? 'federal' : 'state';
-  lacEvent('email_choice', {
-    legislator: leg.name,
-    tab: tabName,
-    method,
-    ...(tabName === 'federal' ? getAdvocateContext('f') : getAdvocateContext('s'))
-  });
-  setTimeout(()=>{
-    if(!card.querySelector('.opened-badge')){
-      const arrow = card.querySelector('.leg-arrow');
-      if(arrow) arrow.insertAdjacentHTML('beforebegin','<span class="opened-badge">Opened ✓</span>');
-    }
-  }, 400);
-}
-
-function renderLegButton(container, leg, subj, body, avatarClass){
-  const card = document.createElement('div');
-  card.className = 'leg-choice-card';
-
-  const links = leg.email ? buildEmailLinks(leg.email, subj, body) : null;
-  const header = document.createElement(leg.email ? 'a' : 'button');
-  if(leg.email) header.href = links.mailto;
-  else header.type = 'button';
-  header.className = 'leg-send-btn';
-  header.setAttribute('aria-expanded', 'false');
-  header.innerHTML = `
-    <div class="leg-avatar ${escapeHtml(avatarClass||'')}">${escapeHtml(initials(leg.name))}</div>
-    <div style="flex:1;min-width:0">
-      <div class="leg-name">${escapeHtml(leg.salutation ? leg.salutation+' ' : '')}${escapeHtml(leg.name)}</div>
-      <div class="leg-meta">${escapeHtml(leg.title)}${leg.phone?' · '+escapeHtml(leg.phone):''}${leg.email?' · '+escapeHtml(leg.email):' · Contact form — see their website'}</div>
-    </div>
-    <svg class="leg-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>`;
-  header.onclick = () => {
-    if(!leg.email){
-      const isOpen = card.classList.toggle('open');
-      header.setAttribute('aria-expanded', String(isOpen));
-      return;
-    }
-
-    const tabName = avatarClass === 'federal' ? 'federal' : 'state';
-    lacEvent('email_choice', {
-      legislator: leg.name,
-      tab: tabName,
-      method: 'mailto_first',
-      ...(tabName === 'federal' ? getAdvocateContext('f') : getAdvocateContext('s'))
-    });
-
-    setTimeout(()=>{
-      card.classList.add('open');
-      header.setAttribute('aria-expanded', 'true');
-      if(!card.querySelector('.opened-badge')){
-        const arrow = card.querySelector('.leg-arrow');
-        if(arrow) arrow.insertAdjacentHTML('beforebegin','<span class="opened-badge">Tried email app</span>');
-      }
-    }, 650);
-  };
-
-  const panel = document.createElement('div');
-  panel.className = 'leg-choice-panel';
-
-  if(!leg.email){
-    panel.innerHTML = `
-      <div class="leg-choice-title">No direct email listed</div>
-      <div class="leg-choice-row">
-        ${leg.contact_url ? `<a class="leg-choice-link primary contact-form-link" href="${leg.contact_url}" target="_blank" rel="noopener" data-method="contact_form">Open contact form</a>` : ''}
-        <button class="leg-choice-link primary" type="button" data-copy-message>Copy message</button>
-      </div>
-      <div class="leg-choice-note">Use the official contact form or paste this message into any email program.</div>`;
-  } else {
-    panel.innerHTML = `
-      <div class="leg-choice-title">If the email app did not open</div>
-      <div class="leg-choice-row">
-        <a class="leg-choice-link primary" href="${links.gmail}" target="_blank" rel="noopener" data-method="gmail">Gmail</a>
-        <a class="leg-choice-link primary" href="${links.outlook}" target="_blank" rel="noopener" data-method="outlook">Outlook web</a>
-        <a class="leg-choice-link" href="${links.yahoo}" target="_blank" rel="noopener" data-method="yahoo">Yahoo Mail</a>
-        <a class="leg-choice-link" href="${links.mailto}" data-method="email_app">Email app</a>
-        ${leg.contact_url ? `<a class="leg-choice-link contact-form-link" href="${leg.contact_url}" target="_blank" rel="noopener" data-method="contact_form">Contact form</a>` : ''}
-        <button class="leg-choice-link" type="button" data-copy-address>Copy address</button>
-        <button class="leg-choice-link" type="button" data-copy-message>Copy message</button>
-      </div>
-      <div class="leg-choice-note">Use these choices if Windows, Outlook, or your browser did not open the first email attempt.</div>`;
-  }
-
-  panel.querySelectorAll('a[data-method]').forEach(link => {
-    link.onclick = () => markLegOpened(card, leg, avatarClass, link.dataset.method);
-  });
-
-  const copyAddress = panel.querySelector('[data-copy-address]');
-  if(copyAddress){
-    copyAddress.onclick = () => {
-      copyText(leg.email, copyAddress, 'Address copied');
-      { const tabName = avatarClass === 'federal' ? 'federal' : 'state'; lacEvent('email_choice', { legislator: leg.name, tab: tabName, method: 'copy_address', ...(tabName === 'federal' ? getAdvocateContext('f') : getAdvocateContext('s')) }); }
-    };
-  }
-
-  const copyMessage = panel.querySelector('[data-copy-message]');
-  if(copyMessage){
-    copyMessage.onclick = () => {
-      const text = (leg.email ? 'To: '+leg.email+'\n' : '') + 'Subject: '+subj+'\n\n'+body;
-      copyText(text, copyMessage, 'Message copied');
-      { const tabName = avatarClass === 'federal' ? 'federal' : 'state'; lacEvent('email_choice', { legislator: leg.name, tab: tabName, method: 'copy_message', ...(tabName === 'federal' ? getAdvocateContext('f') : getAdvocateContext('s')) }); }
-    };
-  }
-
-  card.appendChild(header);
-  card.appendChild(panel);
-  container.appendChild(card);
-}
-
-function switchTab(tab){
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('tab-'+tab).classList.add('active');
-  event.currentTarget.classList.add('active');
-  window.scrollTo({top:0, behavior:'smooth'});
-  lacEvent('tab_switch', { tab_name: tab });
-}
-
-function jumpToFederal(billCode){
-  switchTab('federal');
-  // Pre-select the related federal bill if it exists
-  const bill = FEDERAL_BILLS.find(b => b.code === billCode);
-  if(bill){ selectedFedBill = bill; renderFedBills(); }
-}
-
-// Update tab badges
-function updateBadges(){
-  const sc = STATE_BILLS.length;
-  const fc = FEDERAL_BILLS.length;
-  document.getElementById('state-badge').textContent = sc;
-  const fb = document.getElementById('federal-badge');
-  if(fc > 0){ fb.textContent = fc; fb.className = 'tab-badge'; }
-  else { fb.textContent = 'Coming Soon'; fb.className = 'tab-badge coming'; }
-}
-
-// Chapter dropdown — show/hide Other input
-function chapterSelectChange(prefix){
-  const sel = document.getElementById(prefix+'-chapter-select');
-  const other = document.getElementById(prefix+'-chapter-other');
-  const isOther = sel.value === '__other__';
-  other.classList.toggle('visible', isOther);
-  if(isOther) document.getElementById(prefix+'-chapter').focus();
-}
-
-// Email help accordion
-function toggleEmailHelp(prefix){
-  const body = document.getElementById(prefix+'-email-help-body');
-  const btn = body.previousElementSibling;
-  const isOpen = body.classList.contains('visible');
-  body.classList.toggle('visible', !isOpen);
-  btn.classList.toggle('open', !isOpen);
-  btn.setAttribute('aria-expanded', String(!isOpen));
-}
-
-function showEhTab(prefix, provider, el){
-  const providers = ['aol','yahoo','gmail','outlook'];
-  providers.forEach(p => {
-    const panel = document.getElementById(prefix+'-eh-'+p);
-    if(panel) panel.classList.toggle('visible', p === provider);
-  });
-  el.closest('.eh-tabs').querySelectorAll('.eh-tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-}
-
-
-// ─────────────────────────────────────────────────────────────────
-// VERSION 1.2 — Legislator database + external configuration
-// ─────────────────────────────────────────────────────────────────
-
-const LAC_CONFIG_URL = 'lac-config.json';
+// ─── Constants ───────────────────────────────────────────────────
+const LAC_CONFIG_URL      = 'lac-config.json';
 const LAC_LEGISLATORS_URL = 'lac-legislators.json';
-const LAC_METRICS_KEY = 'mcoc_lac_metrics_v1';
-const LAC_ADMIN_PASSWORD = 'ChangeMe2026!'; // Change before posting publicly. This is light protection only.
+const LAC_METRICS_KEY     = 'mcoc_lac_metrics_v1';
+const LAC_ADMIN_PASSWORD  = 'ChangeMe2026!';
 const LAC_ADMIN_SESSION_KEY = 'mcoc_lac_admin_unlocked_v1';
 
-// Wrap GA4 event helper so the same events are stored locally for export/testing.
+// ─── GA4 + local metrics ──────────────────────────────────────────
 const _lacEvent = window.lacEvent || function(){};
 window.lacEvent = function(event_name, params){
   try { _lacEvent(event_name, params || {}); } catch(e) {}
   try { storeLocalMetric(event_name, params || {}); } catch(e) {}
 };
-
 function storeLocalMetric(event_name, params){
-  const row = {
-    time: new Date().toISOString(),
-    event: event_name,
-    tab: params?.tab || params?.tab_name || '',
-    details: params || {}
-  };
+  const row = { time: new Date().toISOString(), event: event_name, tab: params?.tab || params?.tab_name || '', details: params || {} };
   const data = JSON.parse(localStorage.getItem(LAC_METRICS_KEY) || '[]');
   data.push(row);
   localStorage.setItem(LAC_METRICS_KEY, JSON.stringify(data.slice(-1000)));
 }
+function getLocalMetrics(){ try { return JSON.parse(localStorage.getItem(LAC_METRICS_KEY) || '[]'); } catch(e){ return []; } }
 
-function getLocalMetrics(){
-  try { return JSON.parse(localStorage.getItem(LAC_METRICS_KEY) || '[]'); }
-  catch(e){ return []; }
+// ─── Bill data (in-code fallbacks; overridden by lac-config.json) ─
+let STATE_BILLS = [
+  { id:1, code:'HB 5280', priority:true, target:'committee', districts:['71','52','83','102','14'], committeeLabel:'House Committee on Government Operations — send to each member', short:'Income Tax Act — retirement pay equity', desc:'Extends Michigan retirement tax fairness to active duty, retired officers, and surviving spouses of USPHS and NOAA Commissioned Corps.', url:'https://archive.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5280.pdf', relatedFederal:null, subject:'Support for HB 5280', body:'Dear Representative [LAST_NAME],\n\nI am writing to respectfully request your support for HB 5280, which would extend Michigan retirement tax fairness to active duty, retired officers, and surviving spouses of the United States Public Health Service (USPHS) and National Oceanic and Atmospheric Administration (NOAA) Commissioned Corps.\n\nThese individuals are members of the uniformed services of the United States and are recognized as veterans by the Department of Veterans Affairs. HB 5280 is a narrow, fiscally responsible measure that simply ensures equal treatment among federally recognized uniformed services retirees.\n\nI respectfully ask that you support HB 5280 and assist in advancing the bill through the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]' },
+  { id:2, code:'HB 5262', priority:false, target:'committee', districts:['71','52','83','102','14'], committeeLabel:'House Committee on Government Operations — send to each member', short:'Uniformity of Service Dates Act', desc:'Amends Act 190 of 1965 to include commissioned officers of NOAA and USPHS as a class of veterans as defined in Title 38 USC.', url:'https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5262.pdf', relatedFederal:null, subject:'Support for HB 5262 — Veteran Recognition for NOAA & USPHS Officers', body:'Dear Representative [LAST_NAME],\n\nI am writing to urge your support for HB 5262, which would amend Act 190 of 1965 to include commissioned officers of NOAA and the USPHS as a class of veterans, consistent with the federal definition under Title 38 of the United States Code.\n\nHB 5262 is a straightforward alignment of Michigan law with existing federal standards. I respectfully ask for your support in advancing this bill through committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]' },
+  { id:3, code:'HB 5278', priority:false, target:'committee', districts:['71','52','83','102','14'], committeeLabel:'House Committee on Government Operations — send to each member', short:'State Personal Identification Card Act', desc:'Extends veteran designation on state ID cards to NOAA and USPHS commissioned officers.', url:'https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5278.pdf', relatedFederal:null, subject:'Support for HB 5278 — Veteran ID Recognition for NOAA & USPHS Officers', body:'Dear Representative [LAST_NAME],\n\nI am writing to ask for your support of HB 5278, which would extend the veteran designation on Michigan state identification cards to commissioned officers of NOAA and the USPHS.\n\nI respectfully request your support in moving HB 5278 forward in the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]' },
+  { id:4, code:'HB 5279', priority:false, target:'committee', districts:['71','52','83','102','14'], committeeLabel:'House Committee on Government Operations — send to each member', short:'Michigan Vehicle Code', desc:"Extends veteran designation on Michigan driver's licenses to NOAA and USPHS commissioned officers.", url:'https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5279.pdf', relatedFederal:null, subject:"Support for HB 5279 — Veteran Driver's License Recognition for NOAA & USPHS Officers", body:"Dear Representative [LAST_NAME],\n\nI am writing to request your support for HB 5279, which would extend the veteran designation on Michigan driver's licenses to commissioned officers of NOAA and the USPHS.\n\nI ask that you support HB 5279 and help advance it through the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]" }
+];
+let FEDERAL_BILLS = [];
+let ALERTS = [];
+
+// ─── Utilities ────────────────────────────────────────────────────
+function escapeHtml(v){ return String(v||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+// ─── Showcase renderer ────────────────────────────────────────────
+function renderShowcase(){
+  const g = document.getElementById('state-showcase-grid');
+  if(!g) return;
+  g.innerHTML = '';
+  const pdfIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
+  const infoIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
+  STATE_BILLS.forEach(b => {
+    const card = document.createElement('div');
+    card.className = 'showcase-card' + (b.priority ? ' priority-card' : '');
+    const actionUrl = `action.html?tab=state`;
+    card.innerHTML =
+      `<div class="sc-badges">` +
+      (b.priority ? `<div class="priority-badge">★ Priority bill</div>` : '') +
+      `<span class="target-badge ${b.target === 'committee' ? 'committee' : 'district'}">${b.target === 'committee' ? 'Committee vote' : 'My District'}</span>` +
+      `</div>` +
+      `<div class="sc-code">${escapeHtml(b.code)}</div>` +
+      `<div class="sc-short">${escapeHtml(b.short)}</div>` +
+      `<div class="sc-desc">${escapeHtml(b.desc)}</div>` +
+      `<div class="sc-actions">` +
+      `<a class="sc-take-action" href="${actionUrl}">Take action on this bill →</a>` +
+      `<a class="sc-bill-link" href="${escapeHtml(b.url)}" target="_blank" rel="noopener">View bill text ↗</a>` +
+      `</div>` +
+      (b.priority ? `<div class="sc-resources">` +
+        `<a class="sc-resource-link" href="https://www.moaamcoc.com/uploads/1/4/8/4/148483887/hb_5280_battle_card_r2.pdf" target="_blank" rel="noopener">${pdfIcon} Battle Card — legislator talking points</a>` +
+        `<a class="sc-resource-link" href="https://www.moaamcoc.com/uploads/1/4/8/4/148483887/michigan_house_bill_5280_-_one-pager.pdf" target="_blank" rel="noopener">${pdfIcon} One-Pager — leave-behind for staff</a>` +
+        `<a class="sc-resource-link" href="https://www.moaamcoc.com/legislation.html" target="_blank" rel="noopener">${infoIcon} Full issue background</a>` +
+        `</div>` : '');
+    g.appendChild(card);
+    lacEvent('bill_card_rendered', { tab: 'state', bill_code: b.code });
+  });
 }
 
-function renderAlerts(){
-  const today = new Date();
-  today.setHours(0,0,0,0);
+function renderFedShowcase(){
+  const g = document.getElementById('fed-showcase-grid');
+  if(!g) return;
+  if(FEDERAL_BILLS.length === 0){
+    g.innerHTML = `<div class="empty-state"><h3>Federal bills coming soon</h3><p>Federal priority legislation will appear here when added. Check back soon, or visit <a href="https://www.moaa.org/content/legislative-action/legislative-action/" target="_blank" style="color:var(--navy);font-weight:600">MOAA National</a> for current federal advocacy priorities.</p></div>`;
+    return;
+  }
+  g.innerHTML = '';
+  FEDERAL_BILLS.forEach(b => {
+    const card = document.createElement('div');
+    card.className = 'showcase-card' + (b.priority ? ' priority-card' : '');
+    const actionUrl = `action.html?tab=federal`;
+    card.innerHTML =
+      `<div class="sc-badges">` +
+      (b.priority ? `<div class="priority-badge">★ Priority</div>` : '') +
+      `<span class="target-badge delegation">Full Delegation</span>` +
+      `</div>` +
+      `<div class="sc-code">${escapeHtml(b.code)}</div>` +
+      `<div class="sc-short">${escapeHtml(b.short)}</div>` +
+      `<div class="sc-desc">${escapeHtml(b.desc)}</div>` +
+      `<div class="sc-actions">` +
+      `<a class="sc-take-action" href="${actionUrl}">Take action on this bill →</a>` +
+      `<a class="sc-bill-link" href="${escapeHtml(b.url)}" target="_blank" rel="noopener">View bill text ↗</a>` +
+      `</div>`;
+    g.appendChild(card);
+  });
+}
 
+// ─── Alerts ───────────────────────────────────────────────────────
+function renderAlerts(){
+  const today = new Date(); today.setHours(0,0,0,0);
   ['state','federal'].forEach(tab => {
     const container = document.getElementById(tab+'-alerts');
     if(!container) return;
     container.innerHTML = '';
-
     const active = ALERTS.filter(a => {
       if(a.tab !== tab && a.tab !== 'both') return false;
-      if(a.expires){
-        const exp = new Date(a.expires);
-        exp.setHours(23,59,59,999);
-        if(today > exp) return false;
-      }
+      if(a.expires){ const exp = new Date(a.expires); exp.setHours(23,59,59,999); if(today > exp) return false; }
       return true;
     });
-
     active.forEach(alert => {
       const div = document.createElement('div');
       div.className = 'action-alert';
-      div.setAttribute('role', 'alert');
-
-      const infoLink = alert.info_url
-        ? `<a class="action-alert-link secondary" href="${escapeHtml(alert.info_url)}" target="_blank" rel="noopener">
-             ${escapeHtml(alert.info_label || 'More information ↗')}
-           </a>`
-        : '';
-
-      const actionLink = alert.bill_code
-        ? `<button class="action-alert-link primary" type="button"
-             onclick="lacAlertAction('${escapeHtml(tab)}','${escapeHtml(alert.bill_code)}')">
-             ✉ Contact legislators now
-           </button>`
-        : '';
-
-      div.innerHTML = `
-        <div class="action-alert-icon">🚨</div>
-        <div class="action-alert-body">
-          <div class="action-alert-label">Action Alert</div>
-          <div class="action-alert-headline">${escapeHtml(alert.headline)}</div>
-          ${alert.desc ? `<div class="action-alert-desc">${escapeHtml(alert.desc)}</div>` : ''}
-          <div class="action-alert-links">
-            ${actionLink}
-            ${infoLink}
-          </div>
-        </div>`;
-
+      div.setAttribute('role','alert');
+      const infoLink = alert.info_url ? `<a class="action-alert-link secondary" href="${escapeHtml(alert.info_url)}" target="_blank" rel="noopener">${escapeHtml(alert.info_label||'More information ↗')}</a>` : '';
+      const actionUrl = alert.bill_code ? `action.html?bill=${encodeURIComponent(alert.bill_code)}&tab=${encodeURIComponent(tab)}` : '';
+      const actionLink = actionUrl ? `<a class="action-alert-link primary" href="${actionUrl}">✉ Contact legislators now</a>` : '';
+      div.innerHTML = `<div class="action-alert-icon">🚨</div><div class="action-alert-body"><div class="action-alert-label">Action Alert</div><div class="action-alert-headline">${escapeHtml(alert.headline)}</div>${alert.desc?`<div class="action-alert-desc">${escapeHtml(alert.desc)}</div>`:''}<div class="action-alert-links">${actionLink}${infoLink}</div></div>`;
       container.appendChild(div);
-      lacEvent('alert_displayed', { tab, bill_code: alert.bill_code || '', headline: alert.headline });
+      lacEvent('alert_displayed', { tab, bill_code: alert.bill_code||'', headline: alert.headline });
     });
   });
 }
 
-// Called when user clicks "Contact legislators now" on an alert.
-// Switches to the correct tab and pre-selects the relevant bill.
-function lacAlertAction(tab, billCode){
-  lacEvent('alert_action_click', { tab, bill_code: billCode });
-  if(tab === 'federal'){
-    const bill = FEDERAL_BILLS.find(b => b.code === billCode);
-    if(bill){
-      selectedFedBill = bill;
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      document.getElementById('tab-federal').classList.add('active');
-      document.querySelector('[onclick="switchTab(\'federal\')"]')?.classList.add('active');
-      renderFedBills();
-    }
-  } else {
-    const bill = STATE_BILLS.find(b => b.code === billCode);
-    if(bill){
-      selectedStateBill = bill;
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      document.getElementById('tab-state').classList.add('active');
-      document.querySelector('[onclick="switchTab(\'state\')"]')?.classList.add('active');
-      renderStateBills();
-    }
-  }
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+// ─── Tab switching ────────────────────────────────────────────────
+function switchTab(tab, e){
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  if(e && e.currentTarget) e.currentTarget.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  lacEvent('tab_switch', { tab_name: tab });
 }
 
+function updateBadges(){
+  document.getElementById('state-badge').textContent = STATE_BILLS.length;
+  const fb = document.getElementById('federal-badge');
+  if(FEDERAL_BILLS.length > 0){ fb.textContent = FEDERAL_BILLS.length; fb.className = 'tab-badge'; }
+  else { fb.textContent = 'Coming Soon'; fb.className = 'tab-badge coming'; }
+}
+
+// ─── External data ────────────────────────────────────────────────
 async function loadExternalData(){
   const status = document.getElementById('config-status');
   const [cfgResult, legResult, statusResult] = await Promise.allSettled([
-    fetch(LAC_CONFIG_URL,        { cache: 'no-store' }).then(r => r.ok ? r.json() : Promise.reject()),
-    fetch(LAC_LEGISLATORS_URL,   { cache: 'no-store' }).then(r => r.ok ? r.json() : Promise.reject()),
-    fetch('monitor-status.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : Promise.reject())
+    fetch(LAC_CONFIG_URL,        { cache:'no-store' }).then(r => r.ok ? r.json() : Promise.reject()),
+    fetch(LAC_LEGISLATORS_URL,   { cache:'no-store' }).then(r => r.ok ? r.json() : Promise.reject()),
+    fetch('monitor-status.json', { cache:'no-store' }).then(r => r.ok ? r.json() : Promise.reject())
   ]);
-
-  // Apply campaign configuration
   if(cfgResult.status === 'fulfilled'){
     const cfg = cfgResult.value;
     if(Array.isArray(cfg.state_bills))   STATE_BILLS   = cfg.state_bills;
     if(Array.isArray(cfg.federal_bills)) FEDERAL_BILLS = cfg.federal_bills;
     if(Array.isArray(cfg.alerts))        ALERTS        = cfg.alerts;
-    // v1.1 fallback: honour inline state_committee/mi_senators if present in config
-    if(Array.isArray(cfg.state_committee)) STATE_COMMITTEE = cfg.state_committee;
-    if(Array.isArray(cfg.mi_senators))     MI_SENATORS     = cfg.mi_senators;
   }
-
-  // Apply legislator database
-  if(legResult.status === 'fulfilled'){
-    const db = legResult.value;
-    if(Array.isArray(db.legislators)) LEGISLATORS = db.legislators;
-    // Derive MI_SENATORS from database for federal delegation targeting
-    MI_SENATORS = LEGISLATORS.filter(l => l.chamber === 'US Senate' && l.state === 'MI');
-  }
-
-  const cfgOk  = cfgResult.status  === 'fulfilled';
-  const legOk  = legResult.status  === 'fulfilled';
+  const cfgOk = cfgResult.status === 'fulfilled';
+  const legOk = legResult.status === 'fulfilled';
   if(status){
     if(cfgOk && legOk)   status.textContent = 'Campaign configuration and legislator database loaded.';
-    else if(cfgOk)       status.textContent = 'Campaign configuration loaded. Legislator database (lac-legislators.json) not found.';
+    else if(cfgOk)       status.textContent = 'Campaign configuration loaded.';
     else if(legOk)       status.textContent = 'Legislator database loaded. Using built-in campaign configuration.';
     else                 status.textContent = 'Using built-in campaign configuration.';
   }
-  lacEvent('config_loaded', { config: cfgOk ? 'external' : 'built_in', legislators: legOk ? LEGISLATORS.length : 0 });
+  lacEvent('config_loaded', { config: cfgOk ? 'external' : 'built_in' });
 
-  // Render committee monitoring status bar
+  // Monitor status bar
   const bar = document.getElementById('monitor-status-bar');
   if(bar && statusResult.status === 'fulfilled'){
     const s = statusResult.value;
     const checkedAt = s.checked_at ? new Date(s.checked_at) : null;
-    const timeStr = checkedAt
-      ? checkedAt.toLocaleString('en-US', { month:'short', day:'numeric', year:'numeric', hour:'numeric', minute:'2-digit', timeZoneName:'short' })
-      : 'recently';
+    const timeStr = checkedAt ? checkedAt.toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'}) : 'recently';
     if(s.bills_found){
       bar.className = 'monitor-status alert';
-      bar.innerHTML = `<span class="monitor-status-dot"></span>
-        Committee hearing detected for ${escapeHtml(s.bills_found)} — see alert above. Last checked: ${timeStr}.`;
+      bar.innerHTML = `<span class="monitor-status-dot"></span>Committee hearing detected for ${escapeHtml(s.bills_found)} — see alert above. Last checked: ${timeStr}.`;
     } else {
       bar.className = 'monitor-status';
-      bar.innerHTML = `<span class="monitor-status-dot"></span>
-        Committee monitoring last run: ${timeStr} — no hearings currently scheduled for HB 5262, HB 5278, HB 5279, or HB 5280.`;
+      bar.innerHTML = `<span class="monitor-status-dot"></span>Committee monitoring last run: ${timeStr} — no hearings currently scheduled for HB 5262, HB 5278, HB 5279, or HB 5280.`;
     }
     bar.classList.remove('hidden');
   }
 }
 
-// Look up legislators from the database by chamber and district list.
-// chambers: array of chamber strings, e.g. ['MI House'] or ['MI House','MI Senate']
-// districts: array of district strings, e.g. ['71','52','83']
-// Returns legislator records in district order, with a generated title field for display.
-function getLegislatorsByDistricts(chambers, districts){
-  return districts
-    .map(d => LEGISLATORS.find(l => chambers.includes(l.chamber) && l.district === String(d)))
-    .filter(Boolean)
-    .map(l => ({
-      ...l,
-      title: `${l.chamber} · District ${l.district} · ${l.party === 'R' ? 'Republican' : 'Democrat'}`
-    }));
-}
-
+// ─── Metrics dashboard ────────────────────────────────────────────
 function showMetricsDashboard(){
-  if(!isAdminUnlocked()){
+  if(sessionStorage.getItem(LAC_ADMIN_SESSION_KEY) !== 'yes'){
     const pwd = prompt('Enter administrator password to view campaign metrics:');
-    if(pwd !== LAC_ADMIN_PASSWORD){
-      alert('Metrics dashboard locked.');
-      location.hash = '';
-      return;
-    }
-    sessionStorage.setItem(LAC_ADMIN_SESSION_KEY, 'yes');
-    lacEvent('admin_metrics_unlocked', { result: 'success' });
+    if(pwd !== LAC_ADMIN_PASSWORD){ alert('Metrics dashboard locked.'); location.hash=''; return; }
+    sessionStorage.setItem(LAC_ADMIN_SESSION_KEY,'yes');
   }
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.getElementById('metrics-dashboard').classList.add('active');
   refreshMetricsDashboard();
-  window.scrollTo({top:0, behavior:'smooth'});
+  window.scrollTo({top:0,behavior:'smooth'});
 }
-
-function isAdminUnlocked(){
-  return sessionStorage.getItem(LAC_ADMIN_SESSION_KEY) === 'yes';
-}
-
 function hideMetricsDashboard(){
   document.getElementById('metrics-dashboard').classList.remove('active');
   document.getElementById('tab-state').classList.add('active');
-  window.scrollTo({top:0, behavior:'smooth'});
+  window.scrollTo({top:0,behavior:'smooth'});
 }
-
 function refreshMetricsDashboard(){
   const data = getLocalMetrics();
   const emailMethods = ['mailto_first','email_app','gmail','outlook','yahoo'];
-  const unique = (field) => new Set(data.map(x => x.details?.[field]).filter(Boolean)).size;
-
-  document.getElementById('m-visits').textContent = data.filter(x => x.event === 'page_visit').length;
-  document.getElementById('m-lookups').textContent = data.filter(x => x.event === 'zip_lookup').length;
-  document.getElementById('m-email').textContent = data.filter(x => x.event === 'email_choice' && emailMethods.includes(x.details?.method)).length;
-  document.getElementById('m-copy').textContent = data.filter(x => x.event === 'email_choice' && x.details?.method === 'copy_message').length;
-  document.getElementById('m-contact').textContent = data.filter(x => x.event === 'email_choice' && x.details?.method === 'contact_form').length;
-  document.getElementById('m-zips').textContent = unique('zip');
+  const unique = f => new Set(data.map(x => x.details?.[f]).filter(Boolean)).size;
+  document.getElementById('m-visits').textContent   = data.filter(x => x.event === 'page_visit').length;
+  document.getElementById('m-lookups').textContent  = data.filter(x => x.event === 'zip_lookup').length;
+  document.getElementById('m-email').textContent    = data.filter(x => x.event === 'email_choice' && emailMethods.includes(x.details?.method)).length;
+  document.getElementById('m-copy').textContent     = data.filter(x => x.event === 'email_choice' && x.details?.method === 'copy_message').length;
+  document.getElementById('m-contact').textContent  = data.filter(x => x.event === 'email_choice' && x.details?.method === 'contact_form').length;
+  document.getElementById('m-zips').textContent     = unique('zip');
   document.getElementById('m-chapters').textContent = unique('chapter');
-  document.getElementById('m-bills').textContent = data.filter(x => x.event === 'bill_selected').length;
-
+  document.getElementById('m-bills').textContent    = data.filter(x => x.event === 'bill_selected').length;
   const rows = document.getElementById('metrics-rows');
   const recent = data.slice(-25).reverse();
   if(!recent.length){ rows.innerHTML = '<tr><td colspan="4">No activity yet.</td></tr>'; return; }
   rows.innerHTML = recent.map(r => {
-    const details = Object.entries(r.details || {}).map(([k,v]) => `${escapeHtml(k)}=${escapeHtml(v)}`).join('<br>');
+    const details = Object.entries(r.details||{}).map(([k,v])=>`${escapeHtml(k)}=${escapeHtml(v)}`).join('<br>');
     return `<tr><td>${escapeHtml(new Date(r.time).toLocaleString())}</td><td>${escapeHtml(r.event)}</td><td>${escapeHtml(r.tab)}</td><td>${details}</td></tr>`;
   }).join('');
 }
-
 function exportMetricsCsv(){
   const data = getLocalMetrics();
-  const header = ['time','event','tab','details'];
-  const lines = [header.join(',')].concat(data.map(r => {
-    const row = [r.time, r.event, r.tab, JSON.stringify(r.details || {})];
-    return row.map(v => '"' + String(v).replace(/"/g,'""') + '"').join(',');
-  }));
-  const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+  const lines = [['time','event','tab','details'].join(',')].concat(data.map(r => [r.time,r.event,r.tab,JSON.stringify(r.details||{})].map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')));
+  const blob = new Blob([lines.join('\n')],{type:'text/csv;charset=utf-8'});
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'lac-metrics-export.csv';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
+  const a = document.createElement('a'); a.href=url; a.download='lac-metrics-export.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
 }
-
 function clearMetrics(){
   if(!confirm('Clear local metrics stored in this browser?')) return;
   localStorage.removeItem(LAC_METRICS_KEY);
   refreshMetricsDashboard();
 }
 
+document.addEventListener('keydown', e => { if(e.ctrlKey && e.altKey && (e.key||'').toLowerCase() === 'm') showMetricsDashboard(); });
+
 async function initApp(){
   lacEvent('page_visit', { page: location.pathname || 'index.html' });
   await loadExternalData();
   renderAlerts();
-  renderStateBills();
-  renderFedBills();
+  renderShowcase();
+  renderFedShowcase();
   updateBadges();
   if(location.hash === '#metrics' || location.hash === '#admin') showMetricsDashboard();
 }
 
-// Hidden admin shortcut: Ctrl+Alt+M opens the password prompt for metrics.
-document.addEventListener('keydown', function(e){
-  if(e.ctrlKey && e.altKey && (e.key || '').toLowerCase() === 'm') showMetricsDashboard();
-});
-
-// Init
 initApp();
 </script>
 </body>
