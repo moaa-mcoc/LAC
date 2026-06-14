@@ -1,0 +1,58 @@
+{
+  "generated": "2026-06-14T00:00:00.000Z",
+  "state": "MI",
+  "bills": [
+    {
+      "bill_number": "HB5262",
+      "title": "Veterans: other; definition for veteran of the uniformed services; create.",
+      "description": "Amends 1965 PA 190 (MCL 35.61) to define veteran of the uniformed services, including NOAA and U.S. Public Health Service commissioned officers per Title 38.",
+      "status": 1,
+      "status_label": "Introduced",
+      "last_action_date": "2025-11-13",
+      "last_action": "Bill electronically reproduced 11/12/2025; pending House Government Operations Committee.",
+      "committee": "House Government Operations",
+      "state_link": "https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5262.pdf",
+      "legiscan_url": "https://legiscan.com/MI/bill/HB5262/2025",
+      "updated": "2026-06-14T00:00:00.000Z"
+    },
+    {
+      "bill_number": "HB5278",
+      "title": "State personal identification cards: veteran designation for NOAA and USPHS officers.",
+      "description": "Amends 1972 PA 222 to add a veteran designation on state ID cards for NOAA and U.S. Public Health Service commissioned officers.",
+      "status": 1,
+      "status_label": "Introduced",
+      "last_action_date": "2025-11-13",
+      "last_action": "Bill electronically reproduced 11/12/2025.",
+      "committee": null,
+      "state_link": "https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5278.pdf",
+      "legiscan_url": "https://legiscan.com/MI/bill/HB5278/2025",
+      "updated": "2026-06-14T00:00:00.000Z"
+    },
+    {
+      "bill_number": "HB5279",
+      "title": "Michigan Vehicle Code: veteran designation for NOAA and USPHS officers.",
+      "description": "Amends 1949 PA 300 to add a veteran designation on driver's licenses for NOAA and U.S. Public Health Service commissioned officers.",
+      "status": 1,
+      "status_label": "Introduced",
+      "last_action_date": "2025-11-13",
+      "last_action": "Bill electronically reproduced 11/12/2025.",
+      "committee": null,
+      "state_link": "https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5279.pdf",
+      "legiscan_url": "https://legiscan.com/MI/bill/HB5279/2025",
+      "updated": "2026-06-14T00:00:00.000Z"
+    },
+    {
+      "bill_number": "HB5280",
+      "title": "Individual income tax: retirement pay equity for NOAA and USPHS officers.",
+      "description": "Amends 1967 PA 281 (MCL 206.30) to extend retirement/pension and disability income tax deductions to NOAA and U.S. Public Health Service commissioned officers on par with other uniformed services veterans. Primary advocacy target.",
+      "status": 1,
+      "status_label": "Introduced",
+      "last_action_date": "2025-11-13",
+      "last_action": "Bill electronically reproduced 11/12/2025.",
+      "committee": null,
+      "state_link": "https://archive.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5280.pdf",
+      "legiscan_url": "https://legiscan.com/MI/bill/HB5280/2025",
+      "updated": "2026-06-14T00:00:00.000Z"
+    }
+  ]
+}
