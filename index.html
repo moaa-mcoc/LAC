@@ -146,6 +146,20 @@ body { font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: var(--t
 .sc-resource-link:hover { background: var(--gold-pale); }
 .sc-resource-link svg { width: 13px; height: 13px; }
 
+/* Bill status tracking (LegiScan) */
+.sc-status-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; }
+.bill-tracker { border: 1.5px solid var(--gray-100); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 1.75rem; }
+.bill-tracker-header { padding: 10px 16px; background: var(--gray-50); border-bottom: 1.5px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+.bill-tracker-header strong { font-family: 'Merriweather', serif; font-size: 13px; color: var(--navy); }
+.bill-tracker-updated { font-size: 11px; color: var(--gray-500); }
+.bill-tracker table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.bill-tracker th, .bill-tracker td { padding: 8px 16px; text-align: left; border-bottom: 1px solid var(--gray-100); }
+.bill-tracker th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); font-weight: 700; }
+.bill-tracker tr:last-child td { border-bottom: none; }
+.bill-tracker td.bt-action { color: var(--gray-700); font-size: 12.5px; }
+.bill-tracker td.bt-code a { color: var(--navy); font-weight: 700; text-decoration: none; }
+.bill-tracker td.bt-code a:hover { text-decoration: underline; }
+
 /* Federal empty state */
 .empty-state { text-align: center; padding: 3rem 1.5rem; border: 2px dashed var(--gray-300); border-radius: var(--radius-lg); color: var(--gray-500); }
 .empty-state h3 { font-size: 16px; font-weight: 600; color: var(--gray-700); margin-bottom: 8px; }
@@ -227,6 +241,7 @@ body { font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: var(--t
   <div class="tab-panel active" id="tab-state">
     <div id="state-alerts"></div>
     <div id="monitor-status-bar" class="monitor-status hidden"></div>
+    <div id="bill-tracker"></div>
 
     <div class="bill-showcase" id="bill-showcase">
       <div class="bill-showcase-header">4 bills currently before the House Committee on Government Operations</div>
@@ -283,6 +298,7 @@ body { font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: var(--t
 // ─── Constants ───────────────────────────────────────────────────
 const LAC_CONFIG_URL      = 'lac-config.json';
 const LAC_LEGISLATORS_URL = 'lac-legislators.json';
+const LAC_BILLS_STATUS_URL = 'bills.json';
 const LAC_METRICS_KEY     = 'mcoc_lac_metrics_v1';
 const LAC_ADMIN_PASSWORD  = 'ChangeMe2026!';
 const LAC_ADMIN_SESSION_KEY = 'mcoc_lac_admin_unlocked_v1';
@@ -310,9 +326,70 @@ let STATE_BILLS = [
 ];
 let FEDERAL_BILLS = [];
 let ALERTS = [];
+let BILL_STATUS = null; // populated from bills.json (LegiScan)
 
 // ─── Utilities ────────────────────────────────────────────────────
 function escapeHtml(v){ return String(v||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+// ─── LegiScan status helpers ──────────────────────────────────────
+const BILL_STATUS_COLORS = {
+  'Pending': '#8a8880',
+  'Introduced': '#3c6fb0',
+  'In Committee': '#3c6fb0',
+  'Engrossed': '#b8912a',
+  'Enrolled': '#6a4fb0',
+  'Passed': '#1a5c3a',
+  'Vetoed': '#8b1a1a',
+  'Failed / Dead': '#8a8880',
+  'Not found': '#c8c6bf',
+  'Error': '#c8c6bf',
+  'Unknown': '#c8c6bf'
+};
+function normalizeBillCode(code){ return String(code||'').replace(/\s+/g,'').toUpperCase(); }
+function getBillStatus(code){
+  if(!BILL_STATUS || !Array.isArray(BILL_STATUS.bills)) return null;
+  const target = normalizeBillCode(code);
+  return BILL_STATUS.bills.find(b => normalizeBillCode(b.bill_number) === target) || null;
+}
+function billStatusBadgeHtml(code){
+  const s = getBillStatus(code);
+  if(!s || !s.status_label) return '';
+  const color = BILL_STATUS_COLORS[s.status_label] || '#8a8880';
+  const title = s.last_action ? `${s.last_action_date}: ${s.last_action}` : 'Status via LegiScan';
+  return `<span class="sc-status-badge" style="background:${color}" title="${escapeHtml(title)}">${escapeHtml(s.status_label)}</span>`;
+}
+
+// ─── Bill tracker (LegiScan summary table) ────────────────────────
+function renderBillTracker(){
+  const el = document.getElementById('bill-tracker');
+  if(!el) return;
+  if(!BILL_STATUS || !Array.isArray(BILL_STATUS.bills) || !BILL_STATUS.bills.length){
+    el.innerHTML = '';
+    return;
+  }
+  const generated = BILL_STATUS.generated ? new Date(BILL_STATUS.generated) : null;
+  const updatedStr = generated ? generated.toLocaleString('en-US', { dateStyle:'medium', timeStyle:'short' }) : 'recently';
+  const rows = BILL_STATUS.bills.map(b => {
+    const color = BILL_STATUS_COLORS[b.status_label] || '#8a8880';
+    const link = b.state_link || b.legiscan_url || '#';
+    const lastAction = b.last_action ? `${escapeHtml(b.last_action_date)} — ${escapeHtml(b.last_action)}` : '—';
+    return `<tr>
+      <td class="bt-code"><a href="${escapeHtml(link)}" target="_blank" rel="noopener">${escapeHtml(b.bill_number)}</a></td>
+      <td><span class="sc-status-badge" style="background:${color}">${escapeHtml(b.status_label||'Unknown')}</span></td>
+      <td class="bt-action">${lastAction}</td>
+    </tr>`;
+  }).join('');
+  el.innerHTML = `<div class="bill-tracker">
+    <div class="bill-tracker-header">
+      <strong>Michigan Bill Tracker — live via LegiScan</strong>
+      <span class="bill-tracker-updated">Last updated ${escapeHtml(updatedStr)}</span>
+    </div>
+    <table>
+      <thead><tr><th>Bill</th><th>Status</th><th>Last Action</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+  </div>`;
+}
 
 // ─── Showcase renderer ────────────────────────────────────────────
 function renderShowcase(){
@@ -329,6 +406,7 @@ function renderShowcase(){
       `<div class="sc-badges">` +
       (b.priority ? `<div class="priority-badge">★ Priority bill</div>` : '') +
       `<span class="target-badge ${b.target === 'committee' ? 'committee' : 'district'}">${b.target === 'committee' ? 'Committee vote' : 'My District'}</span>` +
+      billStatusBadgeHtml(b.code) +
       `</div>` +
       `<div class="sc-code">${escapeHtml(b.code)}</div>` +
       `<div class="sc-short">${escapeHtml(b.short)}</div>` +
@@ -420,11 +498,13 @@ function updateBadges(){
 // ─── External data ────────────────────────────────────────────────
 async function loadExternalData(){
   const status = document.getElementById('config-status');
-  const [cfgResult, legResult, statusResult] = await Promise.allSettled([
+  const [cfgResult, legResult, statusResult, billsResult] = await Promise.allSettled([
     fetch(LAC_CONFIG_URL,        { cache:'no-store' }).then(r => r.ok ? r.json() : Promise.reject()),
     fetch(LAC_LEGISLATORS_URL,   { cache:'no-store' }).then(r => r.ok ? r.json() : Promise.reject()),
-    fetch('monitor-status.json', { cache:'no-store' }).then(r => r.ok ? r.json() : Promise.reject())
+    fetch('monitor-status.json', { cache:'no-store' }).then(r => r.ok ? r.json() : Promise.reject()),
+    fetch(LAC_BILLS_STATUS_URL,  { cache:'no-store' }).then(r => r.ok ? r.json() : Promise.reject())
   ]);
+  if(billsResult.status === 'fulfilled') BILL_STATUS = billsResult.value;
   if(cfgResult.status === 'fulfilled'){
     const cfg = cfgResult.value;
     if(Array.isArray(cfg.state_bills))   STATE_BILLS   = cfg.state_bills;
@@ -514,6 +594,7 @@ async function initApp(){
   lacEvent('page_visit', { page: location.pathname || 'index.html' });
   await loadExternalData();
   renderAlerts();
+  renderBillTracker();
   renderShowcase();
   renderFedShowcase();
   updateBadges();
