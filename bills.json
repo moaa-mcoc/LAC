@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-19T18:20:55.111Z",
+  "generated": "2026-06-20T17:08:55.231Z",
   "state": "MI",
   "bills": [
     {
@@ -13,7 +13,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5262",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5262/2025",
-      "updated": "2026-06-19T18:20:52.990Z"
+      "updated": "2026-06-20T17:08:52.988Z"
     },
     {
       "bill_number": "HB5278",
@@ -26,7 +26,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5278",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5278/2025",
-      "updated": "2026-06-19T18:20:53.531Z"
+      "updated": "2026-06-20T17:08:53.571Z"
     },
     {
       "bill_number": "HB5279",
@@ -39,7 +39,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5279",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5279/2025",
-      "updated": "2026-06-19T18:20:54.072Z"
+      "updated": "2026-06-20T17:08:54.155Z"
     },
     {
       "bill_number": "HB5280",
@@ -52,7 +52,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5280",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5280/2025",
-      "updated": "2026-06-19T18:20:54.611Z"
+      "updated": "2026-06-20T17:08:54.731Z"
     }
   ]
 }
