@@ -2,6 +2,7 @@
   "state_bills": [
     {
       "id": 1,
+      "chamber": "house",
       "code": "HB 5280",
       "priority": true,
       "target": "committee",
@@ -10,12 +11,15 @@
       "short": "Income Tax Act — retirement pay equity",
       "desc": "Extends Michigan retirement tax fairness to active duty, retired officers, and surviving spouses of USPHS and NOAA Commissioned Corps.",
       "url": "https://archive.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5280.pdf",
+      "battleCard": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/hb_5280_battle_card_r2.pdf",
+      "onePager": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/michigan_house_bill_5280_-_one-pager.pdf",
       "relatedFederal": null,
       "subject": "Support for HB 5280",
       "body": "Dear Representative [LAST_NAME],\n\nI am writing to respectfully request your support for HB 5280, which would extend Michigan retirement tax fairness to active duty, retired officers, and surviving spouses of the United States Public Health Service and National Oceanic and Atmospheric Administration Commissioned Corps.\n\nThese individuals are members of the uniformed services of the United States and are recognized as veterans by the Department of Veterans Affairs. HB 5280 is a narrow, fiscally responsible measure that simply ensures equal treatment among federally recognized uniformed services retirees.\n\nI respectfully ask that you support HB 5280 and assist in advancing the bill through the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
     },
     {
       "id": 2,
+      "chamber": "house",
       "code": "HB 5262",
       "priority": false,
       "target": "committee",
@@ -30,6 +34,7 @@
     },
     {
       "id": 3,
+      "chamber": "house",
       "code": "HB 5278",
       "priority": false,
       "target": "committee",
@@ -44,6 +49,7 @@
     },
     {
       "id": 4,
+      "chamber": "house",
       "code": "HB 5279",
       "priority": false,
       "target": "committee",
@@ -58,6 +64,7 @@
     },
     {
       "id": 5,
+      "chamber": "senate",
       "code": "HB 5456",
       "priority": true,
       "target": "committee",
@@ -72,6 +79,7 @@
     },
     {
       "id": 6,
+      "chamber": "senate",
       "code": "HB 5457",
       "priority": true,
       "target": "committee",
