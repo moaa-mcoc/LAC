@@ -160,6 +160,14 @@ body { font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: var(--t
 .bill-tracker td.bt-code a { color: var(--navy); font-weight: 700; text-decoration: none; }
 .bill-tracker td.bt-code a:hover { text-decoration: underline; }
 
+/* All-bills card */
+.showcase-card.all-bills-card { border-color: var(--navy); background: var(--blue-pale); grid-column: 1 / -1; }
+.showcase-card.all-bills-card:hover { border-color: var(--navy-mid); box-shadow: 0 2px 12px rgba(26,45,79,0.13); }
+.showcase-card.all-bills-card .sc-take-action { background: var(--navy); font-size: 14px; padding: 10px 22px; }
+.showcase-card.all-bills-card .sc-take-action:hover { background: var(--navy-mid); }
+.all-bills-pill-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.all-bills-pill { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px; background: rgba(26,45,79,0.1); color: var(--navy); border: 1px solid rgba(26,45,79,0.2); letter-spacing: 0.03em; }
+
 /* Federal empty state */
 .empty-state { text-align: center; padding: 3rem 1.5rem; border: 2px dashed var(--gray-300); border-radius: var(--radius-lg); color: var(--gray-500); }
 .empty-state h3 { font-size: 16px; font-weight: 600; color: var(--gray-700); margin-bottom: 8px; }
@@ -398,6 +406,30 @@ function renderShowcase(){
   g.innerHTML = '';
   const pdfIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
   const infoIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
+
+  // ── "Support all 4 bills" card ──────────────────────────────────
+  const allCard = document.createElement('div');
+  allCard.className = 'showcase-card all-bills-card';
+  allCard.innerHTML =
+    `<div class="sc-badges">
+      <div class="priority-badge">★ Support All 4 Bills</div>
+      <span class="target-badge committee">Committee Vote</span>
+    </div>
+    <div class="sc-code" style="font-size:17px">HB 5262 · HB 5278 · HB 5279 · HB 5280</div>
+    <div class="sc-short">Full Package — Equal Veteran Recognition for NOAA &amp; USPHS Officers</div>
+    <div class="sc-desc">Send a single letter urging the House Committee on Government Operations to advance all four bills — covering veteran status, state ID cards, driver's licenses, and retirement tax equity — for commissioned officers of NOAA and the U.S. Public Health Service.</div>
+    <div class="all-bills-pill-row">
+      <span class="all-bills-pill">HB 5262 — Veteran status</span>
+      <span class="all-bills-pill">HB 5278 — State ID cards</span>
+      <span class="all-bills-pill">HB 5279 — Driver's licenses</span>
+      <span class="all-bills-pill">HB 5280 — Retirement tax equity ★</span>
+    </div>
+    <div class="sc-actions">
+      <button class="sc-take-action" onclick="takeActionAllBills()">✉ Send one email for all 4 bills →</button>
+    </div>`;
+  g.appendChild(allCard);
+  lacEvent('bill_card_rendered', { tab: 'state', bill_code: 'ALL' });
+
   STATE_BILLS.forEach(b => {
     const card = document.createElement('div');
     card.className = 'showcase-card' + (b.priority ? ' priority-card' : '');
@@ -589,6 +621,53 @@ function clearMetrics(){
 }
 
 document.addEventListener('keydown', e => { if(e.ctrlKey && e.altKey && (e.key||'').toLowerCase() === 'm') showMetricsDashboard(); });
+
+// ─── All-bills action ─────────────────────────────────────────────
+const ALL_BILLS_EMAIL = {
+  subject: 'Please Support HB 5262, HB 5278, HB 5279 & HB 5280 — Equal Veteran Recognition for NOAA & USPHS Officers',
+  body: `Dear Representative [LAST_NAME],
+
+I am writing to respectfully urge your support for four bills currently before the House Committee on Government Operations that would extend equal recognition to commissioned officers of the U.S. Public Health Service (USPHS) and the National Oceanic and Atmospheric Administration (NOAA) Commissioned Corps — uniformed services of the United States already recognized as veterans under federal law (Title 38 USC).
+
+HB 5262 (Uniformity of Service Dates Act) would amend Act 190 of 1965 to recognize NOAA and USPHS commissioned officers as a class of veterans consistent with federal law.
+
+HB 5278 (State Personal Identification Card Act) would extend the veteran designation on Michigan state ID cards to these officers.
+
+HB 5279 (Michigan Vehicle Code) would extend the veteran designation on Michigan driver's licenses to these officers.
+
+HB 5280 (Income Tax Act — retirement pay equity) would extend Michigan's retirement tax fairness to active duty, retired officers, and surviving spouses of USPHS and NOAA Commissioned Corps.
+
+Together, these four bills close a gap between Michigan law and federal law that leaves deserving service members and their families without the recognition they have earned. I ask that you support advancing this package through committee.
+
+Respectfully,
+[FULL_NAME]
+[CITY], Michigan
+Member, [CHAPTER]`
+};
+
+function takeActionAllBills(){
+  lacEvent('bill_selected', { tab: 'state', bill_code: 'ALL' });
+
+  // Collect committee district representatives from any bill (all share the same districts)
+  const refBill = STATE_BILLS[0];
+  const districts = refBill ? (refBill.districts || []) : [];
+
+  // Build action page URL — pass special 'ALL' bill code
+  // action.html will handle this; if it doesn't recognise it we fall back to mailto
+  const actionUrl = `action.html?bill=ALL&tab=state`;
+
+  // Check if action.html is likely available (same origin), otherwise fall back to mailto
+  const subject = encodeURIComponent(ALL_BILLS_EMAIL.subject);
+  const body    = encodeURIComponent(ALL_BILLS_EMAIL.body);
+  const mailto  = `mailto:?subject=${subject}&body=${body}`;
+
+  // Try action.html first (it may handle the ALL case), otherwise open mailto
+  try {
+    window.location.href = actionUrl;
+  } catch(e) {
+    window.location.href = mailto;
+  }
+}
 
 async function initApp(){
   lacEvent('page_visit', { page: location.pathname || 'index.html' });
