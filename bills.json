@@ -53,6 +53,32 @@
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5280",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5280/2025",
       "updated": "2026-06-26T18:13:21.002Z"
+    },
+    {
+      "bill_number": "HB5456",
+      "title": "Military affairs: other; hyperbaric oxygen treatment pilot program; establish. Creates new act. TIE BAR WITH: HB 5457'26",
+      "description": "Military affairs: other; hyperbaric oxygen treatment pilot program; establish. Creates new act. TIE BAR WITH: HB 5457'26",
+      "status": 2,
+      "status_label": "Engrossed",
+      "last_action_date": "2026-06-23",
+      "last_action": "REFERRED TO COMMITTEE ON HEALTH POLICY",
+      "committee": "Health Policy",
+      "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-5456",
+      "legiscan_url": "https://legiscan.com/MI/bill/HB5456/2026",
+      "updated": "2026-06-26T18:13:21.502Z"
+    },
+    {
+      "bill_number": "HB5457",
+      "title": "Military affairs: other; hyperbaric oxygen therapy pilot program; establish. Creates new act. TIE BAR WITH: HB 5456'26",
+      "description": "Military affairs: other; hyperbaric oxygen therapy pilot program; establish. Creates new act. TIE BAR WITH: HB 5456'26",
+      "status": 2,
+      "status_label": "Engrossed",
+      "last_action_date": "2026-06-23",
+      "last_action": "REFERRED TO COMMITTEE ON HEALTH POLICY",
+      "committee": "Health Policy",
+      "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-5457",
+      "legiscan_url": "https://legiscan.com/MI/bill/HB5457/2026",
+      "updated": "2026-06-26T18:13:21.502Z"
     }
   ]
 }
