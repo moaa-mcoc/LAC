@@ -122,29 +122,40 @@ body { font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: var(--t
 
 /* Bill showcase */
 .bill-showcase { margin-bottom: 1.75rem; }
-.bill-showcase-header { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
-.bill-showcase-header::after { content: ''; flex: 1; height: 1px; background: var(--gray-100); }
-.bill-showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.bill-showcase-grid { display: flex; flex-direction: column; gap: 1.75rem; }
+.bill-section-header { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 10px; }
+.bill-section-header::after { content: ''; flex: 1; height: 1px; background: var(--gray-100); }
+.bill-list { display: flex; flex-direction: column; border: 1.5px solid var(--gray-100); border-radius: var(--radius-lg); overflow: hidden; }
+.bill-list-row { display: flex; align-items: center; gap: 12px; padding: 11px 16px; border-bottom: 1px solid var(--gray-100); background: var(--gray-50); flex-wrap: wrap; }
+.bill-list-row:last-child { border-bottom: none; }
+.bill-list-row.priority-row { background: var(--gold-pale); }
+.bill-list-row.all-bills-row { background: var(--blue-pale); border-bottom: 1.5px solid var(--gray-100); }
+.blr-badges { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; flex-shrink: 0; }
+.blr-name { flex: 1; font-size: 13.5px; color: var(--text); min-width: 160px; }
+.blr-code { font-family: 'Merriweather', serif; font-weight: 700; color: var(--navy); }
+.blr-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex-shrink: 0; }
+.blr-btn { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: var(--radius); text-decoration: none; border: 1.5px solid var(--gray-300); background: #fff; color: var(--navy); cursor: pointer; font-family: 'Source Sans 3', sans-serif; transition: background 0.15s; white-space: nowrap; }
+.blr-btn:hover { background: var(--gray-50); }
+.blr-btn-primary { background: var(--navy); border-color: var(--navy); color: #fff; }
+.blr-btn-primary:hover { background: var(--navy-mid); border-color: var(--navy-mid); }
+.bill-list-row.priority-row .blr-btn-primary { background: var(--gold); border-color: var(--gold); }
+.bill-list-row.priority-row .blr-btn-primary:hover { background: #a07820; border-color: #a07820; }
+.blr-resource { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; color: var(--gold); text-decoration: none; padding: 5px 8px; border: 1px solid var(--gold-light); border-radius: var(--radius); background: #fff; }
+.blr-resource:hover { background: var(--gold-pale); }
+.blr-resource svg { width: 12px; height: 12px; }
+/* keep card styles for federal showcase */
 .showcase-card { border: 1.5px solid var(--gray-100); border-radius: var(--radius-lg); padding: 16px; background: var(--gray-50); display: flex; flex-direction: column; transition: border-color 0.15s, box-shadow 0.15s; }
 .showcase-card:hover { border-color: var(--navy); box-shadow: 0 2px 8px rgba(26,45,79,0.08); }
-.showcase-card.priority-card { border-color: var(--gold); background: var(--gold-pale); grid-column: 1 / -1; }
-.showcase-card.priority-card:hover { border-color: #a07820; box-shadow: 0 2px 12px rgba(184,145,42,0.15); }
+.showcase-card.priority-card { border-color: var(--gold); background: var(--gold-pale); }
 .sc-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
 .sc-code { font-family: 'Merriweather', serif; font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
 .sc-short { font-size: 13px; font-weight: 600; color: var(--gray-700); margin-bottom: 6px; }
 .sc-desc { font-size: 13px; color: var(--gray-500); line-height: 1.55; flex: 1; }
 .sc-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--gray-100); }
-.showcase-card.priority-card .sc-actions { border-top-color: var(--gold-light); }
-.sc-take-action { display: inline-flex; align-items: center; gap: 6px; background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; padding: 8px 18px; border-radius: var(--radius); border: none; cursor: pointer; font-family: 'Source Sans 3', sans-serif; transition: background 0.15s; text-decoration: none; }
-.sc-take-action:hover { background: var(--navy-mid); }
-.showcase-card.priority-card .sc-take-action { background: var(--gold); }
-.showcase-card.priority-card .sc-take-action:hover { background: #a07820; }
+.sc-take-action { display: inline-flex; align-items: center; gap: 6px; background: var(--gold); color: #fff; font-size: 13px; font-weight: 700; padding: 8px 18px; border-radius: var(--radius); border: none; cursor: pointer; font-family: 'Source Sans 3', sans-serif; transition: background 0.15s; text-decoration: none; }
+.sc-take-action:hover { background: #a07820; }
 .sc-bill-link { font-size: 12px; font-weight: 600; color: var(--navy); text-decoration: none; display: inline-flex; align-items: center; gap: 3px; }
 .sc-bill-link:hover { text-decoration: underline; }
-.sc-resources { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
-.sc-resource-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--gold); text-decoration: none; padding: 4px 10px; border: 1.5px solid var(--gold-light); border-radius: var(--radius); background: #fff; transition: background 0.15s; }
-.sc-resource-link:hover { background: var(--gold-pale); }
-.sc-resource-link svg { width: 13px; height: 13px; }
 
 /* Bill status tracking (LegiScan) */
 .sc-status-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; }
@@ -252,7 +263,6 @@ body { font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: var(--t
     <div id="bill-tracker"></div>
 
     <div class="bill-showcase" id="bill-showcase">
-      <div class="bill-showcase-header">4 bills currently before the House Committee on Government Operations</div>
       <div class="bill-showcase-grid" id="state-showcase-grid">
         <!-- populated by renderShowcase() -->
       </div>
@@ -407,57 +417,67 @@ function renderShowcase(){
   if(!g) return;
   g.innerHTML = '';
   const pdfIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
-  const infoIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
 
-  // ── "Support all 4 bills" card ──────────────────────────────────
-  const allCard = document.createElement('div');
-  allCard.className = 'showcase-card all-bills-card';
-  allCard.innerHTML =
-    `<div class="sc-badges">
-      <div class="priority-badge">★ Support All 4 Bills</div>
-      <span class="target-badge committee">Committee Vote</span>
-    </div>
-    <div class="sc-code" style="font-size:17px">HB 5262 · HB 5278 · HB 5279 · HB 5280</div>
-    <div class="sc-short">Full Package — Equal Veteran Recognition for NOAA &amp; USPHS Officers</div>
-    <div class="sc-desc">Send a single letter urging the House Committee on Government Operations to advance all four bills — covering veteran status, state ID cards, driver's licenses, and retirement tax equity — for commissioned officers of NOAA and the U.S. Public Health Service.</div>
-    <div class="all-bills-pill-row">
-      <span class="all-bills-pill">HB 5262 — Veteran status</span>
-      <span class="all-bills-pill">HB 5278 — State ID cards</span>
-      <span class="all-bills-pill">HB 5279 — Driver's licenses</span>
-      <span class="all-bills-pill">HB 5280 — Retirement tax equity ★</span>
-    </div>
-    <div class="sc-actions">
-      <button class="sc-take-action" onclick="takeActionAllBills()">✉ Send one email for all 4 bills →</button>
-    </div>`;
-  g.appendChild(allCard);
-  lacEvent('bill_card_rendered', { tab: 'state', bill_code: 'ALL' });
+  // Group bills by chamber (Senate vs House) via committeeLabel
+  const senateBills = STATE_BILLS.filter(b => b.committeeLabel && b.committeeLabel.toLowerCase().includes('senate'));
+  const houseBills  = STATE_BILLS.filter(b => !b.committeeLabel || !b.committeeLabel.toLowerCase().includes('senate'));
 
-  STATE_BILLS.forEach(b => {
-    const card = document.createElement('div');
-    card.className = 'showcase-card' + (b.priority ? ' priority-card' : '');
-    const actionUrl = `action.html?bill=${encodeURIComponent(b.code)}&tab=state`;
-    const resourcesHtml = (b.battleCard || b.onePager) ?
-      `<div class="sc-resources">` +
-      (b.battleCard ? `<a class="sc-resource-link" href="${escapeHtml(b.battleCard)}" target="_blank" rel="noopener">${pdfIcon} Battle Card — legislator talking points</a>` : '') +
-      (b.onePager  ? `<a class="sc-resource-link" href="${escapeHtml(b.onePager)}"  target="_blank" rel="noopener">${pdfIcon} One-Pager — leave-behind for staff</a>` : '') +
-      `</div>` : '';
-    card.innerHTML =
-      `<div class="sc-badges">` +
-      (b.priority ? `<div class="priority-badge">★ Priority bill</div>` : '') +
-      `<span class="target-badge ${b.target === 'committee' ? 'committee' : 'district'}">${b.target === 'committee' ? 'Committee vote' : 'My District'}</span>` +
-      billStatusBadgeHtml(b.code) +
-      `</div>` +
-      `<div class="sc-code">${escapeHtml(b.code)}</div>` +
-      `<div class="sc-short">${escapeHtml(b.short)}</div>` +
-      `<div class="sc-desc">${escapeHtml(b.desc)}</div>` +
-      `<div class="sc-actions">` +
-      `<a class="sc-take-action" href="${actionUrl}">Take action on this bill →</a>` +
-      `<a class="sc-bill-link" href="${escapeHtml(b.url)}" target="_blank" rel="noopener">View bill text ↗</a>` +
-      `</div>` +
-      resourcesHtml;
-    g.appendChild(card);
-    lacEvent('bill_card_rendered', { tab: 'state', bill_code: b.code });
-  });
+  function renderSection(bills, sectionLabel, showAllBillsRow){
+    if(!bills.length) return;
+    const section = document.createElement('div');
+    section.className = 'bill-section';
+
+    // Section header
+    const hdr = document.createElement('div');
+    hdr.className = 'bill-section-header';
+    hdr.textContent = sectionLabel;
+    section.appendChild(hdr);
+
+    const list = document.createElement('div');
+    list.className = 'bill-list';
+
+    // "Send one email for all House bills" row
+    if(showAllBillsRow && houseBills.length > 1){
+      const allRow = document.createElement('div');
+      allRow.className = 'bill-list-row all-bills-row';
+      allRow.innerHTML =
+        `<div class="blr-badges"><div class="priority-badge">★ All ${houseBills.length} bills</div><span class="target-badge committee">Package</span></div>` +
+        `<div class="blr-name">Send <strong>one email</strong> covering all ${houseBills.length} House bills — veteran status, IDs, driver's licenses &amp; retirement taxes</div>` +
+        `<div class="blr-actions"><button class="blr-btn blr-btn-primary" onclick="takeActionAllBills()">✉ Send one email →</button></div>`;
+      list.appendChild(allRow);
+      lacEvent('bill_card_rendered', { tab: 'state', bill_code: 'ALL' });
+    }
+
+    // Individual bill rows
+    bills.forEach(b => {
+      const actionUrl = `action.html?bill=${encodeURIComponent(b.code)}&tab=state`;
+      const row = document.createElement('div');
+      row.className = 'bill-list-row' + (b.priority ? ' priority-row' : '');
+      const resourceLinks =
+        (b.battleCard ? `<a class="blr-resource" href="${escapeHtml(b.battleCard)}" target="_blank" rel="noopener">${pdfIcon} Battle Card</a>` : '') +
+        (b.onePager   ? `<a class="blr-resource" href="${escapeHtml(b.onePager)}"  target="_blank" rel="noopener">${pdfIcon} One-Pager</a>` : '');
+      row.innerHTML =
+        `<div class="blr-badges">` +
+        (b.priority ? `<div class="priority-badge">★ Priority</div>` : '') +
+        `<span class="target-badge ${b.target === 'committee' ? 'committee' : 'district'}">${b.target === 'committee' ? 'Committee' : 'District'}</span>` +
+        billStatusBadgeHtml(b.code) +
+        `</div>` +
+        `<div class="blr-name"><span class="blr-code">${escapeHtml(b.code)}</span> — ${escapeHtml(b.short)}</div>` +
+        `<div class="blr-actions">` +
+        `<a class="blr-btn blr-btn-primary" href="${actionUrl}">✉ Take action →</a>` +
+        `<a class="blr-btn" href="${escapeHtml(b.url)}" target="_blank" rel="noopener">View bill ↗</a>` +
+        resourceLinks +
+        `</div>`;
+      list.appendChild(row);
+      lacEvent('bill_card_rendered', { tab: 'state', bill_code: b.code });
+    });
+
+    section.appendChild(list);
+    g.appendChild(section);
+  }
+
+  renderSection(houseBills,  'House Committee on Government Operations', true);
+  renderSection(senateBills, 'Senate Committee on Health Policy', false);
 }
 
 function renderFedShowcase(){
