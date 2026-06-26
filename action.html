@@ -68,6 +68,9 @@ body { font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: var(--t
   display: flex; align-items: flex-start; gap: 16px;
 }
 .bill-context.priority { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-left: 4px solid var(--gold); }
+.bill-context.all-bills { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-left: 4px solid var(--gold); }
+.bc-pill-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.bc-pill { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px; background: rgba(255,255,255,0.12); color: var(--gold-light); border: 1px solid rgba(255,255,255,0.25); letter-spacing: 0.03em; }
 .bc-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px; }
 .bc-code { font-family: 'Merriweather', serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 2px; }
 .bc-short { font-size: 14px; font-weight: 600; color: var(--gold-light); margin-bottom: 6px; }
@@ -353,6 +356,36 @@ let LEGISLATORS = [];
 let MI_SENATORS = [];
 let STATE_COMMITTEE = [];
 
+// ─── Synthetic "ALL" bill object ─────────────────────────────────
+const ALL_BILLS_SYNTHETIC = {
+  code: 'HB 5262 · HB 5278 · HB 5279 · HB 5280',
+  short: 'Full Package — Equal Veteran Recognition for NOAA & USPHS Officers',
+  desc: 'Send one letter urging the House Committee on Government Operations to advance all four bills covering veteran status, state ID cards, driver\'s licenses, and retirement tax equity for commissioned officers of NOAA and the U.S. Public Health Service.',
+  priority: true,
+  target: 'committee',
+  districts: ['71','52','83','102','14'],
+  committeeLabel: 'House Committee on Government Operations — send to each member',
+  subject: 'Please Support HB 5262, HB 5278, HB 5279 & HB 5280 — Equal Veteran Recognition for NOAA & USPHS Officers',
+  body: `Dear Representative [LAST_NAME],
+
+I am writing to respectfully urge your support for four bills currently before the House Committee on Government Operations that would extend equal recognition to commissioned officers of the U.S. Public Health Service (USPHS) and the National Oceanic and Atmospheric Administration (NOAA) Commissioned Corps — uniformed services already recognized as veterans under federal law (Title 38 USC).
+
+HB 5262 (Uniformity of Service Dates Act) would amend Act 190 of 1965 to recognize NOAA and USPHS commissioned officers as a class of veterans consistent with federal law.
+
+HB 5278 (State Personal Identification Card Act) would extend the veteran designation on Michigan state ID cards to these officers.
+
+HB 5279 (Michigan Vehicle Code) would extend the veteran designation on Michigan driver's licenses to these officers.
+
+HB 5280 (Income Tax Act — retirement pay equity) would extend Michigan's retirement tax fairness to active duty, retired officers, and surviving spouses of USPHS and NOAA Commissioned Corps.
+
+Together, these four bills close a gap between Michigan law and federal law that leaves deserving service members and their families without the recognition they have earned. I ask that you support advancing this package through committee.
+
+Respectfully,
+[FULL_NAME]
+[CITY], Michigan
+Member, [CHAPTER]`
+};
+
 // ─── Page state ───────────────────────────────────────────────────
 let selectedBill = null;
 let currentTab   = 'state';
@@ -448,7 +481,7 @@ async function buildComposer(){
     return;
   }
 
-  // State bill
+  // ALL bills case — selectedBill is ALL_BILLS_SYNTHETIC, which has same shape as a committee bill
   const committeeLegs = selectedBill.target === 'committee'
     ? getLegislatorsByDistricts(['MI House'], selectedBill.districts || [])
     : [];
@@ -460,8 +493,14 @@ async function buildComposer(){
     LAST_NAME:lastName, FULL_NAME:fn+' '+ln, CITY:city, ZIP:zip, EMAIL:em, ADDRESS:addr, CHAPTER:ch, SALUTATION:firstLeg.salutation
   });
 
-  document.getElementById('act-phone-script').textContent =
-    `"Hello, my name is ${fn} ${ln}. I'm a constituent of Representative [Name] and a member of the ${ch}, Military Officers Association of America. I'm calling to ask for your support in moving ${selectedBill.code} forward in committee. It's a common-sense fix to ensure equal treatment for all uniformed service veterans."`;
+  // Phone script — tailored for ALL vs single bill
+  if(selectedBill === ALL_BILLS_SYNTHETIC){
+    document.getElementById('act-phone-script').textContent =
+      `"Hello, my name is ${fn} ${ln}. I'm a member of the ${ch}, Military Officers Association of America. I'm calling to urge support for HB 5262, HB 5278, HB 5279, and HB 5280 — a package of four bills that would extend equal veteran recognition to commissioned officers of NOAA and the U.S. Public Health Service, consistent with federal law. I ask that the committee advance all four bills."`;
+  } else {
+    document.getElementById('act-phone-script').textContent =
+      `"Hello, my name is ${fn} ${ln}. I'm a constituent of Representative [Name] and a member of the ${ch}, Military Officers Association of America. I'm calling to ask for your support in moving ${selectedBill.code} forward in committee. It's a common-sense fix to ensure equal treatment for all uniformed service veterans."`;
+  }
 
   if(selectedBill.target === 'committee'){
     document.getElementById('act-rec-header').textContent = selectedBill.committeeLabel || 'House Committee — send to each member';
@@ -689,6 +728,24 @@ function renderBillContext(bill, tab){
     banner.innerHTML = `<div><div class="bc-badge">Legislative Action Center</div><div class="bc-code">Bill not found</div><div class="bc-desc">Return to the <a href="index.html" style="color:var(--gold-light)">Action Center</a> to choose a bill.</div></div>`;
     return;
   }
+  if(bill === ALL_BILLS_SYNTHETIC){
+    banner.classList.add('all-bills');
+    banner.innerHTML = `
+      <div style="flex:1">
+        <div class="bc-badge">State Legislation · You are taking action on:</div>
+        <div class="bc-code" style="font-size:16px">All Four Bills — Full Package</div>
+        <div class="bc-short">${escapeHtml(bill.short)}</div>
+        <div class="bc-desc">${escapeHtml(bill.desc)}</div>
+        <div class="bc-pill-row">
+          <span class="bc-pill">HB 5262 — Veteran status</span>
+          <span class="bc-pill">HB 5278 — State ID cards</span>
+          <span class="bc-pill">HB 5279 — Driver's licenses</span>
+          <span class="bc-pill">HB 5280 — Retirement tax equity ★</span>
+        </div>
+        <div style="margin-top:10px"><a class="bc-change" href="index.html">← Choose a different bill</a></div>
+      </div>`;
+    return;
+  }
   if(bill.priority) banner.classList.add('priority');
   banner.innerHTML = `
     <div style="flex:1">
@@ -712,12 +769,18 @@ async function initAction(){
   const billCode = params.get('bill') || 'HB 5280';
   currentTab = params.get('tab') || 'state';
 
-  const allBills = currentTab === 'federal' ? FEDERAL_BILLS : STATE_BILLS;
-  selectedBill = allBills.find(b => b.code === billCode) || STATE_BILLS[0];
+  if(billCode === 'ALL'){
+    selectedBill = ALL_BILLS_SYNTHETIC;
+  } else {
+    const allBills = currentTab === 'federal' ? FEDERAL_BILLS : STATE_BILLS;
+    selectedBill = allBills.find(b => b.code === billCode) || STATE_BILLS[0];
+  }
 
-  lacEvent('bill_selected', { tab: currentTab, bill_code: selectedBill?.code });
+  lacEvent('bill_selected', { tab: currentTab, bill_code: billCode });
   renderBillContext(selectedBill, currentTab);
-  if(selectedBill) document.title = `${selectedBill.code} — Take Action — Legislative Action Center, MOAA Michigan Council`;
+  document.title = billCode === 'ALL'
+    ? 'All 4 Bills — Take Action — Legislative Action Center, MOAA Michigan Council'
+    : `${selectedBill?.code} — Take Action — Legislative Action Center, MOAA Michigan Council`;
 }
 
 initAction();
