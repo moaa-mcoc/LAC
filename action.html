@@ -390,6 +390,7 @@ Member, [CHAPTER]`
 let selectedBill = null;
 let currentTab   = 'state';
 let districtLegislators = [];
+let _lacBodyTemplate = ''; // raw body template preserved for per-legislator [LAST_NAME] substitution
 
 // ─── Utilities ────────────────────────────────────────────────────
 function sv(id){
@@ -489,10 +490,11 @@ async function buildComposer(){
   const salutationDefault = selectedBill.chamber === 'senate' ? 'Senator' : 'Representative';
   const firstLeg = committeeLegs[0] || { name: salutationDefault, salutation: salutationDefault };
 
+  _lacBodyTemplate = selectedBill.body; // preserve raw template for per-legislator substitution
+  const firstLastName = firstLeg.name.split(' ').pop();
   document.getElementById('s-esubj').value = selectedBill.subject;
-  // [LAST_NAME] is intentionally left as a placeholder; renderButtons() substitutes it per legislator.
   document.getElementById('s-ebody').value = fillMerge(selectedBill.body, {
-    FULL_NAME:fn+' '+ln, CITY:city, ZIP:zip, EMAIL:em, ADDRESS:addr, CHAPTER:ch, SALUTATION:firstLeg.salutation
+    LAST_NAME:firstLastName, FULL_NAME:fn+' '+ln, CITY:city, ZIP:zip, EMAIL:em, ADDRESS:addr, CHAPTER:ch, SALUTATION:firstLeg.salutation
   });
 
   // Phone script — tailored for ALL vs single bill
@@ -620,7 +622,7 @@ function renderButtons(){
   const fn=sv('s-fname'), ln=sv('s-lname'), addr=sv('s-addr'), city=sv('s-city'), zip=sv('s-zip'), em=sv('s-email');
   const ch = sv('s-chapter') || 'my MOAA chapter';
   const subj = document.getElementById('s-esubj').value;
-  const bodyTpl = document.getElementById('s-ebody').value;
+  const bodyTpl = _lacBodyTemplate || document.getElementById('s-ebody').value;
   const container = document.getElementById('act-leg-buttons');
   container.innerHTML = '';
   const avatarClass = currentTab === 'federal' ? 'federal' : '';
