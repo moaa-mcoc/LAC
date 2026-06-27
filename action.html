@@ -482,15 +482,17 @@ async function buildComposer(){
   }
 
   // ALL bills case — selectedBill is ALL_BILLS_SYNTHETIC, which has same shape as a committee bill
+  const chamberForLookup = selectedBill.chamber === 'senate' ? 'MI Senate' : 'MI House';
   const committeeLegs = selectedBill.target === 'committee'
-    ? getLegislatorsByDistricts(['MI House'], selectedBill.districts || [])
+    ? getLegislatorsByDistricts([chamberForLookup], selectedBill.districts || [])
     : [];
-  const firstLeg = committeeLegs[0] || { name:'Representative', salutation:'Representative' };
-  const lastName = firstLeg.name.split(' ').pop();
+  const salutationDefault = selectedBill.chamber === 'senate' ? 'Senator' : 'Representative';
+  const firstLeg = committeeLegs[0] || { name: salutationDefault, salutation: salutationDefault };
 
   document.getElementById('s-esubj').value = selectedBill.subject;
+  // [LAST_NAME] is intentionally left as a placeholder; renderButtons() substitutes it per legislator.
   document.getElementById('s-ebody').value = fillMerge(selectedBill.body, {
-    LAST_NAME:lastName, FULL_NAME:fn+' '+ln, CITY:city, ZIP:zip, EMAIL:em, ADDRESS:addr, CHAPTER:ch, SALUTATION:firstLeg.salutation
+    FULL_NAME:fn+' '+ln, CITY:city, ZIP:zip, EMAIL:em, ADDRESS:addr, CHAPTER:ch, SALUTATION:firstLeg.salutation
   });
 
   // Phone script — tailored for ALL vs single bill
