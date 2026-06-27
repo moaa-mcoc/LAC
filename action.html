@@ -750,11 +750,12 @@ function renderBillContext(bill, tab){
   banner.innerHTML = `
     <div style="flex:1">
       <div class="bc-badge">${tab === 'federal' ? 'Federal Legislation' : 'State Legislation'} · You are taking action on:</div>
-      <div class="bc-code">${escapeHtml(bill.code)}</div>
+      <div class="bc-code">${escapeHtml(bill.code)}${bill.code2 ? ' &amp; ' + escapeHtml(bill.code2) : ''}</div>
       <div class="bc-short">${escapeHtml(bill.short)}</div>
       <div class="bc-desc">${escapeHtml(bill.desc)}</div>
       <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:8px">
-        <a class="bc-link" href="${escapeHtml(bill.url)}" target="_blank" rel="noopener">View full bill text ↗</a>
+        <a class="bc-link" href="${escapeHtml(bill.url)}" target="_blank" rel="noopener">View ${bill.code2 ? escapeHtml(bill.code) + ' bill text' : 'full bill text'} ↗</a>
+        ${bill.url2 ? `<a class="bc-link" href="${escapeHtml(bill.url2)}" target="_blank" rel="noopener">View ${escapeHtml(bill.code2)} bill text ↗</a>` : ''}
         <a class="bc-change" href="index.html">← Choose a different bill</a>
       </div>
     </div>`;
