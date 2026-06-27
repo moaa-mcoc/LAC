@@ -502,8 +502,13 @@ async function buildComposer(){
     document.getElementById('act-phone-script').textContent =
       `"Hello, my name is ${fn} ${ln}. I'm a member of the ${ch}, Military Officers Association of America. I'm calling to urge support for HB 5262, HB 5278, HB 5279, and HB 5280 — a package of four bills that would extend equal veteran recognition to commissioned officers of NOAA and the U.S. Public Health Service, consistent with federal law. I ask that the committee advance all four bills."`;
   } else {
+    const billRef = selectedBill.code2 ? `${selectedBill.code} and ${selectedBill.code2}` : selectedBill.code;
+    const titleWord = selectedBill.chamber === 'senate' ? 'Senator' : 'Representative';
+    const closingSentence = selectedBill.code2
+      ? `These tie-barred companion bills would establish a hyperbaric oxygen therapy pilot program for Michigan veterans and service members, and both must pass together. I ask that the committee advance them.`
+      : `It's a common-sense fix to ensure equal treatment for all uniformed service veterans.`;
     document.getElementById('act-phone-script').textContent =
-      `"Hello, my name is ${fn} ${ln}. I'm a constituent of Representative [Name] and a member of the ${ch}, Military Officers Association of America. I'm calling to ask for your support in moving ${selectedBill.code} forward in committee. It's a common-sense fix to ensure equal treatment for all uniformed service veterans."`;
+      `"Hello, my name is ${fn} ${ln}. I'm a constituent and a member of the ${ch}, Military Officers Association of America. I'm calling to urge the ${titleWord} to support ${billRef}. ${closingSentence}"`;
   }
 
   if(selectedBill.target === 'committee'){
