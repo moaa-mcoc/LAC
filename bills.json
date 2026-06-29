@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-29T12:00:00.000Z",
+  "generated": "2026-06-29T19:18:11.440Z",
   "state": "MI",
   "bills": [
     {
@@ -13,7 +13,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5262",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5262/2025",
-      "updated": "2026-06-28T16:41:10.134Z"
+      "updated": "2026-06-29T19:18:08.010Z"
     },
     {
       "bill_number": "HB5278",
@@ -26,7 +26,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5278",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5278/2025",
-      "updated": "2026-06-28T16:41:10.749Z"
+      "updated": "2026-06-29T19:18:08.603Z"
     },
     {
       "bill_number": "HB5279",
@@ -39,7 +39,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5279",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5279/2025",
-      "updated": "2026-06-28T16:41:11.338Z"
+      "updated": "2026-06-29T19:18:09.168Z"
     },
     {
       "bill_number": "HB5280",
@@ -52,33 +52,33 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5280",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5280/2025",
-      "updated": "2026-06-28T16:41:11.918Z"
+      "updated": "2026-06-29T19:18:09.727Z"
     },
     {
       "bill_number": "HB5456",
-      "title": "Veterans: hyperbaric oxygen therapy; pilot program for veterans and military service members; establish.",
-      "description": "Establishes a hyperbaric oxygen therapy pilot program for Michigan veterans and military service members. Tie-barred with HB 5457. Passed the House; now before the Senate Committee on Health Policy.",
-      "status": 4,
+      "title": "Military affairs: other; hyperbaric oxygen treatment pilot program; establish. Creates new act. TIE BAR WITH: HB 5457'26",
+      "description": "Military affairs: other; hyperbaric oxygen treatment pilot program; establish. Creates new act. TIE BAR WITH: HB 5457'26",
+      "status": 2,
       "status_label": "Engrossed",
-      "last_action_date": "2026-03-18",
-      "last_action": "Passed by the House — referred to Senate Committee on Health Policy",
+      "last_action_date": "2026-06-23",
+      "last_action": "Referred To Committee On Health Policy",
       "committee": "Health Policy",
-      "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5456",
+      "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-5456",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5456/2025",
-      "updated": "2026-06-29T12:00:00.000Z"
+      "updated": "2026-06-29T19:18:10.348Z"
     },
     {
       "bill_number": "HB5457",
-      "title": "Veterans: hyperbaric oxygen therapy; pilot program for veterans and military service members; establish. (Companion to HB 5456.)",
-      "description": "Companion bill to HB 5456. Together they establish a hyperbaric oxygen therapy pilot program for Michigan veterans and military service members. Passed the House; now before the Senate Committee on Health Policy.",
-      "status": 4,
+      "title": "Military affairs: other; hyperbaric oxygen therapy pilot program; establish. Creates new act. TIE BAR WITH: HB 5456'26",
+      "description": "Military affairs: other; hyperbaric oxygen therapy pilot program; establish. Creates new act. TIE BAR WITH: HB 5456'26",
+      "status": 2,
       "status_label": "Engrossed",
-      "last_action_date": "2026-03-18",
-      "last_action": "Passed by the House — referred to Senate Committee on Health Policy",
+      "last_action_date": "2026-06-23",
+      "last_action": "Referred To Committee On Health Policy",
       "committee": "Health Policy",
-      "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5457",
+      "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-5457",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5457/2025",
-      "updated": "2026-06-29T12:00:00.000Z"
+      "updated": "2026-06-29T19:18:10.940Z"
     }
   ]
 }
