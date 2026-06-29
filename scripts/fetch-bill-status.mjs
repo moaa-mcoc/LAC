@@ -24,7 +24,7 @@ if (!API_KEY) {
 // getSearch to resolve bill number -> LegiScan bill id, then getBill.
 
 const STATE = "MI";
-const BILL_NUMBERS = ["HB5262", "HB5278", "HB5279", "HB5280"];
+const BILL_NUMBERS = ["HB5262", "HB5278", "HB5279", "HB5280", "HB5456", "HB5457"];
 
 const BASE_URL = "https://api.legiscan.com/";
 
