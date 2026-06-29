@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-28T16:41:12.419Z",
+  "generated": "2026-06-29T12:00:00.000Z",
   "state": "MI",
   "bills": [
     {
@@ -53,6 +53,32 @@
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5280",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5280/2025",
       "updated": "2026-06-28T16:41:11.918Z"
+    },
+    {
+      "bill_number": "HB5456",
+      "title": "Veterans: hyperbaric oxygen therapy; pilot program for veterans and military service members; establish.",
+      "description": "Establishes a hyperbaric oxygen therapy pilot program for Michigan veterans and military service members. Tie-barred with HB 5457. Passed the House; now before the Senate Committee on Health Policy.",
+      "status": 4,
+      "status_label": "Engrossed",
+      "last_action_date": "2026-03-18",
+      "last_action": "Passed by the House — referred to Senate Committee on Health Policy",
+      "committee": "Health Policy",
+      "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5456",
+      "legiscan_url": "https://legiscan.com/MI/bill/HB5456/2025",
+      "updated": "2026-06-29T12:00:00.000Z"
+    },
+    {
+      "bill_number": "HB5457",
+      "title": "Veterans: hyperbaric oxygen therapy; pilot program for veterans and military service members; establish. (Companion to HB 5456.)",
+      "description": "Companion bill to HB 5456. Together they establish a hyperbaric oxygen therapy pilot program for Michigan veterans and military service members. Passed the House; now before the Senate Committee on Health Policy.",
+      "status": 4,
+      "status_label": "Engrossed",
+      "last_action_date": "2026-03-18",
+      "last_action": "Passed by the House — referred to Senate Committee on Health Policy",
+      "committee": "Health Policy",
+      "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5457",
+      "legiscan_url": "https://legiscan.com/MI/bill/HB5457/2025",
+      "updated": "2026-06-29T12:00:00.000Z"
     }
   ]
 }
