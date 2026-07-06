@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-05T15:56:01.079Z",
+  "generated": "2026-07-06T19:04:19.480Z",
   "state": "MI",
   "bills": [
     {
@@ -13,7 +13,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5262",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5262/2025",
-      "updated": "2026-07-05T15:55:57.878Z"
+      "updated": "2026-07-06T19:04:16.149Z"
     },
     {
       "bill_number": "HB5278",
@@ -26,7 +26,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5278",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5278/2025",
-      "updated": "2026-07-05T15:55:58.411Z"
+      "updated": "2026-07-06T19:04:16.711Z"
     },
     {
       "bill_number": "HB5279",
@@ -39,7 +39,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5279",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5279/2025",
-      "updated": "2026-07-05T15:55:58.939Z"
+      "updated": "2026-07-06T19:04:17.271Z"
     },
     {
       "bill_number": "HB5280",
@@ -52,7 +52,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5280",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5280/2025",
-      "updated": "2026-07-05T15:55:59.469Z"
+      "updated": "2026-07-06T19:04:17.831Z"
     },
     {
       "bill_number": "HB5456",
@@ -65,7 +65,7 @@
       "committee": "Health Policy",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-5456",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5456/2025",
-      "updated": "2026-07-05T15:56:00.025Z"
+      "updated": "2026-07-06T19:04:18.415Z"
     },
     {
       "bill_number": "HB5457",
@@ -78,7 +78,7 @@
       "committee": "Health Policy",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-5457",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5457/2025",
-      "updated": "2026-07-05T15:56:00.579Z"
+      "updated": "2026-07-06T19:04:18.980Z"
     }
   ]
 }
