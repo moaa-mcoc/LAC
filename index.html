@@ -49,6 +49,8 @@ body { font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: var(--t
 .back-nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 12px; font-weight: 500; transition: color 0.15s; }
 .back-nav-links a:hover { color: #fff; }
 .page { max-width: 820px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+.site-footer { max-width: 820px; margin: 0 auto; padding: 0 1.5rem 2rem; font-size: 12px; color: var(--gray-500); text-align: center; }
+.site-footer a { color: var(--gray-500); text-decoration: underline; }
 /* Header */
 .site-header { border-bottom: 3px solid var(--navy); padding-bottom: 1.25rem; margin-bottom: 1.75rem; display: flex; align-items: center; gap: 16px; }
 .header-flag { width: 48px; height: 48px; background: var(--navy); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -294,6 +296,7 @@ body { font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: var(--t
     </div>
   </div>
 </div><!-- end .page -->
+<footer class="site-footer">Bill status data provided by <a href="https://legiscan.com/" target="_blank" rel="noopener">LegiScan</a>, used under <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a>.</footer>
 <script>
 // ─── Constants ───────────────────────────────────────────────────
 const LAC_CONFIG_URL      = 'lac-config.json';
