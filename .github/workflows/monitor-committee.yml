@@ -19,6 +19,14 @@ jobs:
       - name: Install dependencies
         run: python3 -m pip install --quiet --upgrade certifi
 
+      - name: DEBUG — dump TLS chain from legislature.mi.gov
+        run: |
+          echo "=== Full chain (-showcerts) ==="
+          echo | openssl s_client -connect legislature.mi.gov:443 -servername legislature.mi.gov -showcerts 2>&1 || true
+          echo ""
+          echo "=== Subject / issuer / verify result ==="
+          echo | openssl s_client -connect legislature.mi.gov:443 -servername legislature.mi.gov 2>&1 | grep -E "subject=|issuer=|Verify return code" || true
+
       - name: Check RSS feed and agendas for MOAA bills
         id: monitor
         run: python3 .github/workflows/monitor-committee.py
