@@ -16,6 +16,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v5
 
+      - name: Install dependencies
+        run: python3 -m pip install --quiet --upgrade certifi
+
       - name: Check RSS feed and agendas for MOAA bills
         id: monitor
         run: python3 .github/workflows/monitor-committee.py
@@ -76,7 +79,7 @@ jobs:
                 desc: "The House Committee on Government Operations has scheduled " + billsList + " for a hearing on " + m.date + ". Now is the time to contact committee members.",
                 bill_code: firstBill,
                 info_url: m.url,
-                info_label: "View hearing notice \u2197",
+                info_label: "View hearing notice ↗",
                 expires: "YYYY-MM-DD"
               }, null, 2);
               const body = "## MOAA Priority Bills Scheduled for Committee Hearing\n\n"
