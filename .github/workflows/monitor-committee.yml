@@ -19,12 +19,6 @@ jobs:
       - name: Install dependencies
         run: python3 -m pip install --quiet --upgrade certifi
 
-      - name: DEBUG — fetch missing intermediate as PEM
-        run: |
-          echo "=== DigiCert Global G2 TLS RSA SHA256 2020 CA1 (PEM) ==="
-          curl -sSL https://cacerts.digicert.com/DigiCertGlobalG2TLSRSASHA2562020CA1-1.crt -o intermediate.der
-          openssl x509 -inform DER -in intermediate.der -outform PEM
-
       - name: Check RSS feed and agendas for MOAA bills
         id: monitor
         run: python3 .github/workflows/monitor-committee.py
