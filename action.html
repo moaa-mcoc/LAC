@@ -324,7 +324,7 @@ textarea { resize: vertical; line-height: 1.65; }
 
 <script>
 // ─── Constants ────────────────────────────────────────────────────
-const GOOGLE_API_KEY      = 'YOUR_API_KEY_HERE';
+const CENSUS_GEOCODER_URL = 'https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress';
 const LAC_CONFIG_URL      = 'lac-config.json';
 const LAC_LEGISLATORS_URL = 'lac-legislators.json';
 const LAC_METRICS_KEY     = 'mcoc_lac_metrics_v1';
@@ -536,33 +536,58 @@ async function buildFedComposer(fn, ln, addr, city, zip, em, ch){
   }
 }
 
+// Census Bureau Geocoder — free, no API key. Replaces the Google Civic
+// Information "Representatives" endpoint, which Google retired 4/30/2025.
+// Returns congressional + state legislative districts for a given address;
+// we resolve those district numbers against our own lac-legislators.json.
+async function censusGeocode(addr, city, zip){
+  const address = `${addr}, ${city}, MI ${zip}`;
+  const url = `${CENSUS_GEOCODER_URL}?address=${encodeURIComponent(address)}&benchmark=Public_AR_Current&vintage=Current_Current&format=json`;
+  const resp = await fetch(url);
+  const data = await resp.json();
+  const match = data?.result?.addressMatches?.[0];
+  if(!match) throw new Error('No geocoding match for this address');
+  return match.geographies || {};
+}
+function normDistrict(v){
+  if(v === null || v === undefined) return null;
+  const s = String(v).replace(/^0+(?=\d)/, '');
+  return s === '' ? '0' : s;
+}
+function findSldLayer(geo, chamberWord){
+  // Layer names carry a redistricting year prefix (e.g. "2024 State
+  // Legislative Districts - Upper") that can change; match by suffix instead.
+  const key = Object.keys(geo).find(k => k.endsWith(`State Legislative Districts - ${chamberWord}`));
+  return key ? geo[key]?.[0] : null;
+}
+function findCdLayer(geo){
+  const key = Object.keys(geo).find(k => /Congressional Districts$/.test(k));
+  return key ? geo[key]?.[0] : null;
+}
+
 async function lookupStateDistrict(addr, city, zip){
   const statusEl = document.getElementById('act-lookup-status');
   statusEl.className = 'lookup-status loading';
   statusEl.innerHTML = '<div class="spinner"></div> Looking up your state legislators by address…';
   document.getElementById('act-leg-buttons').innerHTML = '';
   document.getElementById('act-manual-fallback').classList.add('hidden');
-  const address = encodeURIComponent(`${addr}, ${city}, MI ${zip}`);
-  const url = `https://www.googleapis.com/civicinfo/v2/representatives?address=${address}&levels=administrativeArea1&roles=legislatorLowerBody&roles=legislatorUpperBody&key=${GOOGLE_API_KEY}`;
   try {
-    const resp = await fetch(url);
-    const data = await resp.json();
-    if(data.error || !data.officials) throw new Error('No results');
+    const geo = await censusGeocode(addr, city, zip);
+    const lower = findSldLayer(geo, 'Lower');
+    const upper = findSldLayer(geo, 'Upper');
     const legislators = [];
-    (data.offices||[]).forEach(office => {
-      const isHouse  = office.roles?.includes('legislatorLowerBody');
-      const chamber  = isHouse ? 'MI House' : 'MI Senate';
-      const salutationFallback = isHouse ? 'Representative' : 'Senator';
-      (office.officialIndices||[]).forEach(idx => {
-        const official = data.officials[idx]; if(!official) return;
-        const divisionKey = Object.keys(data.divisions||{}).find(k => office.divisionId ? k === office.divisionId : false) || office.divisionId || '';
-        const districtMatch = divisionKey.match(/:(\d+)$/);
-        const districtNum = districtMatch ? districtMatch[1] : null;
-        const dbRecord = districtNum ? LEGISLATORS.find(l => l.chamber === chamber && l.district === districtNum) : null;
-        if(dbRecord) legislators.push({...dbRecord, type:'district'});
-        else legislators.push({ name:official.name, title:`${chamber} · Michigan`, salutation:salutationFallback, email:official.emails?.[0]||'', phone:official.phones?.[0]||'', contact_url:'', type:'district' });
-      });
-    });
+    if(lower){
+      const districtNum = normDistrict(lower.SLDL ?? lower.BASENAME);
+      const dbRecord = LEGISLATORS.find(l => l.chamber === 'MI House' && l.district === districtNum);
+      if(dbRecord) legislators.push({...dbRecord, type:'district'});
+      else legislators.push({ name:`State House District ${districtNum}`, title:'MI House · Michigan', salutation:'Representative', email:'', phone:'', contact_url:'https://www.house.mi.gov/', type:'district' });
+    }
+    if(upper){
+      const districtNum = normDistrict(upper.SLDU ?? upper.BASENAME);
+      const dbRecord = LEGISLATORS.find(l => l.chamber === 'MI Senate' && l.district === districtNum);
+      if(dbRecord) legislators.push({...dbRecord, type:'district'});
+      else legislators.push({ name:`State Senate District ${districtNum}`, title:'MI Senate · Michigan', salutation:'Senator', email:'', phone:'', contact_url:'https://senate.michigan.gov/', type:'district' });
+    }
     if(legislators.length === 0) throw new Error('No legislators found');
     districtLegislators = legislators;
     statusEl.className = 'lookup-status success';
@@ -581,26 +606,17 @@ async function lookupStateDistrict(addr, city, zip){
 
 async function lookupFedRep(addr, city, zip){
   const statusEl = document.getElementById('act-lookup-status');
-  const address = encodeURIComponent(`${addr}, ${city}, MI ${zip}`);
-  const url = `https://www.googleapis.com/civicinfo/v2/representatives?address=${address}&levels=country&roles=legislatorLowerBody&key=${GOOGLE_API_KEY}`;
   try {
-    const resp = await fetch(url);
-    const data = await resp.json();
-    if(data.error || !data.officials) throw new Error('No results');
+    const geo = await censusGeocode(addr, city, zip);
+    const cd = findCdLayer(geo);
     const houseReps = [];
-    (data.offices||[]).forEach(office => {
-      if(office.roles?.includes('legislatorLowerBody')){
-        const divisionKey = office.divisionId || '';
-        const districtMatch = divisionKey.match(/:(\d+)$/);
-        const districtNum = districtMatch ? districtMatch[1] : null;
-        (office.officialIndices||[]).forEach(idx => {
-          const official = data.officials[idx]; if(!official) return;
-          const dbRecord = districtNum ? LEGISLATORS.find(l => l.chamber === 'US House' && l.district === districtNum) : null;
-          if(dbRecord) houseReps.push({...dbRecord, type:'federal'});
-          else houseReps.push({ name:official.name, title:'U.S. Representative · Michigan', salutation:'Representative', email:official.emails?.[0]||'', phone:official.phones?.[0]||'', contact_url:'', type:'federal' });
-        });
-      }
-    });
+    if(cd){
+      const districtNum = normDistrict(cd.CD119 ?? cd.BASENAME);
+      const dbRecord = LEGISLATORS.find(l => l.chamber === 'US House' && l.district === districtNum);
+      if(dbRecord) houseReps.push({...dbRecord, type:'federal'});
+      else houseReps.push({ name:`U.S. House District ${districtNum}`, title:'U.S. Representative · Michigan', salutation:'Representative', email:'', phone:'', contact_url:'https://www.house.gov/representatives', type:'federal' });
+    }
+    if(houseReps.length === 0) throw new Error('No congressional district match');
     statusEl.className = 'lookup-status success';
     statusEl.innerHTML = `✓ Found your U.S. House representative`;
     lacEvent('zip_lookup', { tab:'federal', result:'success', ...getAdvocateContext() });
