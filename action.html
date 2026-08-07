@@ -324,7 +324,7 @@ textarea { resize: vertical; line-height: 1.65; }
 
 <script>
 // ─── Constants ────────────────────────────────────────────────────
-const CENSUS_GEOCODER_URL = 'https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress';
+const CENSUS_GEOCODER_URL = 'https://lac-csnsus-proxy.team-86d.workers.dev';
 const LAC_CONFIG_URL      = 'lac-config.json';
 const LAC_LEGISLATORS_URL = 'lac-legislators.json';
 const LAC_METRICS_KEY     = 'mcoc_lac_metrics_v1';
@@ -542,7 +542,10 @@ async function buildFedComposer(fn, ln, addr, city, zip, em, ch){
 // we resolve those district numbers against our own lac-legislators.json.
 async function censusGeocode(addr, city, zip){
   const address = `${addr}, ${city}, MI ${zip}`;
-  const url = `${CENSUS_GEOCODER_URL}?address=${encodeURIComponent(address)}&benchmark=Public_AR_Current&vintage=Current_Current&format=json`;
+  // Routed through a Cloudflare Worker proxy (lac-csnsus-proxy) that adds
+  // CORS headers — the Census Bureau Geocoder itself doesn't send them, so
+  // a browser fetch() straight to geocoding.geo.census.gov gets blocked.
+  const url = `${CENSUS_GEOCODER_URL}?address=${encodeURIComponent(address)}`;
   const resp = await fetch(url);
   const data = await resp.json();
   const match = data?.result?.addressMatches?.[0];
