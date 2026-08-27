@@ -776,7 +776,7 @@ function renderBillContext(bill, tab){
       <div class="bc-short">${escapeHtml(bill.short)}</div>
       <div class="bc-desc">${escapeHtml(bill.desc)}</div>
       <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:8px">
-        ${bill.url ? `<a class="bc-link" href="${escapeHtml(bill.url)}" target="_blank" rel="noopener">View ${bill.code2 ? escapeHtml(bill.code) + ' bill text' : 'full bill text'} ↗</a>` : ''}
+        ${bill.url ? `<a class="bc-link" href="${escapeHtml(bill.url)}" target="_blank" rel="noopener">${escapeHtml(bill.urlLabel || (bill.code2 ? 'View ' + bill.code + ' bill text ↗' : 'View full bill text ↗'))}</a>` : ''}
         ${bill.url2 ? `<a class="bc-link" href="${escapeHtml(bill.url2)}" target="_blank" rel="noopener">View ${escapeHtml(bill.code2)} bill text ↗</a>` : ''}
         ${resourceLinks}
         <a class="bc-change" href="index.html">← Choose a different bill</a>
