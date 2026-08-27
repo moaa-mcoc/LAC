@@ -458,7 +458,7 @@ function renderShowcase(){
       const viewLinks = b.url2
         ? `<a class="blr-btn" href="${escapeHtml(b.url)}"  target="_blank" rel="noopener">View ${escapeHtml(b.code)} ↗</a>` +
           `<a class="blr-btn" href="${escapeHtml(b.url2)}" target="_blank" rel="noopener">View ${escapeHtml(b.code2)} ↗</a>`
-        : `<a class="blr-btn" href="${escapeHtml(b.url)}" target="_blank" rel="noopener">View bill ↗</a>`;
+        : `<a class="blr-btn" href="${escapeHtml(b.url)}" target="_blank" rel="noopener">${escapeHtml(b.urlLabel || 'View bill ↗')}</a>`;
       row.innerHTML =
         `<div class="blr-badges">` +
         (b.priority ? `<div class="priority-badge">★ Priority</div>` : '') +
