@@ -1,0 +1,116 @@
+{
+  "state_bills": [
+    {
+      "id": 1,
+      "chamber": "house",
+      "code": "HB 5280",
+      "priority": true,
+      "target": "committee",
+      "districts": ["71", "52", "83", "102", "14"],
+      "committeeLabel": "House Committee on Government Operations — send to each member",
+      "short": "Income Tax Act — retirement pay equity",
+      "desc": "Extends Michigan retirement tax fairness to active duty, retired officers, and surviving spouses of USPHS and NOAA Commissioned Corps.",
+      "url": "https://archive.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5280.pdf",
+      "battleCard": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/hb_5280_battle_card_r2.pdf",
+      "onePager": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/michigan_house_bill_5280_-_one-pager.pdf",
+      "relatedFederal": null,
+      "subject": "Support for HB 5280",
+      "body": "Dear Representative [LAST_NAME],\n\nI am writing to respectfully request your support for HB 5280, which would extend Michigan retirement tax fairness to active duty, retired officers, and surviving spouses of the United States Public Health Service and National Oceanic and Atmospheric Administration Commissioned Corps.\n\nThese individuals are members of the uniformed services of the United States and are recognized as veterans by the Department of Veterans Affairs. HB 5280 is a narrow, fiscally responsible measure that simply ensures equal treatment among federally recognized uniformed services retirees.\n\nI respectfully ask that you support HB 5280 and assist in advancing the bill through the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
+    },
+    {
+      "id": 2,
+      "chamber": "house",
+      "code": "HB 5262",
+      "priority": false,
+      "target": "committee",
+      "districts": ["71", "52", "83", "102", "14"],
+      "committeeLabel": "House Committee on Government Operations — send to each member",
+      "short": "Uniformity of Service Dates Act",
+      "desc": "Amends Act 190 of 1965 to include commissioned officers of NOAA and USPHS as a class of veterans as defined in Title 38 USC.",
+      "url": "https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5262.pdf",
+      "relatedFederal": null,
+      "subject": "Support for HB 5262 — Veteran Recognition for NOAA & USPHS Officers",
+      "body": "Dear Representative [LAST_NAME],\n\nI am writing to urge your support for HB 5262, which would amend Act 190 of 1965 to include commissioned officers of NOAA and the USPHS as a class of veterans, consistent with the federal definition under Title 38 of the United States Code.\n\nUnder federal law, NOAA and USPHS commissioned officers are recognized as veterans by the Department of Veterans Affairs. Michigan law currently fails to extend this same recognition, creating an unjust gap in benefits and honors for individuals who have served in a uniformed capacity.\n\nHB 5262 is a straightforward alignment of Michigan law with existing federal standards. I respectfully ask for your support in advancing this bill through committee.\n\nThank you for your service to the people of Michigan.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
+    },
+    {
+      "id": 3,
+      "chamber": "house",
+      "code": "HB 5278",
+      "priority": false,
+      "target": "committee",
+      "districts": ["71", "52", "83", "102", "14"],
+      "committeeLabel": "House Committee on Government Operations — send to each member",
+      "short": "State Personal Identification Card Act",
+      "desc": "Extends veteran designation on state ID cards to NOAA and USPHS commissioned officers.",
+      "url": "https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5278.pdf",
+      "relatedFederal": null,
+      "subject": "Support for HB 5278 — Veteran ID Recognition for NOAA & USPHS Officers",
+      "body": "Dear Representative [LAST_NAME],\n\nI am writing to ask for your support of HB 5278, which would extend the veteran designation on Michigan state identification cards to commissioned officers of NOAA and the USPHS.\n\nThese uniformed service members are recognized as veterans under federal law (38 USC) but are currently excluded from this recognition on Michigan state IDs. This small change would mean a great deal to the men and women who served in these federal uniformed services and now call Michigan home.\n\nI respectfully request your support in moving HB 5278 forward in the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
+    },
+    {
+      "id": 4,
+      "chamber": "house",
+      "code": "HB 5279",
+      "priority": false,
+      "target": "committee",
+      "districts": ["71", "52", "83", "102", "14"],
+      "committeeLabel": "House Committee on Government Operations — send to each member",
+      "short": "Michigan Vehicle Code",
+      "desc": "Extends veteran designation on Michigan driver's licenses to NOAA and USPHS commissioned officers.",
+      "url": "https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5279.pdf",
+      "relatedFederal": null,
+      "subject": "Support for HB 5279 — Veteran Driver's License Recognition for NOAA & USPHS Officers",
+      "body": "Dear Representative [LAST_NAME],\n\nI am writing to request your support for HB 5279, which would extend the veteran designation on Michigan driver's licenses to commissioned officers of NOAA and the USPHS.\n\nThese federally recognized uniformed service veterans currently cannot receive the veteran designation on their Michigan driver's license — an inconsistency with federal law that this bill would correct. The change carries no meaningful fiscal impact and simply provides fair, equal recognition to all who have served.\n\nI ask that you support HB 5279 and help advance it through the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
+    },
+    {
+      "id": 5,
+      "chamber": "senate",
+      "code": "HB 5456",
+      "code2": "HB 5457",
+      "priority": true,
+      "target": "committee",
+      "districts": ["12", "2", "10", "27", "11", "1", "9", "34", "30", "23"],
+      "committeeLabel": "Senate Committee on Health Policy — send to each member",
+      "short": "Hyperbaric Oxygen Therapy Pilot Program for Michigan Veterans",
+      "desc": "HB 5456 and HB 5457 are tie-barred companion bills that together establish a hyperbaric oxygen therapy pilot program for Michigan veterans and military service members. Both passed the House and are now before the Senate Committee on Health Policy.",
+      "url": "https://legislature.mi.gov/documents/2025-2026/billengrossed/House/pdf/2026-HEBH-5456.pdf",
+      "url2": "https://legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2026-HIB-5457.pdf",
+      "relatedFederal": null,
+      "subject": "Support for HB 5456 & HB 5457 — Hyperbaric Oxygen Therapy for Veterans",
+      "body": "Dear Senator [LAST_NAME],\n\nI am writing to urge your support for HB 5456 and HB 5457, tie-barred companion bills that passed the Michigan House of Representatives and would establish a hyperbaric oxygen therapy pilot program to benefit Michigan veterans and military service members.\n\nHyperbaric oxygen therapy has shown promising results in treating traumatic brain injury, post-traumatic stress, and other conditions disproportionately affecting those who have served in uniform. This pilot program would expand access to this treatment for Michigan's veterans and active duty personnel.\n\nBoth bills must pass together and have broad, bipartisan support. I respectfully ask that you support HB 5456 and HB 5457 and help advance them through the Senate Committee on Health Policy.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
+    },
+    {
+      "id": 6,
+      "code": "Richard Star Act — MI State Resolution",
+      "priority": true,
+      "target": "district",
+      "short": "Ask Your Legislator to Introduce a Resolution Supporting the Major Richard Star Act",
+      "desc": "Michigan has not yet introduced a state resolution supporting the Major Richard Star Act (H.R. 2102 / S. 1032), federal legislation that would end the dollar-for-dollar offset between military retirement pay and VA disability compensation for over 50,000 combat-wounded veterans nationwide. This is not a request to vote on a pending bill — it's a request that your own state representative or senator agree to introduce a resolution urging Congress to act. Several other states have already introduced or passed similar resolutions.",
+      "url": "https://www.staractalliance.org/media/vsefcjdy/major-richard-star-act-model-state-resolution-template.pdf",
+      "relatedFederal": "H.R. 2102 / S. 1032",
+      "subject": "Meeting Request from a Wounded Veteran — Major Richard Star Act",
+      "body": "Dear [SALUTATION] [LAST_NAME],\n\nMy name is [FULL_NAME], and I am a veteran and member of [CHAPTER] living in [CITY], Michigan. I'm reaching out to ask for a brief meeting to discuss a state resolution that would support combat-wounded veterans here in Michigan.\n\nThe resolution would not change state law and would not require any funding. It would simply urge Congress to pass the Major Richard Star Act (H.R. 2102 / S. 1032), which corrects a 2004 oversight that leaves more than 50,000 medically retired combat-wounded veterans nationwide unable to receive their full earned DoD retirement pay alongside their VA disability compensation.\n\nI've attached a model resolution template and a brief fact sheet on the legislation for your reference. I'm happy to meet in person, by phone, or by video, whatever is easiest for your schedule — please let me know who on your staff I should coordinate with.\n\nThank you for your time and consideration.\n\nRespectfully,\n[FULL_NAME]\n[ADDRESS]\n[CITY], Michigan [ZIP]\n[EMAIL]\nMember, [CHAPTER]",
+      "phoneScript": "\"Hello, my name is [FULL_NAME], and I'm a veteran and a member of [CHAPTER], Military Officers Association of America. I'm calling to ask whether your representative or senator would be willing to introduce a state resolution supporting the Major Richard Star Act. It doesn't change state law or require funding — it simply urges Congress to end the retirement-pay offset for combat-wounded veterans. I'd be glad to send over a model resolution and a short fact sheet, and to speak with a staff member about next steps.\""
+    }
+  ],
+  "federal_bills": [
+    {
+      "id": 1,
+      "code": "SEACR Act of 2026",
+      "priority": true,
+      "target": "delegation",
+      "short": "The Submarine Exposure and Combat Recognition (SEACR) Act of 2026",
+      "desc": "Establishes statutory recognition of submarine veterans' toxic, hazardous, and radiation exposures currently shielded by classified records, stops the cost-shifting of unrecognized service-connected conditions onto Medicare, Medicaid, and private insurance, and authorizes Imminent Danger Pay parity for submarine deployments conducted under National Defense tasking — without exposing the Department of Defense to historical back-pay liability.",
+      "resources": [
+        { "label": "SEACR Act - Legislative Outline", "url": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/seacr_act_-_legislative_outline.pdf" },
+        { "label": "SEACR Act of 2026 - Executive Summary", "url": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/seacr_act_2026_-_executive_summary.pdf" },
+        { "label": "SEACR Act of 2026 - Congressional Staffer Brief", "url": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/seacr_act_2026_-_the_congressional_staffer_brief.pdf" },
+        { "label": "The Hidden Costs of Submarine Exposures", "url": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/the_hidden_costs_of_submarine_exposures.pdf" }
+      ],
+      "relatedState": null,
+      "subject": "Legislative Briefing Request: Support the Submarine Exposure and Combat Recognition (SEACR) Act of 2026",
+      "body": "Dear [SALUTATION] [LAST_NAME],\n\nMy name is [FULL_NAME]. I am a Michigan military veteran and MOAA member residing in your district. I am writing to request your support in drafting and introducing the Submarine Exposure and Combat Recognition (SEACR) Act of 2026 — legislation intended to address longstanding gaps in the recognition and care of United States submarine veterans whose service exposed them to unique operational hazards and long-term health consequences — on behalf of submarine veterans across Michigan.\n\nSubmarine veterans, a community estimated at 300,000 nationwide, have conducted sensitive, classified operations in support of national defense since 1947. Due to the classified status of operational records, atmospheric data, and deployment details, these veterans encounter administrative obstacles in obtaining documentation to verify service-connected toxic, hazardous, and radiation exposures. As a result, their access to VA healthcare and benefits remains restricted.\n\nThe Submariners' Advocacy Group (SAG) attempted to resolve this issue through administrative channels. Those avenues are now exhausted. SAG sent four letters each to SECDEF, SECNAV, and SECVA. The single response came from Submarine Force Atlantic (SUBLANT), which stated in writing it has \"neither the resources nor authority\" to resolve this issue or establish a cross-functional working group. Because the military chain of command has stated in writing its inability to act, legislative action is now required.\n\nThe SEACR Act provides a dual-jurisdiction legislative framework to address these challenges:\n\nNavigates Classification Barriers: Prohibits the denial of claims based on locked classified records, establishing statutory exposure recognition for submarine veterans.\n\nStops Fiscal Cost-Shifting: Prevents unrecognized service-connected conditions from being shifted onto Medicare, Medicaid, and private insurance.\n\nEstablishes Combat Parity: Authorizes Imminent Danger Pay and statutory recognition for submarine deployments conducted under National Defense tasking, without compromising OPSEC.\n\nProtects the DoD Budget: Includes a prospective framework that shields the Department of Defense from historical back-pay liability.\n\nSAG's Executive Director, David Bozarth, manages all SAG information requests and meeting coordination and welcomes the opportunity to provide these briefing documents and schedule a brief call or meeting with your Military Legislative Assistant to review them and discuss this bill. He can be reached at dbozarth@subadvocates.org or (843) 697-0543.\n\nSupporting documents:\nSEACR Act - Legislative Outline: https://www.moaamcoc.com/uploads/1/4/8/4/148483887/seacr_act_-_legislative_outline.pdf\nSEACR Act of 2026 - Executive Summary: https://www.moaamcoc.com/uploads/1/4/8/4/148483887/seacr_act_2026_-_executive_summary.pdf\nSEACR Act of 2026 - Congressional Staffer Brief: https://www.moaamcoc.com/uploads/1/4/8/4/148483887/seacr_act_2026_-_the_congressional_staffer_brief.pdf\nThe Hidden Costs of Submarine Exposures: https://www.moaamcoc.com/uploads/1/4/8/4/148483887/the_hidden_costs_of_submarine_exposures.pdf\n\nThank you for your time, consideration, and continued support of America's veterans.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\n[EMAIL]\nMember, [CHAPTER]"
+    }
+  ],
+  "alerts": []
+}
