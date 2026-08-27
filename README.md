@@ -173,6 +173,10 @@ All campaign content is managed in `lac-config.json`. The application reads this
 **Merge fields available in `body`:**
 `[FULL_NAME]` `[LAST_NAME]` `[CITY]` `[ZIP]` `[ADDRESS]` `[EMAIL]` `[CHAPTER]` `[SALUTATION]`
 
+**Attachments are not possible.** Every send method the composer offers — `mailto:`, the Gmail/Outlook/Yahoo compose deep links, and copy/paste — is URL- or clipboard-based, and none of them can attach a file to the outgoing email. This isn't a limitation of this app specifically; browsers and webmail providers don't support attaching files via a URL, and `mailto:` has never supported attachments in any mainstream client. A `body` that says "I've attached a one-pager..." will send with zero attachments and read as broken to the recipient.
+
+If a bill needs to reference supporting documents, link to them inline in the letter text instead — e.g. `Label: https://...` on its own line — the way the SEACR Act and Richard Star Act entries do. If a document truly needs to arrive as a real attachment rather than a link, that requires the advocate to manually download and attach it themselves; there's no way to automate it from this app.
+
 ### Phone Scripts
 
 Each bill can supply an optional `phoneScript` field. If omitted, a default template is used: *"...ask for your support in moving [CODE] forward in committee..."* — accurate for a bill actively in committee, but wrong framing for something like a resolution that hasn't been introduced yet, so those bills should supply their own `phoneScript`.
