@@ -322,11 +322,9 @@ textarea { resize: vertical; line-height: 1.65; }
 
 </div><!-- end .page -->
 
-<!-- Shared fallback bill data (single source of truth for both index.html and action.html) -->
-<script src="lac-fallback-data.js"></script>
 <script>
 // ─── Constants ────────────────────────────────────────────────────
-const CENSUS_GEOCODER_URL = 'https://lac-csnsus-proxy.team-86d.workers.dev';
+const GOOGLE_API_KEY      = 'YOUR_API_KEY_HERE';
 const LAC_CONFIG_URL      = 'lac-config.json';
 const LAC_LEGISLATORS_URL = 'lac-legislators.json';
 const LAC_METRICS_KEY     = 'mcoc_lac_metrics_v1';
@@ -346,10 +344,14 @@ function storeLocalMetric(event_name, params){
   localStorage.setItem(LAC_METRICS_KEY, JSON.stringify(data.slice(-1000)));
 }
 
-// ─── Bill data ─────────────────────────────────────────────────────
-// STATE_BILLS and FEDERAL_BILLS are declared in lac-fallback-data.js
-// (loaded above). They are in-code fallbacks, overridden below by
-// loadExternalData() if lac-config.json fetches successfully.
+// ─── Bill data (in-code fallbacks) ───────────────────────────────
+let STATE_BILLS = [
+  { id:1, code:'HB 5280', priority:true, target:'committee', districts:['71','52','83','102','14'], committeeLabel:'House Committee on Government Operations — send to each member', short:'Income Tax Act — retirement pay equity', desc:'Extends Michigan retirement tax fairness to active duty, retired officers, and surviving spouses of USPHS and NOAA Commissioned Corps.', url:'https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5280', relatedFederal:null, subject:'Support for HB 5280', body:'Dear Representative [LAST_NAME],\n\nI am writing to respectfully request your support for HB 5280, which would extend Michigan retirement tax fairness to active duty, retired officers, and surviving spouses of the United States Public Health Service (USPHS) and National Oceanic and Atmospheric Administration (NOAA) Commissioned Corps.\n\nThese individuals are members of the uniformed services of the United States and are recognized as veterans by the Department of Veterans Affairs. HB 5280 is a narrow, fiscally responsible measure that simply ensures equal treatment among federally recognized uniformed services retirees.\n\nI respectfully ask that you support HB 5280 and assist in advancing the bill through the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]' },
+  { id:2, code:'HB 5262', priority:false, target:'committee', districts:['71','52','83','102','14'], committeeLabel:'House Committee on Government Operations — send to each member', short:'Uniformity of Service Dates Act', desc:'Amends Act 190 of 1965 to include commissioned officers of NOAA and USPHS as a class of veterans as defined in Title 38 USC.', url:'https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5262.pdf', relatedFederal:null, subject:'Support for HB 5262 — Veteran Recognition for NOAA & USPHS Officers', body:'Dear Representative [LAST_NAME],\n\nI am writing to urge your support for HB 5262, which would amend Act 190 of 1965 to include commissioned officers of NOAA and the USPHS as a class of veterans, consistent with the federal definition under Title 38 of the United States Code.\n\nHB 5262 is a straightforward alignment of Michigan law with existing federal standards. I respectfully ask for your support in advancing this bill through committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]' },
+  { id:3, code:'HB 5278', priority:false, target:'committee', districts:['71','52','83','102','14'], committeeLabel:'House Committee on Government Operations — send to each member', short:'State Personal Identification Card Act', desc:'Extends veteran designation on state ID cards to NOAA and USPHS commissioned officers.', url:'https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5278.pdf', relatedFederal:null, subject:'Support for HB 5278 — Veteran ID Recognition for NOAA & USPHS Officers', body:'Dear Representative [LAST_NAME],\n\nI am writing to ask for your support of HB 5278, which would extend the veteran designation on Michigan state identification cards to commissioned officers of NOAA and the USPHS.\n\nI respectfully request your support in moving HB 5278 forward in the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]' },
+  { id:4, code:'HB 5279', priority:false, target:'committee', districts:['71','52','83','102','14'], committeeLabel:'House Committee on Government Operations — send to each member', short:'Michigan Vehicle Code', desc:"Extends veteran designation on Michigan driver's licenses to NOAA and USPHS commissioned officers.", url:'https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5279.pdf', relatedFederal:null, subject:"Support for HB 5279 — Veteran Driver's License Recognition for NOAA & USPHS Officers", body:"Dear Representative [LAST_NAME],\n\nI am writing to request your support for HB 5279, which would extend the veteran designation on Michigan driver's licenses to commissioned officers of NOAA and the USPHS.\n\nI ask that you support HB 5279 and help advance it through the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]" }
+];
+let FEDERAL_BILLS = [];
 let LEGISLATORS = [];
 let MI_SENATORS = [];
 let STATE_COMMITTEE = [];
@@ -496,10 +498,8 @@ async function buildComposer(){
     document.getElementById('act-phone-script').textContent =
       `"Hello, my name is ${fn} ${ln}. I'm a member of the ${ch}, Military Officers Association of America. I'm calling to urge support for HB 5262, HB 5278, HB 5279, and HB 5280 — a package of four bills that would extend equal veteran recognition to commissioned officers of NOAA and the U.S. Public Health Service, consistent with federal law. I ask that the committee advance all four bills."`;
   } else {
-    const defaultScript = `"Hello, my name is [FULL_NAME]. I'm a constituent and a member of the [CHAPTER], Military Officers Association of America. I'm calling to ask for your support in moving [CODE] forward in committee. It's a common-sense fix to ensure equal treatment for all uniformed service veterans."`;
-    document.getElementById('act-phone-script').textContent = fillMerge(selectedBill.phoneScript || defaultScript, {
-      FULL_NAME: fn+' '+ln, CHAPTER: ch, CODE: selectedBill.code
-    });
+    document.getElementById('act-phone-script').textContent =
+      `"Hello, my name is ${fn} ${ln}. I'm a constituent of Representative [Name] and a member of the ${ch}, Military Officers Association of America. I'm calling to ask for your support in moving ${selectedBill.code} forward in committee. It's a common-sense fix to ensure equal treatment for all uniformed service veterans."`;
   }
 
   if(selectedBill.target === 'committee'){
@@ -534,61 +534,33 @@ async function buildFedComposer(fn, ln, addr, city, zip, em, ch){
   }
 }
 
-// Census Bureau Geocoder — free, no API key. Replaces the Google Civic
-// Information "Representatives" endpoint, which Google retired 4/30/2025.
-// Returns congressional + state legislative districts for a given address;
-// we resolve those district numbers against our own lac-legislators.json.
-async function censusGeocode(addr, city, zip){
-  const address = `${addr}, ${city}, MI ${zip}`;
-  // Routed through a Cloudflare Worker proxy (lac-csnsus-proxy) that adds
-  // CORS headers — the Census Bureau Geocoder itself doesn't send them, so
-  // a browser fetch() straight to geocoding.geo.census.gov gets blocked.
-  const url = `${CENSUS_GEOCODER_URL}?address=${encodeURIComponent(address)}`;
-  const resp = await fetch(url);
-  const data = await resp.json();
-  const match = data?.result?.addressMatches?.[0];
-  if(!match) throw new Error('No geocoding match for this address');
-  return match.geographies || {};
-}
-function normDistrict(v){
-  if(v === null || v === undefined) return null;
-  const s = String(v).replace(/^0+(?=\d)/, '');
-  return s === '' ? '0' : s;
-}
-function findSldLayer(geo, chamberWord){
-  // Layer names carry a redistricting year prefix (e.g. "2024 State
-  // Legislative Districts - Upper") that can change; match by suffix instead.
-  const key = Object.keys(geo).find(k => k.endsWith(`State Legislative Districts - ${chamberWord}`));
-  return key ? geo[key]?.[0] : null;
-}
-function findCdLayer(geo){
-  const key = Object.keys(geo).find(k => /Congressional Districts$/.test(k));
-  return key ? geo[key]?.[0] : null;
-}
-
 async function lookupStateDistrict(addr, city, zip){
   const statusEl = document.getElementById('act-lookup-status');
   statusEl.className = 'lookup-status loading';
   statusEl.innerHTML = '<div class="spinner"></div> Looking up your state legislators by address…';
   document.getElementById('act-leg-buttons').innerHTML = '';
   document.getElementById('act-manual-fallback').classList.add('hidden');
+  const address = encodeURIComponent(`${addr}, ${city}, MI ${zip}`);
+  const url = `https://www.googleapis.com/civicinfo/v2/representatives?address=${address}&levels=administrativeArea1&roles=legislatorLowerBody&roles=legislatorUpperBody&key=${GOOGLE_API_KEY}`;
   try {
-    const geo = await censusGeocode(addr, city, zip);
-    const lower = findSldLayer(geo, 'Lower');
-    const upper = findSldLayer(geo, 'Upper');
+    const resp = await fetch(url);
+    const data = await resp.json();
+    if(data.error || !data.officials) throw new Error('No results');
     const legislators = [];
-    if(lower){
-      const districtNum = normDistrict(lower.SLDL ?? lower.BASENAME);
-      const dbRecord = LEGISLATORS.find(l => l.chamber === 'MI House' && l.district === districtNum);
-      if(dbRecord) legislators.push({...dbRecord, type:'district'});
-      else legislators.push({ name:`State House District ${districtNum}`, title:'MI House · Michigan', salutation:'Representative', email:'', phone:'', contact_url:'https://www.house.mi.gov/', type:'district' });
-    }
-    if(upper){
-      const districtNum = normDistrict(upper.SLDU ?? upper.BASENAME);
-      const dbRecord = LEGISLATORS.find(l => l.chamber === 'MI Senate' && l.district === districtNum);
-      if(dbRecord) legislators.push({...dbRecord, type:'district'});
-      else legislators.push({ name:`State Senate District ${districtNum}`, title:'MI Senate · Michigan', salutation:'Senator', email:'', phone:'', contact_url:'https://senate.michigan.gov/', type:'district' });
-    }
+    (data.offices||[]).forEach(office => {
+      const isHouse  = office.roles?.includes('legislatorLowerBody');
+      const chamber  = isHouse ? 'MI House' : 'MI Senate';
+      const salutationFallback = isHouse ? 'Representative' : 'Senator';
+      (office.officialIndices||[]).forEach(idx => {
+        const official = data.officials[idx]; if(!official) return;
+        const divisionKey = Object.keys(data.divisions||{}).find(k => office.divisionId ? k === office.divisionId : false) || office.divisionId || '';
+        const districtMatch = divisionKey.match(/:(\d+)$/);
+        const districtNum = districtMatch ? districtMatch[1] : null;
+        const dbRecord = districtNum ? LEGISLATORS.find(l => l.chamber === chamber && l.district === districtNum) : null;
+        if(dbRecord) legislators.push({...dbRecord, type:'district'});
+        else legislators.push({ name:official.name, title:`${chamber} · Michigan`, salutation:salutationFallback, email:official.emails?.[0]||'', phone:official.phones?.[0]||'', contact_url:'', type:'district' });
+      });
+    });
     if(legislators.length === 0) throw new Error('No legislators found');
     districtLegislators = legislators;
     statusEl.className = 'lookup-status success';
@@ -607,17 +579,26 @@ async function lookupStateDistrict(addr, city, zip){
 
 async function lookupFedRep(addr, city, zip){
   const statusEl = document.getElementById('act-lookup-status');
+  const address = encodeURIComponent(`${addr}, ${city}, MI ${zip}`);
+  const url = `https://www.googleapis.com/civicinfo/v2/representatives?address=${address}&levels=country&roles=legislatorLowerBody&key=${GOOGLE_API_KEY}`;
   try {
-    const geo = await censusGeocode(addr, city, zip);
-    const cd = findCdLayer(geo);
+    const resp = await fetch(url);
+    const data = await resp.json();
+    if(data.error || !data.officials) throw new Error('No results');
     const houseReps = [];
-    if(cd){
-      const districtNum = normDistrict(cd.CD119 ?? cd.BASENAME);
-      const dbRecord = LEGISLATORS.find(l => l.chamber === 'US House' && l.district === districtNum);
-      if(dbRecord) houseReps.push({...dbRecord, type:'federal'});
-      else houseReps.push({ name:`U.S. House District ${districtNum}`, title:'U.S. Representative · Michigan', salutation:'Representative', email:'', phone:'', contact_url:'https://www.house.gov/representatives', type:'federal' });
-    }
-    if(houseReps.length === 0) throw new Error('No congressional district match');
+    (data.offices||[]).forEach(office => {
+      if(office.roles?.includes('legislatorLowerBody')){
+        const divisionKey = office.divisionId || '';
+        const districtMatch = divisionKey.match(/:(\d+)$/);
+        const districtNum = districtMatch ? districtMatch[1] : null;
+        (office.officialIndices||[]).forEach(idx => {
+          const official = data.officials[idx]; if(!official) return;
+          const dbRecord = districtNum ? LEGISLATORS.find(l => l.chamber === 'US House' && l.district === districtNum) : null;
+          if(dbRecord) houseReps.push({...dbRecord, type:'federal'});
+          else houseReps.push({ name:official.name, title:'U.S. Representative · Michigan', salutation:'Representative', email:official.emails?.[0]||'', phone:official.phones?.[0]||'', contact_url:'', type:'federal' });
+        });
+      }
+    });
     statusEl.className = 'lookup-status success';
     statusEl.innerHTML = `✓ Found your U.S. House representative`;
     lacEvent('zip_lookup', { tab:'federal', result:'success', ...getAdvocateContext() });
@@ -766,19 +747,14 @@ function renderBillContext(bill, tab){
     return;
   }
   if(bill.priority) banner.classList.add('priority');
-  const resourceLinks = Array.isArray(bill.resources) && bill.resources.length
-    ? bill.resources.map(r => `<a class="bc-link" href="${escapeHtml(r.url)}" target="_blank" rel="noopener">${escapeHtml(r.label)} ↗</a>`).join('')
-    : '';
   banner.innerHTML = `
     <div style="flex:1">
       <div class="bc-badge">${tab === 'federal' ? 'Federal Legislation' : 'State Legislation'} · You are taking action on:</div>
-      <div class="bc-code">${escapeHtml(bill.code)}${bill.code2 ? ' &amp; ' + escapeHtml(bill.code2) : ''}</div>
+      <div class="bc-code">${escapeHtml(bill.code)}</div>
       <div class="bc-short">${escapeHtml(bill.short)}</div>
       <div class="bc-desc">${escapeHtml(bill.desc)}</div>
       <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:8px">
-        ${bill.url ? `<a class="bc-link" href="${escapeHtml(bill.url)}" target="_blank" rel="noopener">${escapeHtml(bill.urlLabel || (bill.code2 ? 'View ' + bill.code + ' bill text ↗' : 'View full bill text ↗'))}</a>` : ''}
-        ${bill.url2 ? `<a class="bc-link" href="${escapeHtml(bill.url2)}" target="_blank" rel="noopener">View ${escapeHtml(bill.code2)} bill text ↗</a>` : ''}
-        ${resourceLinks}
+        <a class="bc-link" href="${escapeHtml(bill.url)}" target="_blank" rel="noopener">View full bill text ↗</a>
         <a class="bc-change" href="index.html">← Choose a different bill</a>
       </div>
     </div>`;
