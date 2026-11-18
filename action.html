@@ -322,6 +322,7 @@ textarea { resize: vertical; line-height: 1.65; }
 
 </div><!-- end .page -->
 
+<script src="lac-fallback-data.js"></script>
 <script>
 // ─── Constants ────────────────────────────────────────────────────
 const GOOGLE_API_KEY      = 'YOUR_API_KEY_HERE';
@@ -344,14 +345,9 @@ function storeLocalMetric(event_name, params){
   localStorage.setItem(LAC_METRICS_KEY, JSON.stringify(data.slice(-1000)));
 }
 
-// ─── Bill data (in-code fallbacks) ───────────────────────────────
-let STATE_BILLS = [
-  { id:1, code:'HB 5280', priority:true, target:'committee', districts:['71','52','83','102','14'], committeeLabel:'House Committee on Government Operations — send to each member', short:'Income Tax Act — retirement pay equity', desc:'Extends Michigan retirement tax fairness to active duty, retired officers, and surviving spouses of USPHS and NOAA Commissioned Corps.', url:'https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5280', relatedFederal:null, subject:'Support for HB 5280', body:'Dear Representative [LAST_NAME],\n\nI am writing to respectfully request your support for HB 5280, which would extend Michigan retirement tax fairness to active duty, retired officers, and surviving spouses of the United States Public Health Service (USPHS) and National Oceanic and Atmospheric Administration (NOAA) Commissioned Corps.\n\nThese individuals are members of the uniformed services of the United States and are recognized as veterans by the Department of Veterans Affairs. HB 5280 is a narrow, fiscally responsible measure that simply ensures equal treatment among federally recognized uniformed services retirees.\n\nI respectfully ask that you support HB 5280 and assist in advancing the bill through the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]' },
-  { id:2, code:'HB 5262', priority:false, target:'committee', districts:['71','52','83','102','14'], committeeLabel:'House Committee on Government Operations — send to each member', short:'Uniformity of Service Dates Act', desc:'Amends Act 190 of 1965 to include commissioned officers of NOAA and USPHS as a class of veterans as defined in Title 38 USC.', url:'https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5262.pdf', relatedFederal:null, subject:'Support for HB 5262 — Veteran Recognition for NOAA & USPHS Officers', body:'Dear Representative [LAST_NAME],\n\nI am writing to urge your support for HB 5262, which would amend Act 190 of 1965 to include commissioned officers of NOAA and the USPHS as a class of veterans, consistent with the federal definition under Title 38 of the United States Code.\n\nHB 5262 is a straightforward alignment of Michigan law with existing federal standards. I respectfully ask for your support in advancing this bill through committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]' },
-  { id:3, code:'HB 5278', priority:false, target:'committee', districts:['71','52','83','102','14'], committeeLabel:'House Committee on Government Operations — send to each member', short:'State Personal Identification Card Act', desc:'Extends veteran designation on state ID cards to NOAA and USPHS commissioned officers.', url:'https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5278.pdf', relatedFederal:null, subject:'Support for HB 5278 — Veteran ID Recognition for NOAA & USPHS Officers', body:'Dear Representative [LAST_NAME],\n\nI am writing to ask for your support of HB 5278, which would extend the veteran designation on Michigan state identification cards to commissioned officers of NOAA and the USPHS.\n\nI respectfully request your support in moving HB 5278 forward in the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]' },
-  { id:4, code:'HB 5279', priority:false, target:'committee', districts:['71','52','83','102','14'], committeeLabel:'House Committee on Government Operations — send to each member', short:'Michigan Vehicle Code', desc:"Extends veteran designation on Michigan driver's licenses to NOAA and USPHS commissioned officers.", url:'https://www.legislature.mi.gov/documents/2025-2026/billintroduced/House/pdf/2025-HIB-5279.pdf', relatedFederal:null, subject:"Support for HB 5279 — Veteran Driver's License Recognition for NOAA & USPHS Officers", body:"Dear Representative [LAST_NAME],\n\nI am writing to request your support for HB 5279, which would extend the veteran designation on Michigan driver's licenses to commissioned officers of NOAA and the USPHS.\n\nI ask that you support HB 5279 and help advance it through the House Government Operations Committee.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]" }
-];
-let FEDERAL_BILLS = [];
+// ─── Bill data ───────────────────────────────────────────────────
+// STATE_BILLS / FEDERAL_BILLS fallbacks are declared in lac-fallback-data.js
+// (loaded just above this block) and overridden by lac-config.json at runtime.
 let LEGISLATORS = [];
 let MI_SENATORS = [];
 let STATE_COMMITTEE = [];
@@ -432,6 +428,20 @@ function getAdvocateContext(){
   return { full_name: (sv('s-fname')+' '+sv('s-lname')).trim(), city:sv('s-city'), zip:sv('s-zip'), chapter:sv('s-chapter') };
 }
 
+// ─── Bill helpers ─────────────────────────────────────────────────
+// Committee-target bills carry chamber: "house" | "senate". Default house
+// (the original Government Operations bills pre-date the field).
+function billChamber(bill){ return bill && bill.chamber === 'senate' ? 'MI Senate' : 'MI House'; }
+function billSalutation(bill){ return billChamber(bill) === 'MI Senate' ? 'Senator' : 'Representative'; }
+// All bill-text links for a bill: url (+ url2/url3 for packaged/tie-barred bills)
+function billLinks(bill){
+  const out = [];
+  if(bill.url)  out.push({ url:bill.url,  label: bill.urlLabel  || (bill.code2 || bill.url2 ? `View ${bill.code.split(' · ')[0]} ↗` : 'View full bill text ↗') });
+  if(bill.url2) out.push({ url:bill.url2, label: bill.url2Label || (bill.code2 ? `View ${bill.code2} ↗` : 'View bill ↗') });
+  if(bill.url3) out.push({ url:bill.url3, label: bill.url3Label || 'View bill ↗' });
+  return out;
+}
+
 // ─── Chapter dropdown ─────────────────────────────────────────────
 function chapterSelectChange(){
   const sel = document.getElementById('s-chapter-select');
@@ -483,9 +493,9 @@ async function buildComposer(){
 
   // ALL bills case — selectedBill is ALL_BILLS_SYNTHETIC, which has same shape as a committee bill
   const committeeLegs = selectedBill.target === 'committee'
-    ? getLegislatorsByDistricts(['MI House'], selectedBill.districts || [])
+    ? getLegislatorsByDistricts([billChamber(selectedBill)], selectedBill.districts || [])
     : [];
-  const firstLeg = committeeLegs[0] || { name:'Representative', salutation:'Representative' };
+  const firstLeg = committeeLegs[0] || { name:billSalutation(selectedBill), salutation:billSalutation(selectedBill) };
   const lastName = firstLeg.name.split(' ').pop();
 
   document.getElementById('s-esubj').value = selectedBill.subject;
@@ -497,13 +507,19 @@ async function buildComposer(){
   if(selectedBill === ALL_BILLS_SYNTHETIC){
     document.getElementById('act-phone-script').textContent =
       `"Hello, my name is ${fn} ${ln}. I'm a member of the ${ch}, Military Officers Association of America. I'm calling to urge support for HB 5262, HB 5278, HB 5279, and HB 5280 — a package of four bills that would extend equal veteran recognition to commissioned officers of NOAA and the U.S. Public Health Service, consistent with federal law. I ask that the committee advance all four bills."`;
+  } else if(selectedBill.phoneScript){
+    // Per-bill override (README: Phone Scripts). Merge fields: [FULL_NAME], [CHAPTER], [CODE]
+    document.getElementById('act-phone-script').textContent = selectedBill.phoneScript
+      .replace(/\[FULL_NAME\]/g, `${fn} ${ln}`).replace(/\[CHAPTER\]/g, ch).replace(/\[CODE\]/g, selectedBill.code);
   } else {
+    const who = selectedBill.target === 'committee' ? `${billSalutation(selectedBill)} [Name]'s` : 'your';
     document.getElementById('act-phone-script').textContent =
-      `"Hello, my name is ${fn} ${ln}. I'm a constituent of Representative [Name] and a member of the ${ch}, Military Officers Association of America. I'm calling to ask for your support in moving ${selectedBill.code} forward in committee. It's a common-sense fix to ensure equal treatment for all uniformed service veterans."`;
+      `"Hello, my name is ${fn} ${ln}, and I'm a member of the ${ch}, Military Officers Association of America. I'm calling to ask for ${who} support in moving ${selectedBill.code} forward in committee. ${selectedBill.short}."`;
   }
 
+
   if(selectedBill.target === 'committee'){
-    document.getElementById('act-rec-header').textContent = selectedBill.committeeLabel || 'House Committee — send to each member';
+    document.getElementById('act-rec-header').textContent = selectedBill.committeeLabel || (billChamber(selectedBill) === 'MI Senate' ? 'Senate' : 'House') + ' Committee — send to each member';
     document.getElementById('act-lookup-status').className = 'hidden';
     document.getElementById('act-manual-fallback').classList.add('hidden');
     districtLegislators = committeeLegs.length ? committeeLegs : STATE_COMMITTEE;
@@ -754,7 +770,7 @@ function renderBillContext(bill, tab){
       <div class="bc-short">${escapeHtml(bill.short)}</div>
       <div class="bc-desc">${escapeHtml(bill.desc)}</div>
       <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:8px">
-        <a class="bc-link" href="${escapeHtml(bill.url)}" target="_blank" rel="noopener">View full bill text ↗</a>
+        ${billLinks(bill).map(l => `<a class="bc-link" href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`).join('')}
         <a class="bc-change" href="index.html">← Choose a different bill</a>
       </div>
     </div>`;
