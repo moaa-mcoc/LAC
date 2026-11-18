@@ -161,8 +161,9 @@ All campaign content is managed in `lac-config.json`. The application reads this
 
 | Field | Required | Notes |
 |---|---|---|
-| `chamber` | State bills only | `"house"` or `"senate"` — determines which committee section a `committee`-target bill renders under. Not used for `district`-target bills, which render in their own section regardless of this field. |
+| `chamber` | State bills only | `"house"` or `"senate"` — determines which chamber's legislators the `districts` list is resolved against (`MI House` or `MI Senate` in `lac-legislators.json`) and the default salutation. Omitted = `"house"`. **Required for Senate committee bills**: without it, Senate district numbers resolve to the state representatives for the House districts with those numbers. Not used for `district`-target bills, which render in their own section regardless of this field. |
 | `code2` / `url2` | Optional | For tie-barred companion bill pairs (e.g., HB 5456/5457) |
+| `url2` / `url3` + `url2Label` / `url3Label` | Optional | Extra bill-text links for tie-barred bills or package entries. Rendered after `url` on the bill card and the action-page banner. |
 | `committeeLabel` | Required for `target: "committee"` | Shown as the recommendation header on the action page |
 | `urlLabel` | Optional | Overrides the link text next to `url` on both the bill row (`index.html`) and the context banner (`action.html`). Defaults to `"View bill ↗"` on the row and `"View full bill text ↗"` on the banner if omitted. Use this for anything that isn't actual bill text — e.g., a model resolution template — so the link doesn't misleadingly say "bill text." |
 | `battleCard` / `onePager` | Optional, state bills | Resource PDF links shown on the bill row |
@@ -214,7 +215,13 @@ The "Contact legislators now" button on an alert links directly to `action.html?
 | HB 5278 | State Personal Identification Card Act | `committee` (House Gov't Ops) | No |
 | HB 5279 | Michigan Vehicle Code | `committee` (House Gov't Ops) | No |
 | HB 5456 & HB 5457 | Hyperbaric Oxygen Therapy Pilot Program | `committee` (Senate Health Policy) | ★ Yes |
+| HB 4591 · HB 4509 · HB 4935 | Occupational Licensure Compacts — package entry (one letter for all three) | `committee` (Senate Health Policy) | No |
+| HB 4591 | Counseling Compact | `committee` (Senate Health Policy) | No |
+| HB 4509 | Audiology & Speech-Language Pathology Interstate Compact | `committee` (Senate Health Policy) | No |
+| HB 4935 | Dentist and Dental Hygienist Compact | `committee` (Senate Health Policy) | No |
 | Richard Star Act — MI State Resolution | Ask your legislator to introduce a resolution supporting the federal Major Richard Star Act (H.R. 2102 / S. 1032) | `district` | ★ Yes |
+
+The three licensure compact bills are a Department of Defense Defense-State Liaison Office (DSLO) priority. Their letters frame the benefit around license portability for military spouses relocating on orders and for veterans and their spouses relocating after separation or retirement. They don't claim the compacts convert military training into a civilian license, because they don't. The package entry uses `url`/`url2`/`url3` (with `urlLabel`/`url2Label`/`url3Label`) to link all three bills.
 
 The Richard Star Act entry is architecturally distinct from the others: it's not asking users to support a pending Michigan bill, but to ask their own state rep or senator to *introduce* a resolution. Its `url` points to a model resolution template rather than bill text, so it uses `urlLabel: "View Resolution Template ↗"` to avoid the default "View bill" / "View full bill text" wording. Once Michigan actually introduces a resolution, this entry should be updated: switch `target` to `committee`, add the real bill number to `code`, drop or repurpose `urlLabel` once `url` points to actual bill text, and rewrite `body`/`phoneScript` from "will you introduce" framing to "please support" framing.
 
