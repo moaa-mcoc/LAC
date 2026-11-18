@@ -92,6 +92,72 @@
       "subject": "Meeting Request from a Wounded Veteran — Major Richard Star Act",
       "body": "Dear [SALUTATION] [LAST_NAME],\n\nMy name is [FULL_NAME], and I am a veteran and member of [CHAPTER] living in [CITY], Michigan. I'm reaching out to ask for a brief meeting to discuss a state resolution that would support combat-wounded veterans here in Michigan.\n\nThe resolution would not change state law and would not require any funding. It would simply urge Congress to pass the Major Richard Star Act (H.R. 2102 / S. 1032), which corrects a 2004 oversight that leaves more than 50,000 medically retired combat-wounded veterans nationwide unable to receive their full earned DoD retirement pay alongside their VA disability compensation.\n\nFor your reference, here is some background on the legislation along with sample language that could serve as a starting point for a resolution:\n\nMajor Richard Star Act — Resolution & Fact Sheet: https://www.moaamcoc.com/uploads/1/4/8/4/148483887/star_act_resolution___fact_sheet.pdf\n\nI'm happy to meet in person, by phone, or by video, whatever is easiest for your schedule — please let me know who on your staff I should coordinate with.\n\nThank you for your time and consideration.\n\nRespectfully,\n[FULL_NAME]\n[ADDRESS]\n[CITY], Michigan [ZIP]\n[EMAIL]\nMember, [CHAPTER]",
       "phoneScript": "\"Hello, my name is [FULL_NAME], and I'm a veteran and a member of [CHAPTER], Military Officers Association of America. I'm calling to ask whether your representative or senator would be willing to introduce a state resolution supporting the Major Richard Star Act. It doesn't change state law or require funding — it simply urges Congress to end the retirement-pay offset for combat-wounded veterans. I'd be glad to send over a model resolution and a short fact sheet, and to speak with a staff member about next steps.\""
+    },
+    {
+      "id": 7,
+      "code": "HB 4591 · HB 4509 · HB 4935",
+      "chamber": "senate",
+      "priority": false,
+      "target": "committee",
+      "districts": ["12", "2", "10", "27", "11", "1", "9", "34", "30", "23"],
+      "committeeLabel": "Senate Committee on Health Policy — send to each member",
+      "short": "Occupational Licensure Compacts — Counselors, Audiology & Speech-Language Pathology, Dental",
+      "desc": "Three bills, all passed by the House and now before the Senate Committee on Health Policy, that would join Michigan to interstate licensure compacts for professional counselors (HB 4591), audiologists and speech-language pathologists (HB 4509), and dentists and dental hygienists (HB 4935). A Department of Defense priority: portable licenses help military spouses who relocate on orders, and veterans and their spouses relocating after service.",
+      "url": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-4591",
+      "urlLabel": "View HB 4591 ↗",
+      "url2": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-4509",
+      "url2Label": "View HB 4509 ↗",
+      "url3": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-4935",
+      "url3Label": "View HB 4935 ↗",
+      "relatedFederal": null,
+      "subject": "Please Support HB 4591, HB 4509 & HB 4935 — Licensure Compacts for Military Families and Veterans",
+      "body": "Dear Senator [LAST_NAME],\n\nI am writing to urge your support for three bills now before the Senate Committee on Health Policy, each of which has passed the Michigan House:\n\nHB 4591 would enter Michigan into the Counseling Compact for licensed professional counselors.\n\nHB 4509 would enter Michigan into the Audiology and Speech-Language Pathology Interstate Compact.\n\nHB 4935 would enter Michigan into the Dentist and Dental Hygienist Compact.\n\nEach compact would let professionals licensed in another member state practice in Michigan under a compact privilege, rather than applying for a separate Michigan license, while Michigan keeps its authority to discipline anyone practicing here.\n\nOccupational licensure compacts are a priority of the Department of Defense's Defense-State Liaison Office. Military families relocate often, and military spouses who hold professional licenses frequently lose months of income and pay new fees each time they must re-license in a new state. The same portability helps veterans and their spouses who hold these licenses and relocate after separation or retirement, as they move into or continue civilian careers.\n\nTogether, these bills would also widen Michigan's pool of licensed providers in mental health, hearing and speech, and dental care. I respectfully ask that you support HB 4591, HB 4509, and HB 4935 and help advance them through the Senate Committee on Health Policy.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]",
+      "phoneScript": "\"Hello, my name is [FULL_NAME], and I'm a member of [CHAPTER], Military Officers Association of America. I'm calling to ask the Senator to support HB 4591, HB 4509, and HB 4935, which would join Michigan to the licensure compacts for counselors, audiologists and speech-language pathologists, and dentists and dental hygienists. They're a Department of Defense priority because portable licenses help military spouses who move on orders, and veterans and their families who relocate after service. All three have passed the House and are in the Senate Health Policy Committee.\""
+    },
+    {
+      "id": 8,
+      "code": "HB 4591",
+      "chamber": "senate",
+      "priority": false,
+      "target": "committee",
+      "districts": ["12", "2", "10", "27", "11", "1", "9", "34", "30", "23"],
+      "committeeLabel": "Senate Committee on Health Policy — send to each member",
+      "short": "Counseling Compact — licensed professional counselors",
+      "desc": "Joins Michigan to the interstate Counseling Compact so licensed professional counselors from member states can practice here under a compact privilege. Eases license portability for military spouses and for veterans and their families relocating after service. Passed the House; now before the Senate Committee on Health Policy.",
+      "url": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-4591",
+      "relatedFederal": null,
+      "subject": "Please Support HB 4591 — Counseling Compact for Military Families and Veterans",
+      "body": "Dear Senator [LAST_NAME],\n\nI am writing to urge your support for HB 4591, which would enter Michigan into the interstate Counseling Compact. HB 4591 has passed the Michigan House and is now before the Senate Committee on Health Policy.\n\nThe compact would let professional counselors licensed in another member state practice in Michigan under a compact privilege, rather than applying for a separate Michigan license, while Michigan keeps its authority to discipline anyone practicing here. It would also make it easier to bring licensed counselors into Michigan, expanding access to mental health care.\n\nOccupational licensure compacts are a priority of the Department of Defense's Defense-State Liaison Office. Military families relocate often, and military spouses who hold professional licenses frequently lose months of income and pay new fees each time they must re-license in a new state. The same portability helps veterans and their spouses who hold these licenses and relocate after separation or retirement, as they move into or continue civilian careers.\n\nI respectfully ask that you support HB 4591 and help advance it through the Senate Committee on Health Policy.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
+    },
+    {
+      "id": 9,
+      "code": "HB 4509",
+      "chamber": "senate",
+      "priority": false,
+      "target": "committee",
+      "districts": ["12", "2", "10", "27", "11", "1", "9", "34", "30", "23"],
+      "committeeLabel": "Senate Committee on Health Policy — send to each member",
+      "short": "Audiology & Speech-Language Pathology Interstate Compact",
+      "desc": "Joins Michigan to the Audiology and Speech-Language Pathology Interstate Compact so audiologists and speech-language pathologists licensed in member states can practice here under a compact privilege. Eases license portability for military spouses and for veterans and their families relocating after service. Passed the House; now before the Senate Committee on Health Policy.",
+      "url": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-4509",
+      "relatedFederal": null,
+      "subject": "Please Support HB 4509 — Audiology & Speech-Language Pathology Compact",
+      "body": "Dear Senator [LAST_NAME],\n\nI am writing to urge your support for HB 4509, which would enter Michigan into the Audiology and Speech-Language Pathology Interstate Compact. HB 4509 has passed the Michigan House and is now before the Senate Committee on Health Policy.\n\nThe compact would let audiologists and speech-language pathologists licensed in another member state practice in Michigan under a compact privilege, rather than applying for a separate Michigan license, while Michigan keeps its authority to discipline anyone practicing here. It would also make it easier to bring these providers into Michigan, expanding access to hearing and speech care.\n\nOccupational licensure compacts are a priority of the Department of Defense's Defense-State Liaison Office. Military families relocate often, and military spouses who hold professional licenses frequently lose months of income and pay new fees each time they must re-license in a new state. The same portability helps veterans and their spouses who hold these licenses and relocate after separation or retirement, as they move into or continue civilian careers.\n\nI respectfully ask that you support HB 4509 and help advance it through the Senate Committee on Health Policy.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
+    },
+    {
+      "id": 10,
+      "code": "HB 4935",
+      "chamber": "senate",
+      "priority": false,
+      "target": "committee",
+      "districts": ["12", "2", "10", "27", "11", "1", "9", "34", "30", "23"],
+      "committeeLabel": "Senate Committee on Health Policy — send to each member",
+      "short": "Dentist and Dental Hygienist Compact",
+      "desc": "Joins Michigan to the interstate Dentist and Dental Hygienist Compact so dentists and dental hygienists licensed in member states can practice here under a compact privilege. Eases license portability for military spouses and for veterans and their families relocating after service. Passed the House; now before the Senate Committee on Health Policy.",
+      "url": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-4935",
+      "relatedFederal": null,
+      "subject": "Please Support HB 4935 — Dentist and Dental Hygienist Compact",
+      "body": "Dear Senator [LAST_NAME],\n\nI am writing to urge your support for HB 4935, which would enter Michigan into the interstate Dentist and Dental Hygienist Compact. HB 4935 has passed the Michigan House and is now before the Senate Committee on Health Policy.\n\nThe compact would let dentists and dental hygienists licensed in another member state practice in Michigan under a compact privilege, rather than applying for a separate Michigan license, while Michigan keeps its authority to discipline anyone practicing here. It would also make it easier to bring dental providers into Michigan, where many communities face shortages.\n\nOccupational licensure compacts are a priority of the Department of Defense's Defense-State Liaison Office. Military families relocate often, and military spouses who hold professional licenses frequently lose months of income and pay new fees each time they must re-license in a new state. The same portability helps veterans and their spouses who hold these licenses and relocate after separation or retirement, as they move into or continue civilian careers.\n\nI respectfully ask that you support HB 4935 and help advance it through the Senate Committee on Health Policy.\n\nRespectfully,\n[FULL_NAME]\n[CITY], Michigan\nMember, [CHAPTER]"
     }
   ],
   "federal_bills": [
@@ -103,10 +169,22 @@
       "short": "The Submarine Exposure and Combat Recognition (SEACR) Act of 2026",
       "desc": "Establishes statutory recognition of submarine veterans' toxic, hazardous, and radiation exposures currently shielded by classified records, stops the cost-shifting of unrecognized service-connected conditions onto Medicare, Medicaid, and private insurance, and authorizes Imminent Danger Pay parity for submarine deployments conducted under National Defense tasking — without exposing the Department of Defense to historical back-pay liability.",
       "resources": [
-        { "label": "SEACR Act - Legislative Outline", "url": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/seacr_act_-_legislative_outline.pdf" },
-        { "label": "SEACR Act of 2026 - Executive Summary", "url": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/seacr_act_2026_-_executive_summary.pdf" },
-        { "label": "SEACR Act of 2026 - Congressional Staffer Brief", "url": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/seacr_act_2026_-_the_congressional_staffer_brief.pdf" },
-        { "label": "The Hidden Costs of Submarine Exposures", "url": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/the_hidden_costs_of_submarine_exposures.pdf" }
+        {
+          "label": "SEACR Act - Legislative Outline",
+          "url": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/seacr_act_-_legislative_outline.pdf"
+        },
+        {
+          "label": "SEACR Act of 2026 - Executive Summary",
+          "url": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/seacr_act_2026_-_executive_summary.pdf"
+        },
+        {
+          "label": "SEACR Act of 2026 - Congressional Staffer Brief",
+          "url": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/seacr_act_2026_-_the_congressional_staffer_brief.pdf"
+        },
+        {
+          "label": "The Hidden Costs of Submarine Exposures",
+          "url": "https://www.moaamcoc.com/uploads/1/4/8/4/148483887/the_hidden_costs_of_submarine_exposures.pdf"
+        }
       ],
       "relatedState": null,
       "subject": "Legislative Briefing Request: Support the Submarine Exposure and Combat Recognition (SEACR) Act of 2026",
