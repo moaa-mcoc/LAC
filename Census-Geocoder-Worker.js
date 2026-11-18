@@ -11,6 +11,9 @@
 // → paste this in → Deploy. Copy the resulting *.workers.dev URL (or map a
 // custom route) and send it back — it goes into the CENSUS_GEOCODER_URL
 // constant in action.html.
+//
+// Redeploy after editing: Cloudflare dashboard → Workers & Pages →
+// lac-csnsus-proxy → Edit code → paste this file → Deploy.
 
 const ALLOWED_ORIGINS = [
   'https://moaa-mcoc.github.io',
@@ -46,10 +49,17 @@ export default {
       });
     }
 
+    // Optional vintage, so action.html can ask for the district lines that
+    // match lac-legislators.json (e.g. ACS2025_Current = 2024 state
+    // legislative lines + 119th Congress). Only *_Current vintage names are
+    // forwarded; anything else falls back to Current_Current.
+    const requestedVintage = incoming.searchParams.get('vintage') || '';
+    const vintage = /^[A-Za-z0-9]{1,24}_Current$/.test(requestedVintage) ? requestedVintage : 'Current_Current';
+
     const censusUrl = new URL(CENSUS_BASE);
     censusUrl.searchParams.set('address', address);
     censusUrl.searchParams.set('benchmark', 'Public_AR_Current');
-    censusUrl.searchParams.set('vintage', 'Current_Current');
+    censusUrl.searchParams.set('vintage', vintage);
     censusUrl.searchParams.set('format', 'json');
 
     try {
