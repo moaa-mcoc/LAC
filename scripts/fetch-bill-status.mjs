@@ -1,7 +1,7 @@
 // scripts/fetch-bill-status.mjs
 //
-// Fetches current status for the four Michigan veteran-related bills
-// (HB 5262, 5278, 5279, 5280) from the LegiScan API and writes the
+// Fetches current status for the Michigan bills tracked by the LAC
+// (see BILL_NUMBERS below) from the LegiScan API and writes the
 // result to bills.json at the repo root, which the site fetches
 // client-side to render status badges and the tracker section.
 //
@@ -24,7 +24,11 @@ if (!API_KEY) {
 // getSearch to resolve bill number -> LegiScan bill id, then getBill.
 
 const STATE = "MI";
-const BILL_NUMBERS = ["HB5262", "HB5278", "HB5279", "HB5280", "HB5456", "HB5457"];
+const BILL_NUMBERS = [
+  "HB5262", "HB5278", "HB5279", "HB5280",   // NOAA/USPHS veteran recognition (House Gov Ops)
+  "HB5456", "HB5457",                       // Hyperbaric oxygen therapy pilot (Senate Health Policy)
+  "HB4591", "HB4509", "HB4935",             // Occupational licensure compacts (Senate Health Policy)
+];
 
 const BASE_URL = "https://api.legiscan.com/";
 
