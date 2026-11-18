@@ -1,5 +1,7 @@
 {
   "_comment": "Michigan Legislature \u2014 103rd Legislature (2025-2026). Phones verified against mlcmi.com legislative directory (May 2025). Emails follow official patterns: MI House = FirstnameLastname@house.mi.gov, MI Senate = Sen[Lastname]@senate.michigan.gov or Sen[FI][Lastname]@senate.michigan.gov where needed for disambiguation. MI House contact URLs are individual district pages. District 35 MI Senate is currently vacant.",
+  "census_vintage": "ACS2025_Current",
+  "_census_vintage_note": "Census Geocoder vintage whose district lines match the legislators below. ACS2025_Current = 2024 state legislative lines + 119th Congress (the 103rd Legislature). When this file is updated for the 104th Legislature (seated January 2027), set census_vintage to \"Current_Current\" (2026 lines + 120th Congress).",
   "legislators": [
     {
       "state": "MI",
