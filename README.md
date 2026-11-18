@@ -95,6 +95,10 @@ All three modes below are implemented and in active use.
 
 **Geocoding note:** Legislator lookups by address use the **U.S. Census Bureau Geocoder**, proxied through a Cloudflare Worker (source in `Census-Geocoder-Worker.js`, deployed as `lac-csnsus-proxy`) that adds CORS headers, since the Census API itself doesn't send them. This replaced the Google Civic Information API's "Representatives" endpoint, which Google retired on April 30, 2025. No API key is required for the Census Geocoder.
 
+**District-line vintage.** Census layer names carry the redistricting year (e.g. "2024 State Legislative Districts - Upper", "119th Congressional Districts"), and its default `Current_Current` vintage switches to the *next* Legislature's lines as soon as they're published. Those can differ from the sitting members' districts, as with the 2026 Senate redraw in metro Detroit. So `action.html` asks the Worker for the vintage named in `lac-legislators.json` (`census_vintage`, currently `ACS2025_Current` = 2024 state lines + 119th Congress, matching the 103rd Legislature) and matches layers by pattern rather than exact name. **When `lac-legislators.json` is updated for a new Legislature, update `census_vintage` in the same commit** (for the 104th, seated January 2027: `Current_Current`). The Worker forwards only `*_Current` vintage names and defaults to `Current_Current`.
+
+The lookup also validates that the matched address is in Michigan. Each recipient's email gets its own greeting line (`Dear Senator Santana,`), even after the user edits the letter.
+
 ### Legislator Database
 
 `lac-legislators.json` contains legislator records covering Michigan House, Michigan Senate, U.S. House, and U.S. Senate. Legislators are resolved by chamber + district number at runtime — no contact data is stored in `lac-config.json`.
@@ -309,6 +313,7 @@ A password-protected **metrics dashboard** is accessible via `Ctrl+Alt+M` or `in
 | MCOC logo URL | `index.html` | `https://www.moaamcoc.com/uploads/1/4/8/4/148483887/published/mcoc-logo.png?1740860645` |
 | Config URL | Both files | `lac-config.json` |
 | Fallback data script | Both files | `lac-fallback-data.js` |
+| Census vintage | `lac-legislators.json` → `census_vintage` (fallback constant `CENSUS_VINTAGE` in `action.html`) | `ACS2025_Current` |
 | Legislators URL | Both files | `lac-legislators.json` |
 | Bill status URL | `index.html` | `bills.json` |
 
@@ -319,6 +324,7 @@ A password-protected **metrics dashboard** is accessible via `Ctrl+Alt+M` or `in
 - [ ] Verify phone numbers and individual email addresses in `lac-legislators.json` against official directories
 - [ ] Add individual contact form URLs for MI House members (currently many point to the general `house.mi.gov`)
 - [ ] MI Senate district 35 — populate when replacement is seated
+- [ ] January 2027: update `lac-legislators.json` for the 104th Legislature and switch `census_vintage` to `Current_Current` in the same commit
 - [ ] Add Take Action gating logic to suppress the action button for bills that are dead or already enacted
 - [ ] Update the Richard Star Act entry once Michigan actually introduces a state resolution — switch `target` from `district` to `committee`, add the real bill number, and rewrite the letter/phone-script framing
 - [ ] Consider a lightweight CI check that flags (not blocks) a PR where `lac-config.json` and `lac-fallback-data.js` list different bill `code` values — `lac-fallback-data.js` removed the two-HTML-files drift risk, but the config file and the fallback file are still two hand-maintained copies of the same data
