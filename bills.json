@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-24T22:03:25.960Z",
+  "generated": "2026-11-25T21:17:59.596Z",
   "state": "MI",
   "bills": [
     {
@@ -13,7 +13,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5262",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5262/2025",
-      "updated": "2026-11-24T22:03:20.338Z"
+      "updated": "2026-11-25T21:17:54.754Z"
     },
     {
       "bill_number": "HB5278",
@@ -26,7 +26,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5278",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5278/2025",
-      "updated": "2026-11-24T22:03:21.082Z"
+      "updated": "2026-11-25T21:17:55.298Z"
     },
     {
       "bill_number": "HB5279",
@@ -39,7 +39,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5279",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5279/2025",
-      "updated": "2026-11-24T22:03:21.660Z"
+      "updated": "2026-11-25T21:17:55.832Z"
     },
     {
       "bill_number": "HB5280",
@@ -52,7 +52,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5280",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5280/2025",
-      "updated": "2026-11-24T22:03:22.236Z"
+      "updated": "2026-11-25T21:17:56.369Z"
     },
     {
       "bill_number": "HB5456",
@@ -65,7 +65,7 @@
       "committee": "Health Policy",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-5456",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5456/2025",
-      "updated": "2026-11-24T22:03:22.831Z"
+      "updated": "2026-11-25T21:17:56.904Z"
     },
     {
       "bill_number": "HB5457",
@@ -78,7 +78,7 @@
       "committee": "Health Policy",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-5457",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5457/2025",
-      "updated": "2026-11-24T22:03:23.638Z"
+      "updated": "2026-11-25T21:17:57.438Z"
     },
     {
       "bill_number": "HB4591",
@@ -91,7 +91,7 @@
       "committee": "Health Policy",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-4591",
       "legiscan_url": "https://legiscan.com/MI/bill/HB4591/2025",
-      "updated": "2026-11-24T22:03:24.229Z"
+      "updated": "2026-11-25T21:17:57.992Z"
     },
     {
       "bill_number": "HB4509",
@@ -104,7 +104,7 @@
       "committee": "Health Policy",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-4509",
       "legiscan_url": "https://legiscan.com/MI/bill/HB4509/2025",
-      "updated": "2026-11-24T22:03:24.837Z"
+      "updated": "2026-11-25T21:17:58.545Z"
     },
     {
       "bill_number": "HB4935",
@@ -117,7 +117,7 @@
       "committee": "Health Policy",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-4935",
       "legiscan_url": "https://legiscan.com/MI/bill/HB4935/2025",
-      "updated": "2026-11-24T22:03:25.460Z"
+      "updated": "2026-11-25T21:17:59.096Z"
     }
   ]
 }
