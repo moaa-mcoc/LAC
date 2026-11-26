@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-25T21:17:59.596Z",
+  "generated": "2026-11-26T17:25:49.677Z",
   "state": "MI",
   "bills": [
     {
@@ -13,7 +13,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5262",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5262/2025",
-      "updated": "2026-11-25T21:17:54.754Z"
+      "updated": "2026-11-26T17:25:43.939Z"
     },
     {
       "bill_number": "HB5278",
@@ -26,7 +26,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5278",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5278/2025",
-      "updated": "2026-11-25T21:17:55.298Z"
+      "updated": "2026-11-26T17:25:44.522Z"
     },
     {
       "bill_number": "HB5279",
@@ -39,7 +39,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5279",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5279/2025",
-      "updated": "2026-11-25T21:17:55.832Z"
+      "updated": "2026-11-26T17:25:45.110Z"
     },
     {
       "bill_number": "HB5280",
@@ -52,7 +52,7 @@
       "committee": "Government Operations",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-5280",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5280/2025",
-      "updated": "2026-11-25T21:17:56.369Z"
+      "updated": "2026-11-26T17:25:45.690Z"
     },
     {
       "bill_number": "HB5456",
@@ -65,7 +65,7 @@
       "committee": "Health Policy",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-5456",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5456/2025",
-      "updated": "2026-11-25T21:17:56.904Z"
+      "updated": "2026-11-26T17:25:46.289Z"
     },
     {
       "bill_number": "HB5457",
@@ -78,7 +78,7 @@
       "committee": "Health Policy",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-5457",
       "legiscan_url": "https://legiscan.com/MI/bill/HB5457/2025",
-      "updated": "2026-11-25T21:17:57.438Z"
+      "updated": "2026-11-26T17:25:46.870Z"
     },
     {
       "bill_number": "HB4591",
@@ -91,7 +91,7 @@
       "committee": "Health Policy",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-4591",
       "legiscan_url": "https://legiscan.com/MI/bill/HB4591/2025",
-      "updated": "2026-11-25T21:17:57.992Z"
+      "updated": "2026-11-26T17:25:47.445Z"
     },
     {
       "bill_number": "HB4509",
@@ -104,7 +104,7 @@
       "committee": "Health Policy",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-4509",
       "legiscan_url": "https://legiscan.com/MI/bill/HB4509/2025",
-      "updated": "2026-11-25T21:17:58.545Z"
+      "updated": "2026-11-26T17:25:48.019Z"
     },
     {
       "bill_number": "HB4935",
@@ -117,7 +117,20 @@
       "committee": "Health Policy",
       "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-HB-4935",
       "legiscan_url": "https://legiscan.com/MI/bill/HB4935/2025",
-      "updated": "2026-11-25T21:17:59.096Z"
+      "updated": "2026-11-26T17:25:48.609Z"
+    },
+    {
+      "bill_number": "SB1213",
+      "title": "Labor: leave; family and medical leave insurance benefits; provide for. Creates new act.",
+      "description": "Labor: leave; family and medical leave insurance benefits; provide for. Creates new act.",
+      "status": 1,
+      "status_label": "Introduced",
+      "last_action_date": "2026-10-14",
+      "last_action": "Referred To Committee On Housing And Human Services",
+      "committee": "Housing And Human Services",
+      "state_link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-SB-1213",
+      "legiscan_url": "https://legiscan.com/MI/bill/SB1213/2025",
+      "updated": "2026-11-26T17:25:49.178Z"
     }
   ]
 }
