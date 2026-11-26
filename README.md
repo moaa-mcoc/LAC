@@ -223,6 +223,7 @@ The "Contact legislators now" button on an alert links directly to `action.html?
 | HB 4591 | Counseling Compact | `committee` (Senate Health Policy) | No |
 | HB 4509 | Audiology & Speech-Language Pathology Interstate Compact | `committee` (Senate Health Policy) | No |
 | HB 4935 | Dentist and Dental Hygienist Compact | `committee` (Senate Health Policy) | No |
+| SB 1213 | Paid Family and Medical Leave Insurance — military qualifying exigency leave (DSLO 2027 priority) | `committee` (Senate Housing and Human Services) | No |
 | Richard Star Act — MI State Resolution | Ask your legislator to introduce a resolution supporting the federal Major Richard Star Act (H.R. 2102 / S. 1032) | `district` | ★ Yes |
 
 The three licensure compact bills are a Department of Defense Defense-State Liaison Office (DSLO) priority. Their letters frame the benefit around license portability for military spouses relocating on orders and for veterans and their spouses relocating after separation or retirement. They don't claim the compacts convert military training into a civilian license, because they don't. The package entry uses `url`/`url2`/`url3` (with `urlLabel`/`url2Label`/`url3Label`) to link all three bills.
