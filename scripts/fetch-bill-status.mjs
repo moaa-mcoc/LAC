@@ -28,6 +28,7 @@ const BILL_NUMBERS = [
   "HB5262", "HB5278", "HB5279", "HB5280",   // NOAA/USPHS veteran recognition (House Gov Ops)
   "HB5456", "HB5457",                       // Hyperbaric oxygen therapy pilot (Senate Health Policy)
   "HB4591", "HB4509", "HB4935",             // Occupational licensure compacts (Senate Health Policy)
+  "SB1213",                                 // Paid family leave incl. military exigency leave (Senate Housing & Human Services)
 ];
 
 const BASE_URL = "https://api.legiscan.com/";
